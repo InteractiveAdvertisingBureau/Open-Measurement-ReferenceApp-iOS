@@ -34,7 +34,6 @@ struct Constants {
         case videoAd = "http://localhost:8787/creative/MANIA.mp4"
         case imageAd = "http://localhost:8787/creative/MANIA.jpeg"
         case omsdkjs = "http://localhost:8787/creative/omsdk-v1.js"
-        case sessionClient = "http://localhost:8787/creative/omid-session-client-v1.js"
         case verificationValidationScript = "http://localhost:8787/creative/omid-validation-verification-script-v1.js"
         case dummmyVerificationServer = "http://localhost:8787/m?"
         case baseURL = "http://localhost:8787/"
