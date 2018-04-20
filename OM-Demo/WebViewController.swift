@@ -61,17 +61,19 @@ class WebViewController: UIViewController {
         guard let webView = webView else {
             return
         }
-
-        webView.navigationDelegate = nil
-        webView.scrollView.isScrollEnabled = false
-        webView.uiDelegate = nil
-        webView.configuration.userContentController.removeScriptMessageHandler(forName: Constants.webViewHandlerName)
-        webView.configuration.userContentController.removeAllUserScripts()
-        webView.stopLoading()
-
-        webView.removeFromSuperview()
-        self.webView = nil
-        self.webView = createWebView()
+        // Temporary workaround for https://github.com/InteractiveAdvertisingBureau/Open-Measurement-SDKiOS/issues/22
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(10)) {
+            webView.navigationDelegate = nil
+            webView.scrollView.isScrollEnabled = false
+            webView.uiDelegate = nil
+            webView.configuration.userContentController.removeScriptMessageHandler(forName: Constants.webViewHandlerName)
+            webView.configuration.userContentController.removeAllUserScripts()
+            webView.stopLoading()
+            
+            webView.removeFromSuperview()
+            self.webView = nil
+            self.webView = self.createWebView()
+        }
     }
     
     func setupAdSession() {
@@ -95,7 +97,7 @@ class WebViewController: UIViewController {
             let context = try OMIDIABAdSessionContext(partner: partner, webView: webView, customReferenceIdentifier: nil)
             
             //Create ad session configuration
-            let configuration = try OMIDIABAdSessionConfiguration(impressionOwner: OMIDOwner.javaScriptOwner, videoEventsOwner: OMIDOwner.nativeOwner, isolateVerificationScripts: false)
+            let configuration = try OMIDIABAdSessionConfiguration(impressionOwner: OMIDOwner.javaScriptOwner, videoEventsOwner: OMIDOwner.noneOwner, isolateVerificationScripts: false)
             
             //Create ad session
             let session = try OMIDIABAdSession(configuration: configuration, adSessionContext: context)
@@ -179,7 +181,6 @@ extension WebViewController {
             NSLog("Ad Container is hidden")
 
             self.finishViewabilityMeasurement()
-            self.destroyAd()
             self.adContainerView.isHidden = true
             self.displayInProgress = false
         }
@@ -229,6 +230,7 @@ extension WebViewController {
     func finishViewabilityMeasurement() {
         NSLog("Ending measurement session now")
         self.adSession?.finish()
+        self.destroyAd()
     }
 
     func prepareOMID() -> Bool {

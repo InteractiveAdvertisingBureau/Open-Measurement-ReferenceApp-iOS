@@ -3,7 +3,6 @@
 //  OM-Demo
 //
 //  Created by Nathanael Hardy on 4/12/18.
-//  Copyright © 2018 Open Measurement Working Group. All rights reserved.
 //
 
 import Foundation
@@ -12,6 +11,7 @@ struct Constants {
     static let OMIDAPIVersion = "{\"v\":\"1.0.1\"}"
     static let webViewHandlerName = "loadingStatusHandler"
     static let webViewDidFinishRenderingMessage = "didFinishRendering"
+    static let vendorKey = "dummyVendor"
     
     // JavaScript to handle web view finish rendering event
     static let webViewLoadingStatusHandler = """
@@ -34,8 +34,8 @@ struct Constants {
         case videoAd = "http://localhost:8787/creative/MANIA.mp4"
         case imageAd = "http://localhost:8787/creative/MANIA.jpeg"
         case omsdkjs = "http://localhost:8787/creative/omsdk-v1.js"
-        case verificationValidationScript = "http://localhost:8787/creative/omid-validation-verification-script-v1.js"
-        case dummmyVerificationServer = "http://localhost:8787/m?"
+        case verificationScriptURL = "http://localhost:8787/creative/omid-validation-verification-script-v1.js"
+        case verificationParameters = "http://localhost:8787/m?"
         case baseURL = "http://localhost:8787/"
     }
 }

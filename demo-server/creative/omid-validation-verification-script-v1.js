@@ -459,7 +459,7 @@ module$exports$omid$verificationClient$VerificationClient.prototype.sendMessage_
   this.isSupported() && (e = this.communication.generateGuid(), b && (this.callbackMap_[e] = b), d = new module$exports$omid$common$InternalMessage(e, "VerificationService." + a, module$contents$omid$verificationClient$VerificationClient_MESSAGE_VERSION, JSON.stringify(d)), this.communication.sendMessage(d));
 };
 (0,module$exports$omid$common$exporter.packageExport)("OmidVerificationClient", module$exports$omid$verificationClient$VerificationClient);
-var module$contents$omid$validationVerificationScript$ValidationVerificationClient_DefaultLogServer = "http://pandora-omid-test/sendMessage?msg=", module$exports$omid$validationVerificationScript$ValidationVerificationClient = function(a, b) {
+var module$contents$omid$validationVerificationScript$ValidationVerificationClient_DefaultLogServer = "http://omsdk-omid-test/sendMessage?msg=", module$exports$omid$validationVerificationScript$ValidationVerificationClient = function(a, b) {
   var c = this;
   this.vendorKey_ = b;
   this.logServer_ = module$contents$omid$validationVerificationScript$ValidationVerificationClient_DefaultLogServer;

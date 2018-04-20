@@ -3,7 +3,6 @@
 //  OM-Demo
 //
 //  Created by Nathanael Hardy on 4/17/18.
-//  Copyright © 2018 Open Measurement Working Group. All rights reserved.
 //
 
 import UIKit
@@ -42,14 +41,14 @@ class ImageViewController: WebViewController {
         
         do {
             //Url for verification resource
-            guard let urlToMeasurementResource = URL(string: Constants.ServerResource.verificationValidationScript.rawValue) else {
+            guard let urlToMeasurementResource = URL(string: Constants.ServerResource.verificationScriptURL.rawValue) else {
                 fatalError("Unable to instantiate url")
             }
             
             //Create verification resource from vendor
-            let urlString = Constants.ServerResource.dummmyVerificationServer.rawValue
+            let parameters = Constants.ServerResource.verificationParameters.rawValue
 
-            guard let verificationResource = OMIDIABVerificationScriptResource(url: urlToMeasurementResource, vendorKey: "dummyVendor", parameters: urlString) else {
+            guard let verificationResource = OMIDIABVerificationScriptResource(url: urlToMeasurementResource, vendorKey: Constants.vendorKey, parameters: parameters) else {
                 fatalError("Unable to instantiate verification resource")
             }
             
@@ -60,11 +59,12 @@ class ImageViewController: WebViewController {
             
             let OMIDJSService = try String(contentsOf: omidServiceUrl)
             
-            //Create native video context
+            //Create native image context
             let context = try OMIDIABAdSessionContext(partner: partner, script: OMIDJSService, resources: [verificationResource], customReferenceIdentifier: nil)
             
             //Create ad session configuration
-            let configuration = try OMIDIABAdSessionConfiguration(impressionOwner: OMIDOwner.nativeOwner, videoEventsOwner: OMIDOwner.nativeOwner, isolateVerificationScripts: false)
+            //todo - not a video?
+            let configuration = try OMIDIABAdSessionConfiguration(impressionOwner: OMIDOwner.nativeOwner, videoEventsOwner: OMIDOwner.noneOwner, isolateVerificationScripts: false)
             
             //Create ad session
             let session = try OMIDIABAdSession(configuration: configuration, adSessionContext: context)
@@ -75,7 +75,7 @@ class ImageViewController: WebViewController {
             //Register any views that are intentionally overlaying the main view
             session.addFriendlyObstruction(closeButton)
             
-            //Instantiate video and ad events
+            //Instantiate image and ad events
             omidAdEvents = try OMIDIABAdEvents(adSession: session)
             
             return session
@@ -90,7 +90,6 @@ class ImageViewController: WebViewController {
             fatalError("OMID is not active")
         }
 
-        destroyAd()
         createImageView()
         setupAdSession()
         NSLog("Starting measurement session now")

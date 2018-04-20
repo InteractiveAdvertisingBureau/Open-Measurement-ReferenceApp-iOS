@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  AdListViewController.swift
 //  OM-Demo
 //
 //  Created by Alex Chugunov on 9/24/17.

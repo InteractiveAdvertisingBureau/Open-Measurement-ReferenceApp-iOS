@@ -3,7 +3,6 @@
 //  OM-Demo
 //
 //  Created by Justin Hines on 11/6/17.
-//  Copyright © 2017 Open Measurement Working Group. All rights reserved.
 //
 
 import UIKit
@@ -76,14 +75,14 @@ class VideoViewController: WebViewController {
         
         do {
             //Url for verification resource
-            guard let urlToMeasurementResource = URL(string: Constants.ServerResource.verificationValidationScript.rawValue) else {
+            guard let urlToMeasurementResource = URL(string: Constants.ServerResource.verificationScriptURL.rawValue) else {
                 fatalError("Unable to instantiate url")
             }
             
             //Create verification resource from vendor
-            let urlString = Constants.ServerResource.dummmyVerificationServer.rawValue
+            let parameters = Constants.ServerResource.verificationParameters.rawValue
 
-            guard let verificationResource = OMIDIABVerificationScriptResource(url: urlToMeasurementResource, vendorKey: "dummyVendor", parameters: urlString) else {
+            guard let verificationResource = OMIDIABVerificationScriptResource(url: urlToMeasurementResource, vendorKey: Constants.vendorKey, parameters: parameters) else {
                 fatalError("Unable to instantiate verification resource")
             }
             
@@ -125,13 +124,15 @@ class VideoViewController: WebViewController {
             fatalError("OMID is not active")
         }
 
-        destroyAd()
         createVideoPlayer()
         resetTimeLabels()
         addQuartileTrackingToVideoPlayer()
         setupAdSession()
+        adSession?.start()
+        recordImpression()
         play()
         attachPauseButtonImage()
+        
         NSLog("Starting measurement session now")
     }
     
@@ -182,7 +183,6 @@ extension VideoViewController {
     }
     
     func destroyVideoPlayer() {
-        finishViewabilityMeasurement()
         guard let videoPlayerLayer = playerLayer else { return }
         videoPlayerLayer.player = nil
         videoPlayerLayer.removeFromSuperlayer()
@@ -287,8 +287,6 @@ extension VideoViewController {
         case .Init:
             if (progressPercent > 0) {
                 guard let player = player else { break }
-                adSession?.start()
-                recordImpression()
                 omidVideoEvents?.start(withDuration: CGFloat(duration), videoPlayerVolume: CGFloat(player.volume))
                 currentQuartile = .start
             }
