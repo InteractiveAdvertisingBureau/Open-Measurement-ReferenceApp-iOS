@@ -27,7 +27,7 @@ struct Constants {
     """
     
     /**
-     URLs used for Java Script resources and creative resources.  Expand upon this enum for personal creative testing.
+     URLs used for Java Script and creative resources.  Expand upon this enum for personal creative testing.
      */
     enum ServerResource: String {
         case bannerAd = "http://localhost:8787/creative/banner.html"

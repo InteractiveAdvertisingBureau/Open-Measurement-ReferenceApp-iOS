@@ -9,7 +9,7 @@ import UIKit
 import AVKit
 import OMSDK_IAB
 
-class ImageViewController: WebViewController {
+class ImageViewController: OMDemoViewController {
     @IBOutlet weak var imageView: UIImageView!
     
     var omidAdEvents: OMIDIABAdEvents?
@@ -20,11 +20,11 @@ class ImageViewController: WebViewController {
         title = "Native Image"
         createImageView()
         displayAd()
- 
     }
     
-    override func setupAdSession() {
-        adSession = createAdSession()
+    override func displayAd() {
+        super.displayAd()
+        startViewabilityMeasurement()
     }
     
     override func createAdSession() -> OMIDIABAdSession? {
@@ -83,16 +83,6 @@ class ImageViewController: WebViewController {
             fatalError("Unable to instantiate ad session: \(error)")
         }
         return nil
-    }
-    
-    override func startViewabilityMeasurement() {
-        guard prepareOMID() else {
-            fatalError("OMID is not active")
-        }
-
-        createImageView()
-        setupAdSession()
-        NSLog("Starting measurement session now")
     }
     
     func recordImpression() {

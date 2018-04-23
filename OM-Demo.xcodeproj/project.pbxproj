@@ -10,7 +10,6 @@
 		2BE68E641FB124A3008ABC64 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE68E631FB124A3008ABC64 /* VideoViewController.swift */; };
 		38B305CB1F859D2B00557063 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B305CA1F859D2B00557063 /* AppDelegate.swift */; };
 		38B305D21F859D2B00557063 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38B305D11F859D2B00557063 /* Assets.xcassets */; };
-		38B305E01F859DA500557063 /* BannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B305DC1F859DA500557063 /* BannerViewController.swift */; };
 		38B305E11F859DA500557063 /* AdListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B305DD1F859DA500557063 /* AdListViewController.swift */; };
 		38B305E31F859DA500557063 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B305DF1F859DA500557063 /* WebViewController.swift */; };
 		38FE29961F8BA9B20049ABFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38B305E81F859DDE00557063 /* Main.storyboard */; };
@@ -18,6 +17,7 @@
 		654DDD782086C53000BDAFF8 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654DDD772086C53000BDAFF8 /* ImageViewController.swift */; };
 		65A041B1208028A60033463C /* OMSDK_IAB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A041B0208028A60033463C /* OMSDK_IAB.framework */; };
 		65A041B32081224C0033463C /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A041B22081224C0033463C /* Utility.swift */; };
+		65F0CE5F208AB09D00E6FDF4 /* OMDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F0CE5E208AB09D00E6FDF4 /* OMDemoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,7 +26,6 @@
 		38B305CA1F859D2B00557063 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38B305D11F859D2B00557063 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		38B305D61F859D2B00557063 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		38B305DC1F859DA500557063 /* BannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerViewController.swift; sourceTree = "<group>"; };
 		38B305DD1F859DA500557063 /* AdListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdListViewController.swift; sourceTree = "<group>"; };
 		38B305DF1F859DA500557063 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		38B305E71F859DDE00557063 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -34,6 +33,7 @@
 		654DDD772086C53000BDAFF8 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		65A041B0208028A60033463C /* OMSDK_IAB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OMSDK_IAB.framework; sourceTree = "<group>"; };
 		65A041B22081224C0033463C /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		65F0CE5E208AB09D00E6FDF4 /* OMDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMDemoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +70,7 @@
 			children = (
 				65A041B22081224C0033463C /* Utility.swift */,
 				38B305DD1F859DA500557063 /* AdListViewController.swift */,
-				38B305DC1F859DA500557063 /* BannerViewController.swift */,
+				65F0CE5E208AB09D00E6FDF4 /* OMDemoViewController.swift */,
 				38B305DF1F859DA500557063 /* WebViewController.swift */,
 				2BE68E631FB124A3008ABC64 /* VideoViewController.swift */,
 				654DDD772086C53000BDAFF8 /* ImageViewController.swift */,
@@ -156,10 +156,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				65A041B32081224C0033463C /* Utility.swift in Sources */,
-				38B305E01F859DA500557063 /* BannerViewController.swift in Sources */,
 				38B305E31F859DA500557063 /* WebViewController.swift in Sources */,
 				654DDD782086C53000BDAFF8 /* ImageViewController.swift in Sources */,
 				38B305E11F859DA500557063 /* AdListViewController.swift in Sources */,
+				65F0CE5F208AB09D00E6FDF4 /* OMDemoViewController.swift in Sources */,
 				2BE68E641FB124A3008ABC64 /* VideoViewController.swift in Sources */,
 				38B305CB1F859D2B00557063 /* AppDelegate.swift in Sources */,
 			);

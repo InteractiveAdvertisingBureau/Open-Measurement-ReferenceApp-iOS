@@ -18,7 +18,7 @@ enum Quartile {
     case complete
 }
 
-class VideoViewController: WebViewController {
+class VideoViewController: OMDemoViewController {
     
     @IBOutlet var videoView: UIView?
     @IBOutlet var playButton: UIButton!
@@ -43,6 +43,7 @@ class VideoViewController: WebViewController {
     
     override func displayAd() {
         super.displayAd()
+        startViewabilityMeasurement()
         showPlayerControlls()
     }
     
@@ -55,10 +56,6 @@ class VideoViewController: WebViewController {
         if player != nil {
             destroyVideoPlayer()
         }
-    }
-    
-    override func setupAdSession() {
-        adSession = createAdSession()
     }
     
     override func createAdSession() -> OMIDIABAdSession? {
