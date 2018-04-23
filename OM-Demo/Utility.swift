@@ -35,7 +35,7 @@ struct Constants {
         case imageAd = "http://localhost:8787/creative/MANIA.jpeg"
         case omsdkjs = "http://localhost:8787/creative/omsdk-v1.js"
         case verificationScriptURL = "http://localhost:8787/creative/omid-validation-verification-script-v1.js"
-        case verificationParameters = "http://omsdk-omid-test/m?"
+        case verificationParameters = "http://omsdk-omid-test/sendMessage?msg="
         case baseURL = "http://localhost:8787/"
     }
 }

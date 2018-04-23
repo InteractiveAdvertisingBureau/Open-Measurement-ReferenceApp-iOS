@@ -62,7 +62,7 @@ For simplicity, this Demo app does not include parsing of VAST or other ad forma
 
 Set up your device or emulator to proxy through Charles.
 
-In Charles, look for urls starting with http://omsdk-omid-test/
+In Charles, look for urls starting with http://omsdk-omid-test/sendMessage?msg=
 
 To override this change the value of verificationParameters in Utility.swift to the desired url.
 
