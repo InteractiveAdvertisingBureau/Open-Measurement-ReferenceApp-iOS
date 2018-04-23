@@ -63,7 +63,6 @@ class ImageViewController: OMDemoViewController {
             let context = try OMIDIABAdSessionContext(partner: partner, script: OMIDJSService, resources: [verificationResource], customReferenceIdentifier: nil)
             
             //Create ad session configuration
-            //todo - not a video?
             let configuration = try OMIDIABAdSessionConfiguration(impressionOwner: OMIDOwner.nativeOwner, videoEventsOwner: OMIDOwner.noneOwner, isolateVerificationScripts: false)
             
             //Create ad session
