@@ -73,19 +73,22 @@ class VideoViewController: OMDemoViewController {
         do {
             //Url for verification resource
             guard let urlToMeasurementResource = URL(string: Constants.ServerResource.verificationScriptURL.rawValue) else {
-                fatalError("Unable to instantiate url")
+                showErrorMessage(message: "Unable to instantiate verification resource url")
+                return nil
             }
             
             //Create verification resource from vendor
             let parameters = Constants.ServerResource.verificationParameters.rawValue
 
             guard let verificationResource = OMIDIABVerificationScriptResource(url: urlToMeasurementResource, vendorKey: Constants.vendorKey, parameters: parameters) else {
-                fatalError("Unable to instantiate verification resource")
+                showErrorMessage(message: "Unable to instantiate verification resource")
+                return nil
             }
             
             //Load omid service asset
             guard let omidServiceUrl = URL(string: Constants.ServerResource.omsdkjs.rawValue) else {
-                fatalError("Unable to access resource with name \(Constants.ServerResource.omsdkjs)")
+                showErrorMessage(message: "Unable to access resource with name \(Constants.ServerResource.omsdkjs)")
+                return nil
             }
             
             let OMIDJSService = try String(contentsOf: omidServiceUrl)
@@ -111,7 +114,7 @@ class VideoViewController: OMDemoViewController {
             
             return session
         } catch {
-            fatalError("Unable to instantiate ad session: \(error)")
+            showErrorMessage(message: "Unable to instantiate ad session: \(error)")
         }
         return nil
     }

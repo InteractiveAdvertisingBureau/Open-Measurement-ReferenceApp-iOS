@@ -15,9 +15,10 @@ class WebViewController: OMDemoViewController {
     var creativeDownloadTask: URLSessionDownloadTask?
     var isPrerendering: Bool = false
     
-    var creativeURL: URL {
+    var creativeURL: URL? {
         guard let creativeURL = URL(string: Constants.ServerResource.bannerAd.rawValue) else {
-            fatalError("Unable to access resource: \(Constants.ServerResource.bannerAd)")
+            showErrorMessage(message: "Unable to access resource: \(Constants.ServerResource.bannerAd)")
+            return nil
         }
         return creativeURL
     }
@@ -178,7 +179,8 @@ extension WebViewController {
                 self.creativeDownloadTask = URLSession.shared.downloadTask(with: creativeURL) {
                     [weak self] (fileURL, response, error) in
                     guard let fileURL = fileURL else {
-                        fatalError("Unable to fetch creative from remote URL: \(creativeURL). Error: \(String(describing: error))")
+                        self?.showErrorMessage(message: "Unable to fetch creative from remote URL: \(creativeURL!)")
+                        return
                     }
                     
                     print(response ?? "no response")

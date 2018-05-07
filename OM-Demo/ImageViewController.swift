@@ -42,19 +42,22 @@ class ImageViewController: OMDemoViewController {
         do {
             //Url for verification resource
             guard let urlToMeasurementResource = URL(string: Constants.ServerResource.verificationScriptURL.rawValue) else {
-                fatalError("Unable to instantiate url")
+                showErrorMessage(message: "Unable to instantiate verification resource url")
+                return nil
             }
             
             //Create verification resource from vendor
             let parameters = Constants.ServerResource.verificationParameters.rawValue
 
             guard let verificationResource = OMIDIABVerificationScriptResource(url: urlToMeasurementResource, vendorKey: Constants.vendorKey, parameters: parameters) else {
-                fatalError("Unable to instantiate verification resource")
+                showErrorMessage(message: "Unable to instantiate verification resource")
+                return nil
             }
             
             //Load omid service asset
             guard let omidServiceUrl = URL(string: Constants.ServerResource.omsdkjs.rawValue) else {
-                fatalError("Unable to access resource with name \(Constants.ServerResource.omsdkjs)")
+                showErrorMessage(message: "Unable to access resource with name \(Constants.ServerResource.omsdkjs)")
+                return nil
             }
             
             let OMIDJSService = try String(contentsOf: omidServiceUrl)
@@ -79,7 +82,7 @@ class ImageViewController: OMDemoViewController {
             
             return session
         } catch {
-            fatalError("Unable to instantiate ad session: \(error)")
+            showErrorMessage(message: "Unable to instantiate ad session: \(error)")
         }
         return nil
     }
@@ -98,7 +101,10 @@ class ImageViewController: OMDemoViewController {
 }
 extension ImageViewController {
     func createImageView() {
-        guard let filePath = URL(string: Constants.ServerResource.imageAd.rawValue) else { fatalError("Failed to find image url") }
+        guard let filePath = URL(string: Constants.ServerResource.imageAd.rawValue) else {
+            showErrorMessage(message: "Unable to instantiate image URL")
+            return
+        }
         DispatchQueue.global().async {
             let data = try? Data(contentsOf: filePath)
             DispatchQueue.main.async {
@@ -106,7 +112,8 @@ extension ImageViewController {
                     self.imageView.image = UIImage(data: imageData)
                     self.recordImpression()
                 } else {
-                    fatalError("Failed to download image")
+                    self.showErrorMessage(message: "Failed to download image from: \(filePath)")
+                    return
                 }
             }
         }

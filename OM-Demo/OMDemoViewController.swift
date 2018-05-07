@@ -18,6 +18,7 @@ class OMDemoViewController: UIViewController {
     
     var adSession: OMIDIABAdSession?
     var displayInProgress = false
+    var isDisplayingErrorMessage = false
     
     func willDisplayAd() {}
     func willDismissAd() {}
@@ -119,6 +120,26 @@ extension OMDemoViewController {
             self.adContainerView.alpha = 1.0
         }) { (completed) in
             self.statusLabel.text = ""
+        }
+    }
+}
+
+// MARK: - Error Handling
+extension OMDemoViewController {
+    func showErrorMessage(message: String) {
+        if isDisplayingErrorMessage == false {
+            isDisplayingErrorMessage = true
+            let alert = UIAlertController(title: "An Error Was Encountered", message: message, preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Exit", style: .default, handler: { action in
+                switch action.style{
+                case .default:
+                    self.navigationController?.popToRootViewController(animated: true)
+                    self.isDisplayingErrorMessage = false
+                default:
+                    break
+                }}))
+            
+            self.present(alert, animated: true, completion: nil)
         }
     }
 }
