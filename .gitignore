@@ -4,6 +4,12 @@
 
 ## User settings
 xcuserdata/
+*.DS_Store
+
+## Node
+package-lock.json
+node_modules/
+package.json
 
 ## compatibility with Xcode 8 and earlier (ignoring not required starting Xcode 9)
 *.xcscmblueprint

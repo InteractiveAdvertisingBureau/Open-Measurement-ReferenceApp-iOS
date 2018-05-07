@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <style>
+      * {
+        color: #000;
+        font-size: 10pt;
+        text-align: center;
+        font-family: Tahoma, serif;
+      }
+
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #000;
+      }
+
+      #omsdk-dash {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+        background-color: #ccc;
+        overflow: scroll;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="omsdk-dash">
+      <h1>OM SDK Test Creative</h1>
+      <div>
+        <b>In View: </b> <i id="omsdk-piv">P-%</i>
+      </div>
+
+      <br />
+      <div style="text-align: left; margin: 2px; font-weight: bold;" id="omsdk-events"><b>Events:</b><br /></div>
+    </div>
+
+    <script type="text/javascript" src="creative/omid-verification-client-v1.js"></script>
+    <script type="text/javascript" src="creative/omsdk-visual.js"></script>
+    <script type="text/javascript" src="creative/omid-validation-verification-script-v1.js"></script>
+  </body>
+</html>
