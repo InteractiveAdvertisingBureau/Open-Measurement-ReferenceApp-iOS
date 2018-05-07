@@ -1,5 +1,5 @@
 //
-//  Utility.swift
+//  Constants.swift
 //  OM-Demo
 //
 //  Created by Nathanael Hardy on 4/12/18.
