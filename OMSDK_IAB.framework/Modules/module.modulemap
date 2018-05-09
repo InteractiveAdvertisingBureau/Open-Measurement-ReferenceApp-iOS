@@ -1,4 +1,0 @@
-module OMSDK_IAB {
-    header "Headers/OMIDImports.h"
-    export *
-}

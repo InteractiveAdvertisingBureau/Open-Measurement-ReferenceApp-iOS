@@ -7,85 +7,70 @@
 
 import UIKit
 
-enum AdUnits: Int {
-    case banner300x250
-    case native
-    case video
+/**
+ Supported Ad Units
+ */
+
+enum AdUnit: Int {
+    /**
+     300x2500 standard HTML display banner rendered by WKWebView.
+     */
+    case HTMLDisplay
+
+    /**
+     A static image rendered by UIImageView
+     */
+    case nativeDisplay
+
+    /**
+     A video asset rendered by AVKit
+     */
+    case nativeVideo
 
     var title: String {
         switch self {
-        case .banner300x250:
+        case .HTMLDisplay:
             return "HTML 300x250"
-        case .video:
+        case .nativeVideo:
             return "Native VAST Video"
-        case .native:
+        case .nativeDisplay:
             return "Native Image"
         }
     }
 
     var segue: String {
         switch self {
-        case .banner300x250:
+        case .HTMLDisplay:
             return "showBanner"
-        case .video:
+        case .nativeVideo:
             return "showVideo"
-        case .native:
+        case .nativeDisplay:
             return "showNativeBanner"
         }
     }
 }
 
+/**
+ Presents the user with the list of available ad units in a table view.
+ Tapping on a table view cell opens a view controller that handles selected ad unit.
+ */
+
 class AdListViewController: UITableViewController {
-    
-    var adUnits = [AdUnits]()
-    
-    override func viewDidLoad() {
-        adUnits.append(AdUnits.banner300x250)
-        adUnits.append(AdUnits.video)
-        adUnits.append(AdUnits.native)
-    }
+    var adUnits: [AdUnit] = [.HTMLDisplay, .nativeVideo, .nativeDisplay]
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return 1
-        case 1:
-            return adUnits.count
-        default:
-            return 0
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0:
-            return "Server Path"
-        case 1:
-            return "Demos"
-        default:
-            return ""
-        }
+        return adUnits.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath)
-        switch indexPath.section {
-        case 0:
-            cell.textLabel?.text = Constants.ServerResource.baseURL.rawValue
-            cell.textLabel?.textColor = UIColor.darkGray
-            cell.isUserInteractionEnabled = false
-            return cell
-        case 1:
-            let adUnit = adUnits[indexPath.row]
-            cell.textLabel?.text = adUnit.title
-            return cell
-        default:
-            return cell
-        }
+        let adUnit = adUnits[indexPath.row]
+        cell.textLabel?.text = adUnit.title
+        return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

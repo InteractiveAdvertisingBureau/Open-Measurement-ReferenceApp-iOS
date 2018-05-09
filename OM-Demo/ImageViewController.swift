@@ -7,115 +7,64 @@
 
 import UIKit
 import AVKit
-import OMSDK_IAB
+import OMSDK_Pandora
 
-class ImageViewController: OMDemoViewController {
+class ImageViewController: BaseAdUnitViewController {
     @IBOutlet weak var imageView: UIImageView!
-    
-    var omidAdEvents: OMIDIABAdEvents?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        title = "Native Image"
-        createImageView()
-        displayAd()
-    }
-    
-    override func displayAd() {
-        super.displayAd()
-        startViewabilityMeasurement()
-    }
-    
-    override func createAdSession() -> OMIDIABAdSession? {
-        let partnerName = Bundle.main.bundleIdentifier ?? "com.omid-partner"
-        let partnerVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String
-        guard let partner = OMIDIABPartner(name: partnerName, versionString: partnerVersion ?? "1.0")
-            else {
-                fatalError("Unable to initialize OMID partner")
-        }
-        
-        guard let imageView = imageView else {
-            fatalError("Image view is not initialized")
-        }
-        
-        do {
-            //Url for verification resource
-            guard let urlToMeasurementResource = URL(string: Constants.ServerResource.verificationScriptURL.rawValue) else {
-                showErrorMessage(message: "Unable to instantiate verification resource url")
-                return nil
-            }
-            
-            //Create verification resource from vendor
-            let parameters = Constants.ServerResource.verificationParameters.rawValue
 
-            guard let verificationResource = OMIDIABVerificationScriptResource(url: urlToMeasurementResource, vendorKey: Constants.vendorKey, parameters: parameters) else {
-                showErrorMessage(message: "Unable to instantiate verification resource")
-                return nil
-            }
-            
-            //Load omid service asset
-            guard let omidServiceUrl = URL(string: Constants.ServerResource.omsdkjs.rawValue) else {
-                showErrorMessage(message: "Unable to access resource with name \(Constants.ServerResource.omsdkjs)")
-                return nil
-            }
-            
-            let OMIDJSService = try String(contentsOf: omidServiceUrl)
-            
-            //Create native image context
-            let context = try OMIDIABAdSessionContext(partner: partner, script: OMIDJSService, resources: [verificationResource], customReferenceIdentifier: nil)
-            
-            //Create ad session configuration
-            let configuration = try OMIDIABAdSessionConfiguration(impressionOwner: OMIDOwner.nativeOwner, videoEventsOwner: OMIDOwner.noneOwner, isolateVerificationScripts: false)
-            
-            //Create ad session
-            let session = try OMIDIABAdSession(configuration: configuration, adSessionContext: context)
-            
-            //Provide main ad view for measurement
-            session.mainAdView = imageView
-            
-            //Register any views that are intentionally overlaying the main view
-            session.addFriendlyObstruction(closeButton)
-            
-            //Instantiate image and ad events
-            omidAdEvents = try OMIDIABAdEvents(adSession: session)
-            
-            return session
-        } catch {
-            showErrorMessage(message: "Unable to instantiate ad session: \(error)")
-        }
-        return nil
+    override var creativeURL: URL {
+        return URL(string: Constants.ServerResource.imageAd.rawValue)!
     }
     
-    func recordImpression() {
+    override func didFinishFetchingCreative(_ fileURL: URL) {
+        NSLog("Did finish fetching creative.")
+        imageView.image = UIImage(contentsOfFile: fileURL.path)
+        presentAd()
+    }
+
+    override func createAdSessionContext(withPartner partner: OMIDPandoraPartner) -> OMIDPandoraAdSessionContext {
+        //These values should be parsed from the ad response
+        //For example:
+        //[
+        //  {
+        //      "vendorKey": "dummyVendor",
+        //      "javascriptResourceUrl": "http://localhost:8787/creative/omid-validation-verification-script-v1.js",
+        //      "verificationParameters": "http://dummy-domain/m?"
+        //  },
+        //]
+
+        //Usign validation verification script as an example
+        let urlToMeasurementScript = URL(string: "http://localhost:8787/creative/omid-validation-verification-script-v1.js")!
+        //Vendor key
+        let vendorKey = "dummyVendor"
+        //Verification Parameters. This is just an arbitary string, however with validation verification script, the value that is passed here will be used as a remote URL for tracking events
+        let parameters = "http://dummy-domain/m?"
+
+        //Create verification resource for <AdVerification> from above
+        guard let verificationResource = OMIDPandoraVerificationScriptResource(url: urlToMeasurementScript, vendorKey: vendorKey, parameters: parameters) else {
+            fatalError("Unable to instantiate session context: verification resource cannot be nil")
+        }
+
+        //Create native ad session context
         do {
-            try omidAdEvents?.impressionOccurred()
-        } catch let error as NSError {
-            fatalError("OMID impression error: \(error.localizedDescription)")
+            return try OMIDPandoraAdSessionContext(partner: partner, script: omidJSService, resources: [verificationResource], customReferenceIdentifier: nil)
+        } catch {
+            fatalError("Unable to instantiate session context: \(error)")
         }
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+
+    override func createAdSessionConfiguration() -> OMIDPandoraAdSessionConfiguration {
+        //Create ad session configuration
+        do {
+            return try OMIDPandoraAdSessionConfiguration(impressionOwner: .nativeOwner,
+                                                     videoEventsOwner: .noneOwner,
+                                                     isolateVerificationScripts: false)
+        } catch {
+            fatalError("Unable to create ad session configuration: \(error)")
+        }
     }
-}
-extension ImageViewController {
-    func createImageView() {
-        guard let filePath = URL(string: Constants.ServerResource.imageAd.rawValue) else {
-            showErrorMessage(message: "Unable to instantiate image URL")
-            return
-        }
-        DispatchQueue.global().async {
-            let data = try? Data(contentsOf: filePath)
-            DispatchQueue.main.async {
-                if let imageData = data {
-                    self.imageView.image = UIImage(data: imageData)
-                    self.recordImpression()
-                } else {
-                    self.showErrorMessage(message: "Failed to download image from: \(filePath)")
-                    return
-                }
-            }
-        }
+
+    override func destroyAd() {
+        imageView.image = nil
     }
 }

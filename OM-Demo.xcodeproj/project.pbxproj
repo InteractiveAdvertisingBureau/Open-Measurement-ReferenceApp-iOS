@@ -12,12 +12,14 @@
 		38B305D21F859D2B00557063 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38B305D11F859D2B00557063 /* Assets.xcassets */; };
 		38B305E11F859DA500557063 /* AdListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B305DD1F859DA500557063 /* AdListViewController.swift */; };
 		38B305E31F859DA500557063 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B305DF1F859DA500557063 /* WebViewController.swift */; };
+		38CA1C8E20A366FF00709DC4 /* OMSDK_Pandora.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38CA1C8D20A366FF00709DC4 /* OMSDK_Pandora.framework */; };
+		38CA1C9220A3674C00709DC4 /* OMLICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 38CA1C9020A3674C00709DC4 /* OMLICENSE */; };
+		38CA1C9320A3674C00709DC4 /* omsdk-v1.js in Resources */ = {isa = PBXBuildFile; fileRef = 38CA1C9120A3674C00709DC4 /* omsdk-v1.js */; };
 		38FE29961F8BA9B20049ABFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38B305E81F859DDE00557063 /* Main.storyboard */; };
 		38FE29971F8BA9B40049ABFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38B305E61F859DDE00557063 /* LaunchScreen.storyboard */; };
 		654DDD782086C53000BDAFF8 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654DDD772086C53000BDAFF8 /* ImageViewController.swift */; };
-		65A041B1208028A60033463C /* OMSDK_IAB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A041B0208028A60033463C /* OMSDK_IAB.framework */; };
 		65A041B32081224C0033463C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A041B22081224C0033463C /* Constants.swift */; };
-		65F0CE5F208AB09D00E6FDF4 /* OMDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F0CE5E208AB09D00E6FDF4 /* OMDemoViewController.swift */; };
+		65F0CE5F208AB09D00E6FDF4 /* BaseAdUnitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F0CE5E208AB09D00E6FDF4 /* BaseAdUnitViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,10 +32,12 @@
 		38B305DF1F859DA500557063 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		38B305E71F859DDE00557063 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		38B305E91F859DDE00557063 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		38CA1C8D20A366FF00709DC4 /* OMSDK_Pandora.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OMSDK_Pandora.framework; sourceTree = "<group>"; };
+		38CA1C9020A3674C00709DC4 /* OMLICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OMLICENSE; sourceTree = "<group>"; };
+		38CA1C9120A3674C00709DC4 /* omsdk-v1.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "omsdk-v1.js"; sourceTree = "<group>"; };
 		654DDD772086C53000BDAFF8 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
-		65A041B0208028A60033463C /* OMSDK_IAB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OMSDK_IAB.framework; sourceTree = "<group>"; };
 		65A041B22081224C0033463C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		65F0CE5E208AB09D00E6FDF4 /* OMDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMDemoViewController.swift; sourceTree = "<group>"; };
+		65F0CE5E208AB09D00E6FDF4 /* BaseAdUnitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAdUnitViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,7 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65A041B1208028A60033463C /* OMSDK_IAB.framework in Frameworks */,
+				38CA1C8E20A366FF00709DC4 /* OMSDK_Pandora.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,7 +55,8 @@
 		38B305BE1F859D2B00557063 = {
 			isa = PBXGroup;
 			children = (
-				65A041B0208028A60033463C /* OMSDK_IAB.framework */,
+				38CA1C8F20A3674C00709DC4 /* Service */,
+				38CA1C8D20A366FF00709DC4 /* OMSDK_Pandora.framework */,
 				38B305C91F859D2B00557063 /* OM-Demo */,
 				38B305C81F859D2B00557063 /* Products */,
 			);
@@ -70,7 +75,7 @@
 			children = (
 				65A041B22081224C0033463C /* Constants.swift */,
 				38B305DD1F859DA500557063 /* AdListViewController.swift */,
-				65F0CE5E208AB09D00E6FDF4 /* OMDemoViewController.swift */,
+				65F0CE5E208AB09D00E6FDF4 /* BaseAdUnitViewController.swift */,
 				38B305DF1F859DA500557063 /* WebViewController.swift */,
 				2BE68E631FB124A3008ABC64 /* VideoViewController.swift */,
 				654DDD772086C53000BDAFF8 /* ImageViewController.swift */,
@@ -81,6 +86,15 @@
 				38B305D61F859D2B00557063 /* Info.plist */,
 			);
 			path = "OM-Demo";
+			sourceTree = "<group>";
+		};
+		38CA1C8F20A3674C00709DC4 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				38CA1C9020A3674C00709DC4 /* OMLICENSE */,
+				38CA1C9120A3674C00709DC4 /* omsdk-v1.js */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,9 +156,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38CA1C9220A3674C00709DC4 /* OMLICENSE in Resources */,
 				38B305D21F859D2B00557063 /* Assets.xcassets in Resources */,
 				38FE29961F8BA9B20049ABFC /* Main.storyboard in Resources */,
 				38FE29971F8BA9B40049ABFC /* LaunchScreen.storyboard in Resources */,
+				38CA1C9320A3674C00709DC4 /* omsdk-v1.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,7 +175,7 @@
 				38B305E31F859DA500557063 /* WebViewController.swift in Sources */,
 				654DDD782086C53000BDAFF8 /* ImageViewController.swift in Sources */,
 				38B305E11F859DA500557063 /* AdListViewController.swift in Sources */,
-				65F0CE5F208AB09D00E6FDF4 /* OMDemoViewController.swift in Sources */,
+				65F0CE5F208AB09D00E6FDF4 /* BaseAdUnitViewController.swift in Sources */,
 				2BE68E641FB124A3008ABC64 /* VideoViewController.swift in Sources */,
 				38B305CB1F859D2B00557063 /* AppDelegate.swift in Sources */,
 			);

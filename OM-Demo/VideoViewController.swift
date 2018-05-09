@@ -7,7 +7,7 @@
 
 import UIKit
 import AVKit
-import OMSDK_IAB
+import OMSDK_Pandora
 
 enum Quartile {
     case Init
@@ -18,138 +18,111 @@ enum Quartile {
     case complete
 }
 
-class VideoViewController: OMDemoViewController {
+class VideoViewController: BaseAdUnitViewController {
     
     @IBOutlet var videoView: UIView?
     @IBOutlet var playButton: UIButton!
+    @IBOutlet var controls: UIView!
     @IBOutlet weak var startTimeLabel: UILabel!
     @IBOutlet weak var endTimeLabel: UILabel!
-    @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var muteButton: UIButton!
     
-    var omidVideoEvents: OMIDIABVideoEvents?
-    var omidAdEvents: OMIDIABAdEvents?
-    
+    var omidVideoEvents: OMIDPandoraVideoEvents?
     var currentQuartile: Quartile = .Init
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        title = "Native VAST Video"
-        
-        hidePlayerControlls()
-        
-        displayAd()
-    }
-    
-    override func displayAd() {
-        super.displayAd()
-        startViewabilityMeasurement()
-        showPlayerControlls()
-    }
-    
-    override func dismissAd() {
-        super.dismissAd()
-        hidePlayerControlls()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        if player != nil {
-            destroyVideoPlayer()
-        }
-    }
-    
-    override func createAdSession() -> OMIDIABAdSession? {
-        let partnerName = Bundle.main.bundleIdentifier ?? "com.omid-partner"
-        let partnerVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String
-        guard let partner = OMIDIABPartner(name: partnerName, versionString: partnerVersion ?? "1.0")
-            else {
-                fatalError("Unable to initialize OMID partner")
-        }
-        
-        guard let videoView = videoView else {
-            fatalError("Video view is not initialized")
-        }
-        
-        do {
-            //Url for verification resource
-            guard let urlToMeasurementResource = URL(string: Constants.ServerResource.verificationScriptURL.rawValue) else {
-                showErrorMessage(message: "Unable to instantiate verification resource url")
-                return nil
-            }
-            
-            //Create verification resource from vendor
-            let parameters = Constants.ServerResource.verificationParameters.rawValue
 
-            guard let verificationResource = OMIDIABVerificationScriptResource(url: urlToMeasurementResource, vendorKey: Constants.vendorKey, parameters: parameters) else {
-                showErrorMessage(message: "Unable to instantiate verification resource")
-                return nil
-            }
-            
-            //Load omid service asset
-            guard let omidServiceUrl = URL(string: Constants.ServerResource.omsdkjs.rawValue) else {
-                showErrorMessage(message: "Unable to access resource with name \(Constants.ServerResource.omsdkjs)")
-                return nil
-            }
-            
-            let OMIDJSService = try String(contentsOf: omidServiceUrl)
-            
-            //Create native video context
-            let context = try OMIDIABAdSessionContext(partner: partner, script: OMIDJSService, resources: [verificationResource], customReferenceIdentifier: nil)
-            
-            //Create ad session configuration
-            let configuration = try OMIDIABAdSessionConfiguration(impressionOwner: OMIDOwner.nativeOwner, videoEventsOwner: OMIDOwner.nativeOwner, isolateVerificationScripts: false)
-            
-            //Create ad session
-            let session = try OMIDIABAdSession(configuration: configuration, adSessionContext: context)
-            
-            //Provide main ad view for measurement
-            session.mainAdView = videoView
-            
-            //Register any views that are intentionally overlaying the main view
-            session.addFriendlyObstruction(closeButton)
-            
-            //Instantiate video and ad events
-            omidVideoEvents = try OMIDIABVideoEvents(adSession: session)
-            omidAdEvents = try OMIDIABAdEvents(adSession: session)
-            
-            return session
-        } catch {
-            showErrorMessage(message: "Unable to instantiate ad session: \(error)")
-        }
-        return nil
+    override var creativeURL: URL {
+        //URL to a video asset. In a real world scenario, this would come from a VAST document or a similar format.
+        return URL(string: "http://localhost:8787/creative/MANIA.mp4")!
     }
-    
-    override func startViewabilityMeasurement() {
-        guard prepareOMID() else {
-            fatalError("OMID is not active")
-        }
 
+    override func didFinishFetchingCreative(_ fileURL: URL) {
+        NSLog("Did finish fetching creative.")
         createVideoPlayer()
         resetTimeLabels()
         addQuartileTrackingToVideoPlayer()
-        setupAdSession()
-        adSession?.start()
-        recordImpression()
-        play()
         attachPauseButtonImage()
-        
-        NSLog("Starting measurement session now")
+
+        presentAd()
     }
-    
-    func recordImpression() {
+
+    override func willPresentAd() {
+        super.willPresentAd()
+
+        //Report VAST properties to OMID
+        //The values should be parsed from the VAST document
+        let VASTProperties = OMIDPandoraVASTProperties(autoPlay: true, position: .standalone)
+        omidVideoEvents?.loaded(with: VASTProperties)
+
+        //Start playback
+        play()
+    }
+
+    override func createAdSessionContext(withPartner partner: OMIDPandoraPartner) -> OMIDPandoraAdSessionContext {
+        //Ad Verification
+        //These values should be parsed from the VAST document
+
+        //In this example we don't parse VAST, but if we did, the <AdVerifications> node would look like this:
+        //<AdVerifications>
+        //  <Verification vendor=”dummyVendor”>
+        //      <JavaScriptResource apiFramework="omid" browserOptional=”true”>
+        //          <![CDATA[http://localhost:8787/creative/omid-validation-verification-script-v1.js]]>
+        //      </JavaScriptResource>
+        //      <VerificationParameters>
+        //          <![CDATA[http://dummy-domain/m?]]>
+        //      </VerificationParameters>
+        //  </Verification>
+        //</AdVerifications>
+
+        //Usign validation verification script as an example
+        let urlToMeasurementScript = URL(string: "http://localhost:8787/creative/omid-validation-verification-script-v1.js")!
+        //Vendor key
+        let vendorKey = "dummyVendor"
+        //Verification Parameters. This is just an arbitary string, however with validation verification script, the value that is passed here will be used as a remote URL for tracking events
+        let parameters = "http://dummy-domain/m?"
+
+        //Create verification resource for <AdVerification> from above
+        guard let verificationResource = OMIDPandoraVerificationScriptResource(url: urlToMeasurementScript, vendorKey: vendorKey, parameters: parameters) else {
+            fatalError("Unable to instantiate session context: verification resource cannot be nil")
+        }
+
+        //Create native ad session context
         do {
-            try omidAdEvents?.impressionOccurred()
-        } catch let error as NSError {
-            fatalError("OMID impression error: \(error.localizedDescription)")
+            return try OMIDPandoraAdSessionContext(partner: partner, script: omidJSService, resources: [verificationResource], customReferenceIdentifier: nil)
+        } catch {
+            fatalError("Unable to instantiate session context: \(error)")
         }
     }
-    
-    override func destroyAd() {
-        destroyVideoPlayer()
+
+    override func createAdSessionConfiguration() -> OMIDPandoraAdSessionConfiguration {
+        //Create ad session configuration
+        do {
+            return try OMIDPandoraAdSessionConfiguration(impressionOwner: .nativeOwner,
+                                                     videoEventsOwner: .nativeOwner,
+                                                     isolateVerificationScripts: false)
+        } catch {
+            fatalError("Unable to create ad session configuration: \(error)")
+        }
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+
+    override func destroyAd() {
+        hidePlayerControlls()
+
+        guard let videoPlayerLayer = playerLayer else { return }
+        videoPlayerLayer.player = nil
+        videoPlayerLayer.removeFromSuperlayer()
+    }
+
+    override func presentAd() {
+        super.presentAd()
+        showPlayerControlls()
+    }
+
+    override func setupAdditionalAdEvents(adSession: OMIDPandoraAdSession) {
+        do {
+            omidVideoEvents = try OMIDPandoraVideoEvents(adSession: adSession)
+        } catch {
+            fatalError("Unable to instantiate video ad events")
+        }
     }
 }
 
@@ -164,6 +137,7 @@ extension VideoViewController {
         }
         return videoPlayerLayer
     }
+
     func createVideoPlayer() {
         guard let path = URL(string: Constants.ServerResource.videoAd.rawValue) else { return }
         
@@ -181,13 +155,7 @@ extension VideoViewController {
         
         videoView.layer.insertSublayer(videoPlayerLayer, at: 0)
     }
-    
-    func destroyVideoPlayer() {
-        guard let videoPlayerLayer = playerLayer else { return }
-        videoPlayerLayer.player = nil
-        videoPlayerLayer.removeFromSuperlayer()
-    }
-    
+
     func addQuartileTrackingToVideoPlayer() {
         player?.addPeriodicTimeObserver(forInterval: CMTimeMakeWithSeconds(1, 10), queue: DispatchQueue.main) { (CMTime) -> Void in
             self.recordQuartileChange()
@@ -206,7 +174,6 @@ extension VideoViewController {
 extension VideoViewController {
     @IBAction func tappedPlayingControl() {
         if player?.currentItem?.currentTime() == player?.currentItem?.duration {
-            restartVideoAdSession()
             return
         }
         changePlayingControls()
@@ -250,27 +217,48 @@ extension VideoViewController {
         endTimeLabel.text = "0"
     }
     
-    @IBAction func restartVideoAdSession() {
-        finishViewabilityMeasurement()
-        startViewabilityMeasurement()
-    }
-    
     func hidePlayerControlls() {
         UIView.animate(withDuration: 0.5) {
-            self.playButton.alpha = 0
+            self.controls.alpha = 0
             self.startTimeLabel.alpha = 0
             self.endTimeLabel.alpha = 0
-            self.resetButton.alpha = 0
         }
     }
     
     func showPlayerControlls() {
         UIView.animate(withDuration: 0.5) {
-            self.playButton.alpha = 1.0
+            self.controls.alpha = 1.0
             self.startTimeLabel.alpha = 1.0
             self.endTimeLabel.alpha = 1.0
-            self.resetButton.alpha = 1.0
         }
+    }
+
+    func playerVolume() -> CGFloat {
+        guard let player = player else {
+            return 0.0
+        }
+
+        if player.isMuted {
+            return 0.0
+        }
+
+        return CGFloat(player.volume)
+    }
+
+    @IBAction func toggleMute() {
+        guard let player = player else {
+            return
+        }
+
+        player.isMuted = !player.isMuted
+        muteButton.isSelected = player.isMuted
+        omidVideoEvents?.volumeChange(to: playerVolume())
+    }
+
+    @IBAction func handleClick() {
+        omidVideoEvents?.adUserInteraction(withType: .click)
+        let clickThroughURL = URL(string: "https://www.pandora.com/artist/fall-out-boy/mania/ALJxxPp4qfg6wvg")!
+        UIApplication.shared.openURL(clickThroughURL)
     }
 }
 
@@ -286,8 +274,7 @@ extension VideoViewController {
         switch currentQuartile {
         case .Init:
             if (progressPercent > 0) {
-                guard let player = player else { break }
-                omidVideoEvents?.start(withDuration: CGFloat(duration), videoPlayerVolume: CGFloat(player.volume))
+                omidVideoEvents?.start(withDuration: CGFloat(duration), videoPlayerVolume: playerVolume())
                 currentQuartile = .start
             }
         case .start:
