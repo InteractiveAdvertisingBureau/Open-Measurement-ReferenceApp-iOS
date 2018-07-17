@@ -16,7 +16,7 @@ class WebViewController: BaseAdUnitViewController {
     
     override var creativeURL: URL {
         //URL to the ad creative
-        return URL(string: "http://localhost:8787/creative/banner.html")!
+        return URL(string: "http://localhost:8787/creative/mania.html")!
     }
 
     override func didFinishFetchingCreative(_ fileURL: URL) {
@@ -30,7 +30,7 @@ class WebViewController: BaseAdUnitViewController {
             webView?.navigationDelegate = self
 
             //Begin loading HTML in the webview
-            self.loadAd(withHTML: HTML)
+            loadAd(withHTML: HTML)
         } catch {
             self.showErrorMessage(message: "Unable to load creative: \(error)")
         }
@@ -40,13 +40,14 @@ class WebViewController: BaseAdUnitViewController {
         guard let webView = webView else {
             return
         }
+
         // Delay destruction of the webview by at least 1 second, otherwise sessionFinish event will not have enough time to execute.
         // Temporary workaround for https://github.com/InteractiveAdvertisingBureau/Open-Measurement-SDKiOS/issues/22
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1000)) {
             webView.navigationDelegate = nil
             webView.scrollView.isScrollEnabled = false
             webView.stopLoading()
-            
+
             webView.removeFromSuperview()
             self.webView = nil
             NSLog("WebView was destroyed")
@@ -56,8 +57,8 @@ class WebViewController: BaseAdUnitViewController {
     override func createAdSessionConfiguration() -> OMIDPandoraAdSessionConfiguration {
         do {
             return try OMIDPandoraAdSessionConfiguration(impressionOwner: .nativeOwner,
-                                              videoEventsOwner: .noneOwner,
-                                              isolateVerificationScripts: false)
+                                                         videoEventsOwner: .noneOwner,
+                                                         isolateVerificationScripts: false)
         } catch {
             fatalError("Unable to create ad session configuration: \(error)")
         }
@@ -70,8 +71,8 @@ class WebViewController: BaseAdUnitViewController {
 
         do {
             return try OMIDPandoraAdSessionContext(partner: partner,
-                                               webView: webView,
-                                               customReferenceIdentifier: nil)
+                                                   webView: webView,
+                                                   customReferenceIdentifier: nil)
         } catch {
             fatalError("Unable to create ad session context: \(error)")
         }
@@ -93,18 +94,20 @@ extension WebViewController: WKNavigationDelegate {
     }
 }
 
+
 // MARK: - WebView lifecycle
 extension WebViewController {
     func injectOMID(intoHTML HTML: String) -> String {
         do {
             let creativeWithOMID = try OMIDPandoraScriptInjector.injectScriptContent(omidJSService,
-                                                                                 intoHTML:HTML)
+                                                                                     intoHTML:HTML)
             return creativeWithOMID
         } catch {
             fatalError("Unable to inject OMID JS into ad creative: \(error)")
         }
     }
-    
+
+
     func loadAd(withHTML HTML: String) {
         guard let webView = webView else {
             showErrorMessage(message: "Failed to create webView")
@@ -114,7 +117,7 @@ extension WebViewController {
         //Inject OMID JS service script into HTML creative
         //This is only necessary if OMID JS is not injected on the server side
         let creative = injectOMID(intoHTML: HTML)
-        
+
         statusLabel.text = "Loading HTML..."
 
         // Adding the webview to the view hierarchy to allow rendering.
@@ -125,7 +128,7 @@ extension WebViewController {
         // Start loading HTML, this will trigger webView rendering as well.
         // This implementation uses loadHTMLString() method to load HTML from string,
         // however using load() method here with a remote URL is also an option
-        webViewInitialNavigation = webView.loadHTMLString(creative, baseURL: URL(string: Constants.ServerResource.baseURL.rawValue))
+        webViewInitialNavigation = webView.loadHTMLString(creative, baseURL: creativeURL.baseURL)
     }
 }
 

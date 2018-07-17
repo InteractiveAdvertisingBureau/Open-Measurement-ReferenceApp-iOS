@@ -1,4 +1,0 @@
-module OMSDK_Pandora {
-    header "Headers/OMIDImports.h"
-    export *
-}

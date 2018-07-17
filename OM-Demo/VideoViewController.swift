@@ -26,7 +26,7 @@ class VideoViewController: BaseAdUnitViewController {
     @IBOutlet weak var startTimeLabel: UILabel!
     @IBOutlet weak var endTimeLabel: UILabel!
     @IBOutlet weak var muteButton: UIButton!
-    
+
     var omidVideoEvents: OMIDPandoraVideoEvents?
     var currentQuartile: Quartile = .Init
 
@@ -35,9 +35,14 @@ class VideoViewController: BaseAdUnitViewController {
         return URL(string: "http://localhost:8787/creative/MANIA.mp4")!
     }
 
+    var localAssetURL: URL {
+        return URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("asset.mp4")
+    }
+
     override func didFinishFetchingCreative(_ fileURL: URL) {
+        try? FileManager.default.moveItem(at: fileURL, to: localAssetURL)
         NSLog("Did finish fetching creative.")
-        createVideoPlayer()
+        createVideoPlayer(withAssetURL: localAssetURL)
         resetTimeLabels()
         addQuartileTrackingToVideoPlayer()
         attachPauseButtonImage()
@@ -57,6 +62,20 @@ class VideoViewController: BaseAdUnitViewController {
         play()
     }
 
+    override func destroyAd() {
+        hidePlayerControlls()
+
+        guard let videoPlayerLayer = playerLayer else { return }
+        videoPlayerLayer.player = nil
+        videoPlayerLayer.removeFromSuperlayer()
+        try? FileManager.default.removeItem(at: localAssetURL)
+    }
+
+    override func presentAd() {
+        super.presentAd()
+        showPlayerControlls()
+    }
+
     override func createAdSessionContext(withPartner partner: OMIDPandoraPartner) -> OMIDPandoraAdSessionContext {
         //Ad Verification
         //These values should be parsed from the VAST document
@@ -74,11 +93,11 @@ class VideoViewController: BaseAdUnitViewController {
         //</AdVerifications>
 
         //Usign validation verification script as an example
-        let urlToMeasurementScript = URL(string: "http://localhost:8787/creative/omid-validation-verification-script-v1.js")!
+        let urlToMeasurementScript = URL(string: "http://localhost:8787/creative/monocle-video-tracker.js")!
         //Vendor key
-        let vendorKey = "dummyVendor"
+        let vendorKey = "pandora-monocle"
         //Verification Parameters. This is just an arbitary string, however with validation verification script, the value that is passed here will be used as a remote URL for tracking events
-        let parameters = "http://dummy-domain/m?"
+        let parameters = "externalId=123&creativeId=456&correlationId=485fjfjfj75&assetType=COACHMARK&slot=AUTO_PLAY_VIDEO"
 
         //Create verification resource for <AdVerification> from above
         guard let verificationResource = OMIDPandoraVerificationScriptResource(url: urlToMeasurementScript, vendorKey: vendorKey, parameters: parameters) else {
@@ -97,24 +116,11 @@ class VideoViewController: BaseAdUnitViewController {
         //Create ad session configuration
         do {
             return try OMIDPandoraAdSessionConfiguration(impressionOwner: .nativeOwner,
-                                                     videoEventsOwner: .nativeOwner,
-                                                     isolateVerificationScripts: false)
+                                                         videoEventsOwner: .nativeOwner,
+                                                         isolateVerificationScripts: false)
         } catch {
             fatalError("Unable to create ad session configuration: \(error)")
         }
-    }
-
-    override func destroyAd() {
-        hidePlayerControlls()
-
-        guard let videoPlayerLayer = playerLayer else { return }
-        videoPlayerLayer.player = nil
-        videoPlayerLayer.removeFromSuperlayer()
-    }
-
-    override func presentAd() {
-        super.presentAd()
-        showPlayerControlls()
     }
 
     override func setupAdditionalAdEvents(adSession: OMIDPandoraAdSession) {
@@ -138,10 +144,10 @@ extension VideoViewController {
         return videoPlayerLayer
     }
 
-    func createVideoPlayer() {
-        guard let path = URL(string: Constants.ServerResource.videoAd.rawValue) else { return }
-        
-        let player = AVPlayer(url: path)
+    func createVideoPlayer(withAssetURL assetURL: URL) {
+        let asset = AVURLAsset(url: assetURL)
+        let playerItem = AVPlayerItem(asset: asset)
+        let player = AVPlayer(playerItem: playerItem)
         player.volume = 1.0
         
         guard let videoView = videoView else {
@@ -233,18 +239,6 @@ extension VideoViewController {
         }
     }
 
-    func playerVolume() -> CGFloat {
-        guard let player = player else {
-            return 0.0
-        }
-
-        if player.isMuted {
-            return 0.0
-        }
-
-        return CGFloat(player.volume)
-    }
-
     @IBAction func toggleMute() {
         guard let player = player else {
             return
@@ -259,6 +253,18 @@ extension VideoViewController {
         omidVideoEvents?.adUserInteraction(withType: .click)
         let clickThroughURL = URL(string: "https://www.pandora.com/artist/fall-out-boy/mania/ALJxxPp4qfg6wvg")!
         UIApplication.shared.openURL(clickThroughURL)
+    }
+
+    func playerVolume() -> CGFloat {
+        guard let player = player else {
+            return 0.0
+        }
+
+        if player.isMuted {
+            return 0.0
+        }
+
+        return CGFloat(player.volume)
     }
 }
 
