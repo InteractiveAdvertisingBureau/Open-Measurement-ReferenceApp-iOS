@@ -2,67 +2,29 @@
 
 ## Overview
 
-A sample iOS application built to show sample usage of OMSDK. This project contains a sample iOS app as well as a demo server which can be used for serving creatives and resources.  
+A sample iOS application in Swift built to showcase OM SDK integration. 
 
-Included are 4 sample implementations:
+Included are 3 sample integrations:
 
-* Native display ad
-* Pre-rendered HTML display ad 
+* Native display ad 
 * HTML display ad
 * Native video ad
 
 ## Getting Started
 
-Clone the project on to your local machine to get started
-
-
-
-### Server Setup
-
-In order to get the node server up and running you will need to complete the following steps:
-
-Assuming you have already installed Node.js on your machine, cd into the project folder and run the following commands:
-```
-$ cd demo-server
-```
-
-```
-$ npm init
-```
-
-Hit return to accept the defaults ensuring the following:
-
-```
-entry point: (serve.js)
-```
-
-Then run the following to install express
-
-```
-$ npm install express --save
-```
-
-To start the server simply run
-
-```
-$ node serve.js
-```
-
-## Customization
-
-This project uses a number of sample creatives and resources, however it can be easily customized to test your specific needs.  If you have creatives that you would like to serve locally, simply add those files to  `demo-server/creative`.  This step will allow them to be served by the localhost.  Next, add these paths to the `Constants.ServerResource` enum in the `Utility.swift` file.  This will allow for your newly added creatives to be used by the app.  Finally, replace your newly created links with the sample ones throughout the app for either video, image, or html creatives.  You may also want to replace the verification script in this manner.
-
-If you already have a server running simply add those URLs to `Constants.ServerResource` and use those throughout the app to replace the demo resources.
+1. Clone the project on to your local machine to get started
+2. Build and run in Simulator
+3. Use Charles proxy or Safari Web Inspector to see what events OM SDK is receiving
+4. Choose one of the sample implementations from the table
+5. Wait for the ad to load
+6. Observe network calls to `http://iabtechlab.com:66` (the query string will include URL-encoded JSON object with OM SDK event parameters)
 
 ## Clarifications
 
-For simplicity, this Demo app does not include parsing of VAST or other ad formats. Asset URLs, verification script URLs and parameters are specified as constants instead.
+1. The version of OM SDK framework that is provided in this sample project is for education purposes only and **should not** be used for production integration. To get access to production OM SDK build, please refer to the *"Onboarding Guide for Integration Partners"* that is published on [IAB Tech Lab](https://iabtechlab.com/standards/open-measurement-sdk/) and follow the instructions. 
+2. For simplicity, this Demo app does not implement parsing of VAST or any other ad response formats. Asset URLs, verification script URLs and parameters are specified as constants instead. Please refer to [IAB Tech Lab](https://iabtechlab.com/standards/open-measurement-sdk/) for details regarding how verification resources are represented in various ad formats.
 
-## Testing
 
-Set up your device or emulator to proxy through Charles.
+## Additional Information
 
-In Charles, look for urls starting containing .../sendMessage?msg=...
-
-To override this change the value of verificationParameters in Utility.swift to the desired url.
-
+* [Open Measurement SDK on IAB Tech Lab](https://iabtechlab.com/standards/open-measurement-sdk/)

@@ -11,6 +11,7 @@
 		384EB86F225BA07E0067A283 /* OMSDK_Demobuild.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384EB85C225BA07E0067A283 /* OMSDK_Demobuild.framework */; };
 		384EB872225BA07E0067A283 /* OMLICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 384EB86C225BA07E0067A283 /* OMLICENSE */; };
 		384EB873225BA07E0067A283 /* omsdk-v1.js in Resources */ = {isa = PBXBuildFile; fileRef = 384EB86D225BA07E0067A283 /* omsdk-v1.js */; };
+		384EB875225C05DF0067A283 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 384EB874225C05DF0067A283 /* README.md */; };
 		38B305CB1F859D2B00557063 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B305CA1F859D2B00557063 /* AppDelegate.swift */; };
 		38B305D21F859D2B00557063 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38B305D11F859D2B00557063 /* Assets.xcassets */; };
 		38B305E11F859DA500557063 /* AdListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B305DD1F859DA500557063 /* AdListViewController.swift */; };
@@ -29,6 +30,7 @@
 		384EB86A225BA07E0067A283 /* OMLICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OMLICENSE; sourceTree = "<group>"; };
 		384EB86C225BA07E0067A283 /* OMLICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OMLICENSE; sourceTree = "<group>"; };
 		384EB86D225BA07E0067A283 /* omsdk-v1.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "omsdk-v1.js"; sourceTree = "<group>"; };
+		384EB874225C05DF0067A283 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.markdown; };
 		38B305C71F859D2B00557063 /* OM-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OM-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		38B305CA1F859D2B00557063 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38B305D11F859D2B00557063 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 		38B305BE1F859D2B00557063 = {
 			isa = PBXGroup;
 			children = (
+				384EB874225C05DF0067A283 /* README.md */,
 				384EB85A225BA07E0067A283 /* OMSDK */,
 				38B305C91F859D2B00557063 /* OM-Demo */,
 				38B305C81F859D2B00557063 /* Products */,
@@ -168,6 +171,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				384EB875225C05DF0067A283 /* README.md in Resources */,
 				384EB872225BA07E0067A283 /* OMLICENSE in Resources */,
 				38B305D21F859D2B00557063 /* Assets.xcassets in Resources */,
 				38FE29961F8BA9B20049ABFC /* Main.storyboard in Resources */,
