@@ -32,7 +32,7 @@ class VideoViewController: BaseAdUnitViewController {
 
     override var creativeURL: URL {
         //URL to a video asset. In a real world scenario, this would come from a VAST document or a similar format.
-        return URL(string: "http://localhost:8787/creative/MANIA.mp4")!
+        return URL(string: Constants.videoAdURL)!
     }
 
     var localAssetURL: URL {
@@ -84,20 +84,20 @@ class VideoViewController: BaseAdUnitViewController {
         //<AdVerifications>
         //  <Verification vendor=”dummyVendor”>
         //      <JavaScriptResource apiFramework="omid" browserOptional=”true”>
-        //          <![CDATA[http://localhost:8787/creative/omid-validation-verification-script-v1.js]]>
+        //          <![CDATA[http://server.com/omid-validation-verification-script-v1.js]]>
         //      </JavaScriptResource>
         //      <VerificationParameters>
-        //          <![CDATA[http://dummy-domain/m?]]>
+        //          <![CDATA[parameterstring]]>
         //      </VerificationParameters>
         //  </Verification>
         //</AdVerifications>
 
         //Usign validation verification script as an example
-        let urlToMeasurementScript = URL(string: "http://localhost:8787/creative/monocle-video-tracker.js")!
+        let urlToMeasurementScript = URL(string: Constants.verificationScriptURL)!
         //Vendor key
-        let vendorKey = "pandora-monocle"
+        let vendorKey = Constants.vendorKey
         //Verification Parameters. This is just an arbitary string, however with validation verification script, the value that is passed here will be used as a remote URL for tracking events
-        let parameters = "externalId=123&creativeId=456&correlationId=485fjfjfj75&assetType=COACHMARK&slot=AUTO_PLAY_VIDEO"
+        let parameters = Constants.verificationParameters
 
         //Create verification resource for <AdVerification> from above
         guard let verificationResource = OMIDDemobuildVerificationScriptResource(url: urlToMeasurementScript, vendorKey: vendorKey, parameters: parameters) else {

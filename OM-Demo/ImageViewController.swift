@@ -12,7 +12,7 @@ class ImageViewController: BaseAdUnitViewController {
     @IBOutlet weak var imageView: UIImageView!
 
     override var creativeURL: URL {
-        return URL(string: "http://localhost:8787/creative/mania.jpeg")!
+        return URL(string: Constants.staticImageAdURL)!
     }
     
     override func didFinishFetchingCreative(_ fileURL: URL) {
@@ -31,17 +31,17 @@ class ImageViewController: BaseAdUnitViewController {
         //[
         //  {
         //      "vendorKey": "dummyVendor",
-        //      "javascriptResourceUrl": "http://localhost:8787/creative/omid-validation-verification-script-v1.js",
-        //      "verificationParameters": "http://dummy-domain/m?"
+        //      "javascriptResourceUrl": "http://server.com/creative/omid-validation-verification-script-v1.js",
+        //      "verificationParameters": "parameterstring"
         //  },
         //]
 
         //Usign validation verification script as an example
-        let urlToMeasurementScript = URL(string: "http://localhost:8787/creative/omid-validation-verification-script-v1.js")!
+        let urlToMeasurementScript = URL(string: Constants.verificationScriptURL)!
         //Vendor key
         let vendorKey = "dummyVendor"
         //Verification Parameters. This is just an arbitary string, however with validation verification script, the value that is passed here will be used as a remote URL for tracking events
-        let parameters = "http://dummy-domain/m?msg="
+        let parameters = Constants.verificationParameters
 
         //Create verification resource for <AdVerification> from above
         guard let verificationResource = OMIDDemobuildVerificationScriptResource(url: urlToMeasurementScript, vendorKey: vendorKey, parameters: parameters) else {

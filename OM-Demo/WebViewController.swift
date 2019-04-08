@@ -16,7 +16,7 @@ class WebViewController: BaseAdUnitViewController {
     
     override var creativeURL: URL {
         //URL to the ad creative
-        return URL(string: "http://localhost:8787/creative/mania.html")!
+        return URL(string: Constants.HTMLAdURL)!
     }
 
     override func didFinishFetchingCreative(_ fileURL: URL) {

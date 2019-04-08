@@ -205,17 +205,9 @@ class BaseAdUnitViewController: UIViewController {
             return true
         }
 
-        //The version of the OMID JS service that will be used
-        let APIVersion = "{\"v\":\"1.1.1\"}"
-
-        //Check if the version of JS API is compatible with the version of native SDK
-        guard OMIDDemobuildSDK.isCompatible(withOMIDAPIVersion: APIVersion) else {
-            fatalError("OMID SDK is not compatible with OMID API version")
-        }
-
         //Activate the SDK
         do {
-            try OMIDDemobuildSDK.shared.activate(withOMIDAPIVersion: APIVersion)
+            try OMIDDemobuildSDK.shared.activate(withOMIDAPIVersion: "")
         } catch {
             fatalError("Unable to activate OMID SDK: \(error)")
         }

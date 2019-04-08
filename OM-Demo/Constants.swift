@@ -8,19 +8,12 @@
 import Foundation
 
 struct Constants {
-    static let OMIDAPIVersion = "{\"v\":\"1.0.1\"}"
     static let vendorKey = "dummyVendor"
     
-    /**
-     URLs used for Java Script and creative resources.  Expand upon this enum for personal creative testing.
-     */
-    enum ServerResource: String {
-        case bannerAd = "http://localhost:8787/creative/banner.html"
-        case videoAd = "http://localhost:8787/creative/MANIA.mp4"
-        case imageAd = "http://localhost:8787/creative/MANIA.jpeg"
-
-        case verificationScriptURL = "http://localhost:8787/creative/omid-validation-verification-script-v1.js"
-        case verificationParameters = "http://localhost:8787/sendMessage?msg="
-        case baseURL = "http://localhost:8787/"
-    }
+    static let HTMLAdURL = "https://s3-us-west-2.amazonaws.com/omsdk-files/demo/creative/banner.html"
+    static let videoAdURL = "https://s3-us-west-2.amazonaws.com/omsdk-files/demo/creative/MANIA.mp4"
+    static let staticImageAdURL = "https://s3-us-west-2.amazonaws.com/omsdk-files/demo/creative/mania.jpeg"
+    
+    static let verificationScriptURL = "https://s3-us-west-2.amazonaws.com/omsdk-files/demo/creative/omid-validation-verification-script-v1.js"
+    static let verificationParameters = "http://localhost:8787/sendMessage?msg="
 }
