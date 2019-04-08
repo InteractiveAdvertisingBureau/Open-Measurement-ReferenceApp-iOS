@@ -8,7 +8,7 @@
 import UIKit
 import WebKit
 import MediaPlayer
-import OMSDK_Pandora
+import OMSDK_Demobuild
 
 class BaseAdUnitViewController: UIViewController {
     fileprivate var isDisplayingErrorMessage = false
@@ -19,8 +19,8 @@ class BaseAdUnitViewController: UIViewController {
     @IBOutlet var statusLabel: UILabel!
     @IBOutlet var closeButton: UIButton!
 
-    var adSession: OMIDPandoraAdSession?
-    var adEvents: OMIDPandoraAdEvents?
+    var adSession: OMIDDemobuildAdSession?
+    var adEvents: OMIDDemobuildAdEvents?
     
     var creativeURL: URL {
         fatalError("Not implemented")
@@ -172,7 +172,7 @@ class BaseAdUnitViewController: UIViewController {
                 fatalError("Ad session cannot be nil")
             }
 
-            adEvents = try OMIDPandoraAdEvents(adSession: adSession)
+            adEvents = try OMIDDemobuildAdEvents(adSession: adSession)
             setupAdditionalAdEvents(adSession: adSession)
 
         } catch {
@@ -201,7 +201,7 @@ class BaseAdUnitViewController: UIViewController {
     }
 
     private func activateOMSDK() -> Bool {
-        if OMIDPandoraSDK.shared.isActive {
+        if OMIDDemobuildSDK.shared.isActive {
             return true
         }
 
@@ -209,26 +209,26 @@ class BaseAdUnitViewController: UIViewController {
         let APIVersion = "{\"v\":\"1.1.1\"}"
 
         //Check if the version of JS API is compatible with the version of native SDK
-        guard OMIDPandoraSDK.isCompatible(withOMIDAPIVersion: APIVersion) else {
+        guard OMIDDemobuildSDK.isCompatible(withOMIDAPIVersion: APIVersion) else {
             fatalError("OMID SDK is not compatible with OMID API version")
         }
 
         //Activate the SDK
         do {
-            try OMIDPandoraSDK.shared.activate(withOMIDAPIVersion: APIVersion)
+            try OMIDDemobuildSDK.shared.activate(withOMIDAPIVersion: APIVersion)
         } catch {
             fatalError("Unable to activate OMID SDK: \(error)")
         }
 
-        return OMIDPandoraSDK.shared.isActive
+        return OMIDDemobuildSDK.shared.isActive
 
     }
 
-    private func createAdSession() -> OMIDPandoraAdSession {
+    private func createAdSession() -> OMIDDemobuildAdSession {
         //Partner name has to be unique to your integration
-        let partnerName = "Pandora"
+        let partnerName = "Demobuild"
         let partnerVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String
-        guard let partner = OMIDPandoraPartner(name: partnerName, versionString: partnerVersion ?? "1.0")
+        guard let partner = OMIDDemobuildPartner(name: partnerName, versionString: partnerVersion ?? "1.0")
             else {
                 fatalError("Unable to initialize OMID partner")
         }
@@ -241,7 +241,7 @@ class BaseAdUnitViewController: UIViewController {
 
         do {
             //Create ad session
-            let session = try OMIDPandoraAdSession(configuration: configuration, adSessionContext: context)
+            let session = try OMIDDemobuildAdSession(configuration: configuration, adSessionContext: context)
 
             //Provide main ad view for measurement
             guard let adView = adView else {
@@ -261,11 +261,11 @@ class BaseAdUnitViewController: UIViewController {
     }
 
     /**
-     This method is called right after OMIDPandoraVideoEvents has been set up
-     Subclasses can use this method to create `OMIDPandoraVideoEvents`.
+     This method is called right after OMIDDemobuildVideoEvents has been set up
+     Subclasses can use this method to create `OMIDDemobuildVideoEvents`.
      Default implementation does nothing.
      */
-    func setupAdditionalAdEvents(adSession: OMIDPandoraAdSession) {
+    func setupAdditionalAdEvents(adSession: OMIDDemobuildAdSession) {
         return
     }
 
@@ -275,12 +275,12 @@ class BaseAdUnitViewController: UIViewController {
      Subclasses have to implement this method.
 
      - Parameters:
-     - partner: instance of `OMIDPandoraPartner` to be used in the ad session context
+     - partner: instance of `OMIDDemobuildPartner` to be used in the ad session context
 
-     - Returns: an instance of `OMIDPandoraAdSessionContext` that was created
+     - Returns: an instance of `OMIDDemobuildAdSessionContext` that was created
 
      */
-    func createAdSessionContext(withPartner partner: OMIDPandoraPartner) -> OMIDPandoraAdSessionContext {
+    func createAdSessionContext(withPartner partner: OMIDDemobuildPartner) -> OMIDDemobuildAdSessionContext {
         fatalError("Not implemented")
     }
 
@@ -288,10 +288,10 @@ class BaseAdUnitViewController: UIViewController {
      Creates ad session configuration.
      Subclasses have to implement this method.
 
-     - Returns: an instance of `OMIDPandoraAdSessionConfiguration` that was created
+     - Returns: an instance of `OMIDDemobuildAdSessionConfiguration` that was created
 
      */
-    func createAdSessionConfiguration() -> OMIDPandoraAdSessionConfiguration {
+    func createAdSessionConfiguration() -> OMIDDemobuildAdSessionConfiguration {
         fatalError("Not implemented")
     }
 

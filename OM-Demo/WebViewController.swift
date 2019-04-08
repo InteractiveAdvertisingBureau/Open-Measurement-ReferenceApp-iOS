@@ -8,7 +8,7 @@
 import UIKit
 import WebKit
 import MediaPlayer
-import OMSDK_Pandora
+import OMSDK_Demobuild
 
 class WebViewController: BaseAdUnitViewController {
     var webView: WKWebView?
@@ -54,9 +54,9 @@ class WebViewController: BaseAdUnitViewController {
         }
     }
 
-    override func createAdSessionConfiguration() -> OMIDPandoraAdSessionConfiguration {
+    override func createAdSessionConfiguration() -> OMIDDemobuildAdSessionConfiguration {
         do {
-            return try OMIDPandoraAdSessionConfiguration(impressionOwner: .nativeOwner,
+            return try OMIDDemobuildAdSessionConfiguration(impressionOwner: .nativeOwner,
                                                          videoEventsOwner: .noneOwner,
                                                          isolateVerificationScripts: false)
         } catch {
@@ -64,13 +64,13 @@ class WebViewController: BaseAdUnitViewController {
         }
     }
 
-    override func createAdSessionContext(withPartner partner: OMIDPandoraPartner) -> OMIDPandoraAdSessionContext {
+    override func createAdSessionContext(withPartner partner: OMIDDemobuildPartner) -> OMIDDemobuildAdSessionContext {
         guard let webView = webView else {
             fatalError("Unable to create ad session context: webView is not initialized")
         }
 
         do {
-            return try OMIDPandoraAdSessionContext(partner: partner,
+            return try OMIDDemobuildAdSessionContext(partner: partner,
                                                    webView: webView,
                                                    customReferenceIdentifier: nil)
         } catch {
@@ -99,7 +99,7 @@ extension WebViewController: WKNavigationDelegate {
 extension WebViewController {
     func injectOMID(intoHTML HTML: String) -> String {
         do {
-            let creativeWithOMID = try OMIDPandoraScriptInjector.injectScriptContent(omidJSService,
+            let creativeWithOMID = try OMIDDemobuildScriptInjector.injectScriptContent(omidJSService,
                                                                                      intoHTML:HTML)
             return creativeWithOMID
         } catch {

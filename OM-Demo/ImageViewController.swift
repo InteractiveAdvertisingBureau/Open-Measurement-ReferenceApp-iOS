@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import OMSDK_Pandora
+import OMSDK_Demobuild
 
 class ImageViewController: BaseAdUnitViewController {
     @IBOutlet weak var imageView: UIImageView!
@@ -25,7 +25,7 @@ class ImageViewController: BaseAdUnitViewController {
         imageView.image = nil
     }
 
-    override func createAdSessionContext(withPartner partner: OMIDPandoraPartner) -> OMIDPandoraAdSessionContext {
+    override func createAdSessionContext(withPartner partner: OMIDDemobuildPartner) -> OMIDDemobuildAdSessionContext {
         //These values should be parsed from the ad response
         //For example:
         //[
@@ -44,22 +44,22 @@ class ImageViewController: BaseAdUnitViewController {
         let parameters = "http://dummy-domain/m?msg="
 
         //Create verification resource for <AdVerification> from above
-        guard let verificationResource = OMIDPandoraVerificationScriptResource(url: urlToMeasurementScript, vendorKey: vendorKey, parameters: parameters) else {
+        guard let verificationResource = OMIDDemobuildVerificationScriptResource(url: urlToMeasurementScript, vendorKey: vendorKey, parameters: parameters) else {
             fatalError("Unable to instantiate session context: verification resource cannot be nil")
         }
 
         //Create native ad session context
         do {
-            return try OMIDPandoraAdSessionContext(partner: partner, script: omidJSService, resources: [verificationResource], customReferenceIdentifier: nil)
+            return try OMIDDemobuildAdSessionContext(partner: partner, script: omidJSService, resources: [verificationResource], customReferenceIdentifier: nil)
         } catch {
             fatalError("Unable to instantiate session context: \(error)")
         }
     }
 
-    override func createAdSessionConfiguration() -> OMIDPandoraAdSessionConfiguration {
+    override func createAdSessionConfiguration() -> OMIDDemobuildAdSessionConfiguration {
         //Create ad session configuration
         do {
-            return try OMIDPandoraAdSessionConfiguration(impressionOwner: .nativeOwner,
+            return try OMIDDemobuildAdSessionConfiguration(impressionOwner: .nativeOwner,
                                                          videoEventsOwner: .noneOwner,
                                                          isolateVerificationScripts: false)
         } catch {

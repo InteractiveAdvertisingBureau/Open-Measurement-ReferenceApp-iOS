@@ -7,7 +7,7 @@
 
 import UIKit
 import AVKit
-import OMSDK_Pandora
+import OMSDK_Demobuild
 
 enum Quartile {
     case Init
@@ -27,7 +27,7 @@ class VideoViewController: BaseAdUnitViewController {
     @IBOutlet weak var endTimeLabel: UILabel!
     @IBOutlet weak var muteButton: UIButton!
 
-    var omidVideoEvents: OMIDPandoraVideoEvents?
+    var omidVideoEvents: OMIDDemobuildVideoEvents?
     var currentQuartile: Quartile = .Init
 
     override var creativeURL: URL {
@@ -55,7 +55,7 @@ class VideoViewController: BaseAdUnitViewController {
 
         //Report VAST properties to OMID
         //The values should be parsed from the VAST document
-        let VASTProperties = OMIDPandoraVASTProperties(autoPlay: true, position: .standalone)
+        let VASTProperties = OMIDDemobuildVASTProperties(autoPlay: true, position: .standalone)
         omidVideoEvents?.loaded(with: VASTProperties)
 
         //Start playback
@@ -76,7 +76,7 @@ class VideoViewController: BaseAdUnitViewController {
         showPlayerControlls()
     }
 
-    override func createAdSessionContext(withPartner partner: OMIDPandoraPartner) -> OMIDPandoraAdSessionContext {
+    override func createAdSessionContext(withPartner partner: OMIDDemobuildPartner) -> OMIDDemobuildAdSessionContext {
         //Ad Verification
         //These values should be parsed from the VAST document
 
@@ -100,22 +100,22 @@ class VideoViewController: BaseAdUnitViewController {
         let parameters = "externalId=123&creativeId=456&correlationId=485fjfjfj75&assetType=COACHMARK&slot=AUTO_PLAY_VIDEO"
 
         //Create verification resource for <AdVerification> from above
-        guard let verificationResource = OMIDPandoraVerificationScriptResource(url: urlToMeasurementScript, vendorKey: vendorKey, parameters: parameters) else {
+        guard let verificationResource = OMIDDemobuildVerificationScriptResource(url: urlToMeasurementScript, vendorKey: vendorKey, parameters: parameters) else {
             fatalError("Unable to instantiate session context: verification resource cannot be nil")
         }
 
         //Create native ad session context
         do {
-            return try OMIDPandoraAdSessionContext(partner: partner, script: omidJSService, resources: [verificationResource], customReferenceIdentifier: nil)
+            return try OMIDDemobuildAdSessionContext(partner: partner, script: omidJSService, resources: [verificationResource], customReferenceIdentifier: nil)
         } catch {
             fatalError("Unable to instantiate session context: \(error)")
         }
     }
 
-    override func createAdSessionConfiguration() -> OMIDPandoraAdSessionConfiguration {
+    override func createAdSessionConfiguration() -> OMIDDemobuildAdSessionConfiguration {
         //Create ad session configuration
         do {
-            return try OMIDPandoraAdSessionConfiguration(impressionOwner: .nativeOwner,
+            return try OMIDDemobuildAdSessionConfiguration(impressionOwner: .nativeOwner,
                                                          videoEventsOwner: .nativeOwner,
                                                          isolateVerificationScripts: false)
         } catch {
@@ -123,9 +123,9 @@ class VideoViewController: BaseAdUnitViewController {
         }
     }
 
-    override func setupAdditionalAdEvents(adSession: OMIDPandoraAdSession) {
+    override func setupAdditionalAdEvents(adSession: OMIDDemobuildAdSession) {
         do {
-            omidVideoEvents = try OMIDPandoraVideoEvents(adSession: adSession)
+            omidVideoEvents = try OMIDDemobuildVideoEvents(adSession: adSession)
         } catch {
             fatalError("Unable to instantiate video ad events")
         }
