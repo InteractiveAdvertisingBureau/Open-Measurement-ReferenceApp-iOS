@@ -30,22 +30,25 @@ class ImageViewController: BaseAdUnitViewController {
         //For example:
         //[
         //  {
-        //      "vendorKey": "dummyVendor",
-        //      "javascriptResourceUrl": "http://server.com/creative/omid-validation-verification-script-v1.js",
+        //      "vendorKey": "iabtechlab.com-omid",
+        //      "javascriptResourceUrl": "https://server.com/creative/omid-validation-verification-script-v1.js",
         //      "verificationParameters": "parameterstring"
         //  },
         //]
 
-        //Usign validation verification script as an example
-        let urlToMeasurementScript = URL(string: Constants.verificationScriptURL)!
+        //Using validation verification script as an example
+        let urlToMeasurementScript = Constants.verificationScriptURL
         //Vendor key
-        let vendorKey = "dummyVendor"
+        let vendorKey = Constants.vendorKey
         //Verification Parameters. This is just an arbitary string, however with validation verification script, the value that is passed here will be used as a remote URL for tracking events
         let parameters = Constants.verificationParameters
 
-        //Create verification resource for <AdVerification> from above
-        guard let verificationResource = OMIDDemobuildVerificationScriptResource(url: urlToMeasurementScript, vendorKey: vendorKey, parameters: parameters) else {
-            fatalError("Unable to instantiate session context: verification resource cannot be nil")
+        //Create verification resource using the values provided in the ad response
+        guard let verificationResource = createVerificationScriptResource(vendorKey: vendorKey,
+                                                                          verificationScriptURL: urlToMeasurementScript,
+                                                                          parameters: parameters)
+            else {
+                fatalError("Unable to instantiate session context: verification resource cannot be nil")
         }
 
         //Create native ad session context

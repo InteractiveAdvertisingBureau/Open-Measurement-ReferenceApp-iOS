@@ -82,9 +82,9 @@ class VideoViewController: BaseAdUnitViewController {
 
         //In this example we don't parse VAST, but if we did, the <AdVerifications> node would look like this:
         //<AdVerifications>
-        //  <Verification vendor=”dummyVendor”>
+        //  <Verification vendor="iabtechlab.com-omid">
         //      <JavaScriptResource apiFramework="omid" browserOptional=”true”>
-        //          <![CDATA[http://server.com/omid-validation-verification-script-v1.js]]>
+        //          <![CDATA[https://server.com/omid-validation-verification-script-v1.js]]>
         //      </JavaScriptResource>
         //      <VerificationParameters>
         //          <![CDATA[parameterstring]]>
@@ -93,15 +93,18 @@ class VideoViewController: BaseAdUnitViewController {
         //</AdVerifications>
 
         //Usign validation verification script as an example
-        let urlToMeasurementScript = URL(string: Constants.verificationScriptURL)!
+        let urlToMeasurementScript = Constants.verificationScriptURL
         //Vendor key
         let vendorKey = Constants.vendorKey
         //Verification Parameters. This is just an arbitary string, however with validation verification script, the value that is passed here will be used as a remote URL for tracking events
         let parameters = Constants.verificationParameters
 
         //Create verification resource for <AdVerification> from above
-        guard let verificationResource = OMIDDemobuildVerificationScriptResource(url: urlToMeasurementScript, vendorKey: vendorKey, parameters: parameters) else {
-            fatalError("Unable to instantiate session context: verification resource cannot be nil")
+        guard let verificationResource = createVerificationScriptResource(vendorKey: vendorKey,
+                                                                          verificationScriptURL: urlToMeasurementScript,
+                                                                          parameters: parameters)
+            else {
+                fatalError("Unable to instantiate session context: verification resource cannot be nil")
         }
 
         //Create native ad session context

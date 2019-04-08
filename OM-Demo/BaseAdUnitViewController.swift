@@ -58,7 +58,6 @@ class BaseAdUnitViewController: UIViewController {
         statusLabel.text = "Requesting an ad.."
 
         fetchCreative(creativeURL) { (fileURL) in
-            NSLog("Did finish fetching creative.")
             self.didFinishFetchingCreative(fileURL)
         }
     }
@@ -130,7 +129,6 @@ class BaseAdUnitViewController: UIViewController {
     func willPresentAd() {
         //This is the point where other impression trackers (ad server impression, etc) should fire
 
-        NSLog("Starting measurement session.")
         startMeasurement()
 
     }
@@ -286,9 +284,22 @@ class BaseAdUnitViewController: UIViewController {
     func createAdSessionConfiguration() -> OMIDDemobuildAdSessionConfiguration {
         fatalError("Not implemented")
     }
-
-
-
+    
+    func createVerificationScriptResource(vendorKey: String?, verificationScriptURL: String, parameters: String?) -> OMIDDemobuildVerificationScriptResource? {
+        guard let URL = URL(string: verificationScriptURL) else {
+            fatalError("Unable to parse Verification Script URL")
+        }
+        
+        if let vendorKey = vendorKey,
+            let parameters = parameters,
+            vendorKey.count > 0 && parameters.count > 0 {
+                return OMIDDemobuildVerificationScriptResource(url: URL,
+                                                               vendorKey: vendorKey,
+                                                               parameters: parameters)
+        } else {
+            return OMIDDemobuildVerificationScriptResource(url: URL)
+        }
+    }
 }
 
 // MARK: - Helpers
@@ -315,9 +326,6 @@ extension BaseAdUnitViewController {
                 }
                 return
             }
-
-            print(response ?? "no response")
-            print(error ?? "no error")
 
             DispatchQueue.main.async {
                 completionHandler(fileURL)
