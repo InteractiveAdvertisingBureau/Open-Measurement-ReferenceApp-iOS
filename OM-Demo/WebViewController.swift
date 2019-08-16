@@ -8,7 +8,7 @@
 import UIKit
 import WebKit
 import MediaPlayer
-import OMSDK_Demobuild
+//import OMSDK_Demobuild
 
 class WebViewController: BaseAdUnitViewController {
     var webView: WKWebView?
@@ -54,9 +54,9 @@ class WebViewController: BaseAdUnitViewController {
         }
     }
 
-    override func createAdSessionConfiguration() -> OMIDDemobuildAdSessionConfiguration {
+    override func createAdSessionConfiguration() -> OMIDAdSessionConfiguration {
         do {
-            return try OMIDDemobuildAdSessionConfiguration(impressionOwner: .nativeOwner,
+            return try OMIDAdSessionConfiguration(impressionOwner: .nativeOwner,
                                                          videoEventsOwner: .noneOwner,
                                                          isolateVerificationScripts: false)
         } catch {
@@ -64,15 +64,13 @@ class WebViewController: BaseAdUnitViewController {
         }
     }
 
-    override func createAdSessionContext(withPartner partner: OMIDDemobuildPartner) -> OMIDDemobuildAdSessionContext {
+    override func createAdSessionContext(withPartner partner: OMIDPartner) -> OMIDAdSessionContext {
         guard let webView = webView else {
             fatalError("Unable to create ad session context: webView is not initialized")
         }
 
         do {
-            return try OMIDDemobuildAdSessionContext(partner: partner,
-                                                   webView: webView,
-                                                   customReferenceIdentifier: nil)
+            return try OMIDAdSessionContext(partner: partner, javaScriptWebView: webView, contentUrl: nil, customReferenceIdentifier: nil)
         } catch {
             fatalError("Unable to create ad session context: \(error)")
         }
@@ -99,7 +97,7 @@ extension WebViewController: WKNavigationDelegate {
 extension WebViewController {
     func injectOMID(intoHTML HTML: String) -> String {
         do {
-            let creativeWithOMID = try OMIDDemobuildScriptInjector.injectScriptContent(omidJSService,
+            let creativeWithOMID = try OMIDScriptInjector.injectScriptContent(omidJSService,
                                                                                      intoHTML:HTML)
             return creativeWithOMID
         } catch {

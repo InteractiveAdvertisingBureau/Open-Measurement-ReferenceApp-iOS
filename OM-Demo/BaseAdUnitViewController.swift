@@ -8,7 +8,7 @@
 import UIKit
 import WebKit
 import MediaPlayer
-import OMSDK_Demobuild
+//import OMSDK_Demobuild
 
 class BaseAdUnitViewController: UIViewController {
     fileprivate var isDisplayingErrorMessage = false
@@ -19,8 +19,8 @@ class BaseAdUnitViewController: UIViewController {
     @IBOutlet var statusLabel: UILabel!
     @IBOutlet var closeButton: UIButton!
 
-    var adSession: OMIDDemobuildAdSession?
-    var adEvents: OMIDDemobuildAdEvents?
+    var adSession: OMIDAdSession?
+    var adEvents: OMIDAdEvents?
     
     var creativeURL: URL {
         fatalError("Not implemented")
@@ -31,7 +31,7 @@ class BaseAdUnitViewController: UIViewController {
         let omidServiceUrl = Bundle.main.url(forResource: "omsdk-v1", withExtension: "js")!
         return try! String(contentsOf: omidServiceUrl)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -170,7 +170,7 @@ class BaseAdUnitViewController: UIViewController {
                 fatalError("Ad session cannot be nil")
             }
 
-            adEvents = try OMIDDemobuildAdEvents(adSession: adSession)
+            adEvents = try OMIDAdEvents(adSession: adSession)
             setupAdditionalAdEvents(adSession: adSession)
 
         } catch {
@@ -199,26 +199,26 @@ class BaseAdUnitViewController: UIViewController {
     }
 
     private func activateOMSDK() -> Bool {
-        if OMIDDemobuildSDK.shared.isActive {
+        if OMIDSDK.shared.isActive {
             return true
         }
 
         //Activate the SDK
         do {
-            try OMIDDemobuildSDK.shared.activate(withOMIDAPIVersion: "")
+            try OMIDSDK.shared.activate(withOMIDAPIVersion: "")
         } catch {
             fatalError("Unable to activate OMID SDK: \(error)")
         }
 
-        return OMIDDemobuildSDK.shared.isActive
+        return OMIDSDK.shared.isActive
 
     }
 
-    private func createAdSession() -> OMIDDemobuildAdSession {
+    private func createAdSession() -> OMIDAdSession {
         //Partner name has to be unique to your integration
-        let partnerName = "Demobuild"
+        let partnerName = "Pandora"
         let partnerVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String
-        guard let partner = OMIDDemobuildPartner(name: partnerName, versionString: partnerVersion ?? "1.0")
+        guard let partner = OMIDPartner(name: partnerName, versionString: partnerVersion ?? "1.0")
             else {
                 fatalError("Unable to initialize OMID partner")
         }
@@ -231,7 +231,7 @@ class BaseAdUnitViewController: UIViewController {
 
         do {
             //Create ad session
-            let session = try OMIDDemobuildAdSession(configuration: configuration, adSessionContext: context)
+            let session = try OMIDAdSession(configuration: configuration, adSessionContext: context)
 
             //Provide main ad view for measurement
             guard let adView = adView else {
@@ -251,11 +251,11 @@ class BaseAdUnitViewController: UIViewController {
     }
 
     /**
-     This method is called right after OMIDDemobuildVideoEvents has been set up
-     Subclasses can use this method to create `OMIDDemobuildVideoEvents`.
+     This method is called right after OMIDMediaEvents has been set up
+     Subclasses can use this method to create `OMIDMediaEvents`.
      Default implementation does nothing.
      */
-    func setupAdditionalAdEvents(adSession: OMIDDemobuildAdSession) {
+    func setupAdditionalAdEvents(adSession: OMIDAdSession) {
         return
     }
 
@@ -265,12 +265,12 @@ class BaseAdUnitViewController: UIViewController {
      Subclasses have to implement this method.
 
      - Parameters:
-     - partner: instance of `OMIDDemobuildPartner` to be used in the ad session context
+     - partner: instance of `OMIDPartner` to be used in the ad session context
 
-     - Returns: an instance of `OMIDDemobuildAdSessionContext` that was created
+     - Returns: an instance of `OMIDAdSessionContext` that was created
 
      */
-    func createAdSessionContext(withPartner partner: OMIDDemobuildPartner) -> OMIDDemobuildAdSessionContext {
+    func createAdSessionContext(withPartner partner: OMIDPartner) -> OMIDAdSessionContext {
         fatalError("Not implemented")
     }
 
@@ -278,14 +278,14 @@ class BaseAdUnitViewController: UIViewController {
      Creates ad session configuration.
      Subclasses have to implement this method.
 
-     - Returns: an instance of `OMIDDemobuildAdSessionConfiguration` that was created
+     - Returns: an instance of `OMIDAdSessionConfiguration` that was created
 
      */
-    func createAdSessionConfiguration() -> OMIDDemobuildAdSessionConfiguration {
+    func createAdSessionConfiguration() -> OMIDAdSessionConfiguration {
         fatalError("Not implemented")
     }
     
-    func createVerificationScriptResource(vendorKey: String?, verificationScriptURL: String, parameters: String?) -> OMIDDemobuildVerificationScriptResource? {
+    func createVerificationScriptResource(vendorKey: String?, verificationScriptURL: String, parameters: String?) -> OMIDVerificationScriptResource? {
         guard let URL = URL(string: verificationScriptURL) else {
             fatalError("Unable to parse Verification Script URL")
         }
@@ -293,11 +293,11 @@ class BaseAdUnitViewController: UIViewController {
         if let vendorKey = vendorKey,
             let parameters = parameters,
             vendorKey.count > 0 && parameters.count > 0 {
-                return OMIDDemobuildVerificationScriptResource(url: URL,
+                return OMIDVerificationScriptResource(url: URL,
                                                                vendorKey: vendorKey,
                                                                parameters: parameters)
         } else {
-            return OMIDDemobuildVerificationScriptResource(url: URL)
+            return OMIDVerificationScriptResource(url: URL)
         }
     }
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 import AVKit
-import OMSDK_Demobuild
+//import OMSDK_Demobuild
 
 enum Quartile {
     case Init
@@ -27,7 +27,7 @@ class VideoViewController: BaseAdUnitViewController {
     @IBOutlet weak var endTimeLabel: UILabel!
     @IBOutlet weak var muteButton: UIButton!
 
-    var omidVideoEvents: OMIDDemobuildVideoEvents?
+    var omidMediaEvents: OMIDMediaEvents?
     var currentQuartile: Quartile = .Init
 
     override var creativeURL: URL {
@@ -55,8 +55,8 @@ class VideoViewController: BaseAdUnitViewController {
 
         //Report VAST properties to OMID
         //The values should be parsed from the VAST document
-        let VASTProperties = OMIDDemobuildVASTProperties(autoPlay: true, position: .standalone)
-        omidVideoEvents?.loaded(with: VASTProperties)
+        let VASTProperties = OMIDVASTProperties(autoPlay: true, position: .standalone)
+        omidMediaEvents?.loaded(with: VASTProperties)
 
         //Start playback
         play()
@@ -76,7 +76,7 @@ class VideoViewController: BaseAdUnitViewController {
         showPlayerControlls()
     }
 
-    override func createAdSessionContext(withPartner partner: OMIDDemobuildPartner) -> OMIDDemobuildAdSessionContext {
+    override func createAdSessionContext(withPartner partner: OMIDPartner) -> OMIDAdSessionContext {
         //Ad Verification
         //These values should be parsed from the VAST document
 
@@ -99,9 +99,10 @@ class VideoViewController: BaseAdUnitViewController {
         //Verification Parameters. This is just an arbitary string, however with validation verification script, the value that is passed here will be used as a remote URL for tracking events
         let parameters = Constants.verificationParameters
 
+        print(urlToMeasurementScript.absoluteString)
         //Create verification resource for <AdVerification> from above
         guard let verificationResource = createVerificationScriptResource(vendorKey: vendorKey,
-                                                                          verificationScriptURL: urlToMeasurementScript,
+                                                                          verificationScriptURL: urlToMeasurementScript.absoluteString,
                                                                           parameters: parameters)
             else {
                 fatalError("Unable to instantiate session context: verification resource cannot be nil")
@@ -109,16 +110,16 @@ class VideoViewController: BaseAdUnitViewController {
 
         //Create native ad session context
         do {
-            return try OMIDDemobuildAdSessionContext(partner: partner, script: omidJSService, resources: [verificationResource], customReferenceIdentifier: nil)
+            return try OMIDAdSessionContext(partner: partner, script: omidJSService, resources: [verificationResource], customReferenceIdentifier: nil)
         } catch {
             fatalError("Unable to instantiate session context: \(error)")
         }
     }
 
-    override func createAdSessionConfiguration() -> OMIDDemobuildAdSessionConfiguration {
+    override func createAdSessionConfiguration() -> OMIDAdSessionConfiguration {
         //Create ad session configuration
         do {
-            return try OMIDDemobuildAdSessionConfiguration(impressionOwner: .nativeOwner,
+            return try OMIDAdSessionConfiguration(impressionOwner: .nativeOwner,
                                                          videoEventsOwner: .nativeOwner,
                                                          isolateVerificationScripts: false)
         } catch {
@@ -126,9 +127,9 @@ class VideoViewController: BaseAdUnitViewController {
         }
     }
 
-    override func setupAdditionalAdEvents(adSession: OMIDDemobuildAdSession) {
+    override func setupAdditionalAdEvents(adSession: OMIDAdSession) {
         do {
-            omidVideoEvents = try OMIDDemobuildVideoEvents(adSession: adSession)
+            omidMediaEvents = try OMIDMediaEvents(adSession: adSession)
         } catch {
             fatalError("Unable to instantiate video ad events")
         }
@@ -192,11 +193,11 @@ extension VideoViewController {
         if let player = player, player.rate == 0 {
             play()
             attachPauseButtonImage()
-            omidVideoEvents?.resume()
+            omidMediaEvents?.resume()
         } else {
             pause()
             attachPlayButtonImage()
-            omidVideoEvents?.pause()
+            omidMediaEvents?.pause()
         }
     }
     
@@ -249,11 +250,11 @@ extension VideoViewController {
 
         player.isMuted = !player.isMuted
         muteButton.isSelected = player.isMuted
-        omidVideoEvents?.volumeChange(to: playerVolume())
+        omidMediaEvents?.volumeChange(to: playerVolume())
     }
 
     @IBAction func handleClick() {
-        omidVideoEvents?.adUserInteraction(withType: .click)
+        omidMediaEvents?.adUserInteraction(withType: .click)
         let clickThroughURL = URL(string: "https://www.pandora.com/artist/fall-out-boy/mania/ALJxxPp4qfg6wvg")!
         UIApplication.shared.openURL(clickThroughURL)
     }
@@ -283,27 +284,27 @@ extension VideoViewController {
         switch currentQuartile {
         case .Init:
             if (progressPercent > 0) {
-                omidVideoEvents?.start(withDuration: CGFloat(duration), videoPlayerVolume: playerVolume())
+                omidMediaEvents?.start(withDuration: CGFloat(duration), mediaPlayerVolume: playerVolume())
                 currentQuartile = .start
             }
         case .start:
             if (progressPercent > Double(1)/Double(4)) {
-                omidVideoEvents?.firstQuartile()
+                omidMediaEvents?.firstQuartile()
                 currentQuartile = .firstQuartile
             }
         case .firstQuartile:
             if (progressPercent > Double(1)/Double(2)) {
-                omidVideoEvents?.midpoint()
+                omidMediaEvents?.midpoint()
                 currentQuartile = .midpoint
             }
         case .midpoint:
             if (progressPercent > Double(3)/Double(4)) {
-                omidVideoEvents?.thirdQuartile()
+                omidMediaEvents?.thirdQuartile()
                 currentQuartile = .thirdQuartile
             }
         case .thirdQuartile:
             if (progressPercent >= 1.0) {
-                omidVideoEvents?.complete()
+                omidMediaEvents?.complete()
                 currentQuartile = .complete
             }
         default:

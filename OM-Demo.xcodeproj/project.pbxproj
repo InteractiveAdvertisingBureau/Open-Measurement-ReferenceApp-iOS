@@ -7,10 +7,51 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2BD50B7C2306354700E6111D /* omsdk-v1.js in Resources */ = {isa = PBXBuildFile; fileRef = 2BD50B7B2306354600E6111D /* omsdk-v1.js */; };
+		2BD50B7E2307288D00E6111D /* omid-validation-verification-script-v1.js in Resources */ = {isa = PBXBuildFile; fileRef = 2BD50B7D2307288D00E6111D /* omid-validation-verification-script-v1.js */; };
+		2BD50BDF23073D4700E6111D /* OMIDCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50B8023073D3F00E6111D /* OMIDCommand.m */; };
+		2BD50BE023073D4700E6111D /* OMIDDictionaryUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50B8223073D4000E6111D /* OMIDDictionaryUtil.m */; };
+		2BD50BE123073D4700E6111D /* OMIDProcessorFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50B8323073D4000E6111D /* OMIDProcessorFactory.m */; };
+		2BD50BE223073D4700E6111D /* OMIDDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50B8523073D4000E6111D /* OMIDDevice.m */; };
+		2BD50BE323073D4700E6111D /* OMIDAdSessionRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50B8623073D4000E6111D /* OMIDAdSessionRegistry.m */; };
+		2BD50BE423073D4700E6111D /* OMIDVerificationScriptResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50B8723073D4000E6111D /* OMIDVerificationScriptResource.m */; };
+		2BD50BE523073D4700E6111D /* OMIDPartner.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50B8B23073D4000E6111D /* OMIDPartner.m */; };
+		2BD50BE623073D4700E6111D /* OMIDStatePublisher.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50B8C23073D4000E6111D /* OMIDStatePublisher.m */; };
+		2BD50BE723073D4700E6111D /* OMIDAdSessionStatePublisher.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50B9223073D4000E6111D /* OMIDAdSessionStatePublisher.m */; };
+		2BD50BE823073D4700E6111D /* OMIDAdViewCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50B9323073D4000E6111D /* OMIDAdViewCache.m */; };
+		2BD50BE923073D4700E6111D /* OMIDVideoEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50B9523073D4000E6111D /* OMIDVideoEvents.m */; };
+		2BD50BEA23073D4700E6111D /* OMIDViewProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50B9823073D4000E6111D /* OMIDViewProcessor.m */; };
+		2BD50BEB23073D4700E6111D /* OMIDWindowProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50B9923073D4000E6111D /* OMIDWindowProcessor.m */; };
+		2BD50BEC23073D4700E6111D /* OMIDUIWebViewJSExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50B9A23073D4000E6111D /* OMIDUIWebViewJSExecutor.m */; };
+		2BD50BED23073D4700E6111D /* OMIDError.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50B9D23073D4100E6111D /* OMIDError.m */; };
+		2BD50BEE23073D4700E6111D /* OMIDMethodInvoker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50BA123073D4100E6111D /* OMIDMethodInvoker.m */; };
+		2BD50BEF23073D4700E6111D /* OMIDScriptInjector.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50BA423073D4100E6111D /* OMIDScriptInjector.m */; };
+		2BD50BF023073D4700E6111D /* OMIDAdSessionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50BA623073D4100E6111D /* OMIDAdSessionConfiguration.m */; };
+		2BD50BF123073D4700E6111D /* OMIDMediaEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50BA723073D4200E6111D /* OMIDMediaEvents.m */; };
+		2BD50BF223073D4700E6111D /* OMIDSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50BA823073D4200E6111D /* OMIDSDK.m */; };
+		2BD50BF323073D4700E6111D /* OMIDAdSessionContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50BA923073D4200E6111D /* OMIDAdSessionContext.m */; };
+		2BD50BF423073D4700E6111D /* OMIDLoadTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50BAB23073D4200E6111D /* OMIDLoadTask.m */; };
+		2BD50BF523073D4700E6111D /* OMIDObstructionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50BAD23073D4200E6111D /* OMIDObstructionInfo.m */; };
+		2BD50BF623073D4700E6111D /* OMIDJSNetworkBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50BAE23073D4200E6111D /* OMIDJSNetworkBridge.m */; };
+		2BD50BF723073D4700E6111D /* OMIDAdEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50BB323073D4300E6111D /* OMIDAdEvents.m */; };
+		2BD50BF823073D4700E6111D /* OMIDLightJSExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50BB923073D4300E6111D /* OMIDLightJSExecutor.m */; };
+		2BD50BF923073D4700E6111D /* OMIDEventFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50BBA23073D4300E6111D /* OMIDEventFilter.m */; };
+		2BD50BFA23073D4700E6111D /* OMIDStateWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50BBB23073D4400E6111D /* OMIDStateWatcher.m */; };
+		2BD50BFB23073D4700E6111D /* OMIDVASTProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50BC023073D4400E6111D /* OMIDVASTProperties.m */; };
+		2BD50BFC23073D4700E6111D /* OMIDWKWebViewJSExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50BC223073D4400E6111D /* OMIDWKWebViewJSExecutor.m */; };
+		2BD50BFD23073D4700E6111D /* OMIDJSExecutorFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50BC323073D4400E6111D /* OMIDJSExecutorFactory.m */; };
+		2BD50BFE23073D4700E6111D /* OMIDScreenProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50BC523073D4500E6111D /* OMIDScreenProcessor.m */; };
+		2BD50BFF23073D4700E6111D /* OMIDTreeWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50BC723073D4500E6111D /* OMIDTreeWalker.m */; };
+		2BD50C0023073D4700E6111D /* OMIDContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50BCB23073D4500E6111D /* OMIDContext.m */; };
+		2BD50C0123073D4700E6111D /* OMIDViewKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50BCD23073D4500E6111D /* OMIDViewKey.m */; };
+		2BD50C0223073D4700E6111D /* OMIDBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50BCF23073D4500E6111D /* OMIDBridge.m */; };
+		2BD50C0323073D4700E6111D /* OMIDJSTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50BD023073D4600E6111D /* OMIDJSTimer.m */; };
+		2BD50C0423073D4700E6111D /* OMIDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50BD123073D4600E6111D /* OMIDManager.m */; };
+		2BD50C0523073D4700E6111D /* OMIDAdSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50BD323073D4600E6111D /* OMIDAdSession.m */; };
+		2BD50C0623073D4700E6111D /* OMIDFriendlyObstruction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD50BD923073D4600E6111D /* OMIDFriendlyObstruction.m */; };
 		2BE68E641FB124A3008ABC64 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE68E631FB124A3008ABC64 /* VideoViewController.swift */; };
-		384EB86F225BA07E0067A283 /* OMSDK_Demobuild.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384EB85C225BA07E0067A283 /* OMSDK_Demobuild.framework */; };
 		384EB872225BA07E0067A283 /* OMLICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 384EB86C225BA07E0067A283 /* OMLICENSE */; };
-		384EB873225BA07E0067A283 /* omsdk-v1.js in Resources */ = {isa = PBXBuildFile; fileRef = 384EB86D225BA07E0067A283 /* omsdk-v1.js */; };
+		384EB873225BA07E0067A283 /* omsdk-v1.2.js in Resources */ = {isa = PBXBuildFile; fileRef = 384EB86D225BA07E0067A283 /* omsdk-v1.2.js */; };
 		384EB875225C05DF0067A283 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 384EB874225C05DF0067A283 /* README.md */; };
 		38B305CB1F859D2B00557063 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B305CA1F859D2B00557063 /* AppDelegate.swift */; };
 		38B305D21F859D2B00557063 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38B305D11F859D2B00557063 /* Assets.xcassets */; };
@@ -24,12 +65,110 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B031B212306130500891C24 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
+		2BD50B7B2306354600E6111D /* omsdk-v1.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "omsdk-v1.js"; sourceTree = "<group>"; };
+		2BD50B7D2307288D00E6111D /* omid-validation-verification-script-v1.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "omid-validation-verification-script-v1.js"; sourceTree = "<group>"; };
+		2BD50B7F23073D3F00E6111D /* OMIDMediaEventsPublisher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDMediaEventsPublisher.h; sourceTree = "<group>"; };
+		2BD50B8023073D3F00E6111D /* OMIDCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDCommand.m; sourceTree = "<group>"; };
+		2BD50B8123073D4000E6111D /* OMIDAdViewCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDAdViewCache.h; sourceTree = "<group>"; };
+		2BD50B8223073D4000E6111D /* OMIDDictionaryUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDDictionaryUtil.m; sourceTree = "<group>"; };
+		2BD50B8323073D4000E6111D /* OMIDProcessorFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDProcessorFactory.m; sourceTree = "<group>"; };
+		2BD50B8423073D4000E6111D /* OMIDTreeWalker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDTreeWalker.h; sourceTree = "<group>"; };
+		2BD50B8523073D4000E6111D /* OMIDDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDDevice.m; sourceTree = "<group>"; };
+		2BD50B8623073D4000E6111D /* OMIDAdSessionRegistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDAdSessionRegistry.m; sourceTree = "<group>"; };
+		2BD50B8723073D4000E6111D /* OMIDVerificationScriptResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDVerificationScriptResource.m; sourceTree = "<group>"; };
+		2BD50B8823073D4000E6111D /* OMIDJSExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDJSExecutor.h; sourceTree = "<group>"; };
+		2BD50B8923073D4000E6111D /* OMIDAdSessionStatePublisher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDAdSessionStatePublisher.h; sourceTree = "<group>"; };
+		2BD50B8A23073D4000E6111D /* OMIDLoadTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDLoadTask.h; sourceTree = "<group>"; };
+		2BD50B8B23073D4000E6111D /* OMIDPartner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDPartner.m; sourceTree = "<group>"; };
+		2BD50B8C23073D4000E6111D /* OMIDStatePublisher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDStatePublisher.m; sourceTree = "<group>"; };
+		2BD50B8D23073D4000E6111D /* OMIDJSInvoker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDJSInvoker.h; sourceTree = "<group>"; };
+		2BD50B8E23073D4000E6111D /* OMIDDictionaryUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDDictionaryUtil.h; sourceTree = "<group>"; };
+		2BD50B8F23073D4000E6111D /* OMIDJSTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDJSTimer.h; sourceTree = "<group>"; };
+		2BD50B9023073D4000E6111D /* OMIDCommandPublisher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDCommandPublisher.h; sourceTree = "<group>"; };
+		2BD50B9123073D4000E6111D /* OMIDJSExecutorFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDJSExecutorFactory.h; sourceTree = "<group>"; };
+		2BD50B9223073D4000E6111D /* OMIDAdSessionStatePublisher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDAdSessionStatePublisher.m; sourceTree = "<group>"; };
+		2BD50B9323073D4000E6111D /* OMIDAdViewCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDAdViewCache.m; sourceTree = "<group>"; };
+		2BD50B9423073D4000E6111D /* OMIDCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDCommand.h; sourceTree = "<group>"; };
+		2BD50B9523073D4000E6111D /* OMIDVideoEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDVideoEvents.m; sourceTree = "<group>"; };
+		2BD50B9623073D4000E6111D /* OMIDViewKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDViewKey.h; sourceTree = "<group>"; };
+		2BD50B9723073D4000E6111D /* OMIDPartner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDPartner.h; sourceTree = "<group>"; };
+		2BD50B9823073D4000E6111D /* OMIDViewProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDViewProcessor.m; sourceTree = "<group>"; };
+		2BD50B9923073D4000E6111D /* OMIDWindowProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDWindowProcessor.m; sourceTree = "<group>"; };
+		2BD50B9A23073D4000E6111D /* OMIDUIWebViewJSExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDUIWebViewJSExecutor.m; sourceTree = "<group>"; };
+		2BD50B9B23073D4100E6111D /* OMIDEventFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDEventFilter.h; sourceTree = "<group>"; };
+		2BD50B9C23073D4100E6111D /* OMIDVerificationScriptResource+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OMIDVerificationScriptResource+Private.h"; sourceTree = "<group>"; };
+		2BD50B9D23073D4100E6111D /* OMIDError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDError.m; sourceTree = "<group>"; };
+		2BD50B9E23073D4100E6111D /* OMIDAdEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDAdEvents.h; sourceTree = "<group>"; };
+		2BD50B9F23073D4100E6111D /* OMIDAdSessionRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDAdSessionRegistry.h; sourceTree = "<group>"; };
+		2BD50BA023073D4100E6111D /* OMIDPartner+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OMIDPartner+Private.h"; sourceTree = "<group>"; };
+		2BD50BA123073D4100E6111D /* OMIDMethodInvoker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDMethodInvoker.m; sourceTree = "<group>"; };
+		2BD50BA223073D4100E6111D /* OMIDAdSessionConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDAdSessionConfiguration.h; sourceTree = "<group>"; };
+		2BD50BA323073D4100E6111D /* OMIDUIWebViewJSExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDUIWebViewJSExecutor.h; sourceTree = "<group>"; };
+		2BD50BA423073D4100E6111D /* OMIDScriptInjector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDScriptInjector.m; sourceTree = "<group>"; };
+		2BD50BA523073D4100E6111D /* OMIDViewProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDViewProcessor.h; sourceTree = "<group>"; };
+		2BD50BA623073D4100E6111D /* OMIDAdSessionConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDAdSessionConfiguration.m; sourceTree = "<group>"; };
+		2BD50BA723073D4200E6111D /* OMIDMediaEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDMediaEvents.m; sourceTree = "<group>"; };
+		2BD50BA823073D4200E6111D /* OMIDSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDSDK.m; sourceTree = "<group>"; };
+		2BD50BA923073D4200E6111D /* OMIDAdSessionContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDAdSessionContext.m; sourceTree = "<group>"; };
+		2BD50BAA23073D4200E6111D /* OMIDSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDSDK.h; sourceTree = "<group>"; };
+		2BD50BAB23073D4200E6111D /* OMIDLoadTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDLoadTask.m; sourceTree = "<group>"; };
+		2BD50BAC23073D4200E6111D /* OMIDManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDManager.h; sourceTree = "<group>"; };
+		2BD50BAD23073D4200E6111D /* OMIDObstructionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDObstructionInfo.m; sourceTree = "<group>"; };
+		2BD50BAE23073D4200E6111D /* OMIDJSNetworkBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDJSNetworkBridge.m; sourceTree = "<group>"; };
+		2BD50BAF23073D4200E6111D /* OMIDAdSessionContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDAdSessionContext.h; sourceTree = "<group>"; };
+		2BD50BB023073D4200E6111D /* OMIDObstructionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDObstructionInfo.h; sourceTree = "<group>"; };
+		2BD50BB123073D4300E6111D /* OMIDFriendlyObstructionType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDFriendlyObstructionType.h; sourceTree = "<group>"; };
+		2BD50BB223073D4300E6111D /* OMIDConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDConstants.h; sourceTree = "<group>"; };
+		2BD50BB323073D4300E6111D /* OMIDAdEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDAdEvents.m; sourceTree = "<group>"; };
+		2BD50BB423073D4300E6111D /* OMIDAdSessionContext+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OMIDAdSessionContext+Private.h"; sourceTree = "<group>"; };
+		2BD50BB523073D4300E6111D /* OMIDContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDContext.h; sourceTree = "<group>"; };
+		2BD50BB623073D4300E6111D /* OMIDDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDDevice.h; sourceTree = "<group>"; };
+		2BD50BB723073D4300E6111D /* OMIDMethodInvoker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDMethodInvoker.h; sourceTree = "<group>"; };
+		2BD50BB823073D4300E6111D /* OMIDSessionEventsPublisher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDSessionEventsPublisher.h; sourceTree = "<group>"; };
+		2BD50BB923073D4300E6111D /* OMIDLightJSExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDLightJSExecutor.m; sourceTree = "<group>"; };
+		2BD50BBA23073D4300E6111D /* OMIDEventFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDEventFilter.m; sourceTree = "<group>"; };
+		2BD50BBB23073D4400E6111D /* OMIDStateWatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDStateWatcher.m; sourceTree = "<group>"; };
+		2BD50BBC23073D4400E6111D /* OMIDMediaEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDMediaEvents.h; sourceTree = "<group>"; };
+		2BD50BBD23073D4400E6111D /* OMIDVASTProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDVASTProperties.h; sourceTree = "<group>"; };
+		2BD50BBE23073D4400E6111D /* OMIDLightJSExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDLightJSExecutor.h; sourceTree = "<group>"; };
+		2BD50BBF23073D4400E6111D /* OMIDStatePublisher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDStatePublisher.h; sourceTree = "<group>"; };
+		2BD50BC023073D4400E6111D /* OMIDVASTProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDVASTProperties.m; sourceTree = "<group>"; };
+		2BD50BC123073D4400E6111D /* OMIDWindowProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDWindowProcessor.h; sourceTree = "<group>"; };
+		2BD50BC223073D4400E6111D /* OMIDWKWebViewJSExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDWKWebViewJSExecutor.m; sourceTree = "<group>"; };
+		2BD50BC323073D4400E6111D /* OMIDJSExecutorFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDJSExecutorFactory.m; sourceTree = "<group>"; };
+		2BD50BC423073D4400E6111D /* OMIDNodeProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDNodeProcessor.h; sourceTree = "<group>"; };
+		2BD50BC523073D4500E6111D /* OMIDScreenProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDScreenProcessor.m; sourceTree = "<group>"; };
+		2BD50BC623073D4500E6111D /* OMIDBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDBridge.h; sourceTree = "<group>"; };
+		2BD50BC723073D4500E6111D /* OMIDTreeWalker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDTreeWalker.m; sourceTree = "<group>"; };
+		2BD50BC823073D4500E6111D /* OMIDError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDError.h; sourceTree = "<group>"; };
+		2BD50BC923073D4500E6111D /* OMIDAdSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDAdSession.h; sourceTree = "<group>"; };
+		2BD50BCA23073D4500E6111D /* OMIDAdSessionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDAdSessionDelegate.h; sourceTree = "<group>"; };
+		2BD50BCB23073D4500E6111D /* OMIDContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDContext.m; sourceTree = "<group>"; };
+		2BD50BCC23073D4500E6111D /* OMIDStateWatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDStateWatcher.h; sourceTree = "<group>"; };
+		2BD50BCD23073D4500E6111D /* OMIDViewKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDViewKey.m; sourceTree = "<group>"; };
+		2BD50BCE23073D4500E6111D /* OMIDJSNetworkBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDJSNetworkBridge.h; sourceTree = "<group>"; };
+		2BD50BCF23073D4500E6111D /* OMIDBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDBridge.m; sourceTree = "<group>"; };
+		2BD50BD023073D4600E6111D /* OMIDJSTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDJSTimer.m; sourceTree = "<group>"; };
+		2BD50BD123073D4600E6111D /* OMIDManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDManager.m; sourceTree = "<group>"; };
+		2BD50BD223073D4600E6111D /* OMIDVASTProperties+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OMIDVASTProperties+Private.h"; sourceTree = "<group>"; };
+		2BD50BD323073D4600E6111D /* OMIDAdSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDAdSession.m; sourceTree = "<group>"; };
+		2BD50BD423073D4600E6111D /* OMIDAdEventsPublisher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDAdEventsPublisher.h; sourceTree = "<group>"; };
+		2BD50BD523073D4600E6111D /* OMIDScriptInjector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDScriptInjector.h; sourceTree = "<group>"; };
+		2BD50BD623073D4600E6111D /* OMIDImports.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDImports.h; sourceTree = "<group>"; };
+		2BD50BD723073D4600E6111D /* OMIDVerificationScriptResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDVerificationScriptResource.h; sourceTree = "<group>"; };
+		2BD50BD823073D4600E6111D /* OMIDVideoEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDVideoEvents.h; sourceTree = "<group>"; };
+		2BD50BD923073D4600E6111D /* OMIDFriendlyObstruction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMIDFriendlyObstruction.m; sourceTree = "<group>"; };
+		2BD50BDA23073D4700E6111D /* OMIDScreenProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDScreenProcessor.h; sourceTree = "<group>"; };
+		2BD50BDB23073D4700E6111D /* OMIDFriendlyObstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDFriendlyObstruction.h; sourceTree = "<group>"; };
+		2BD50BDC23073D4700E6111D /* OMIDWKWebViewJSExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDWKWebViewJSExecutor.h; sourceTree = "<group>"; };
+		2BD50BDD23073D4700E6111D /* OMIDAdSession+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OMIDAdSession+Private.h"; sourceTree = "<group>"; };
+		2BD50BDE23073D4700E6111D /* OMIDProcessorFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDProcessorFactory.h; sourceTree = "<group>"; };
 		2BE68E631FB124A3008ABC64 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		384EB85B225BA07E0067A283 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
-		384EB85C225BA07E0067A283 /* OMSDK_Demobuild.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OMSDK_Demobuild.framework; sourceTree = "<group>"; };
 		384EB86A225BA07E0067A283 /* OMLICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OMLICENSE; sourceTree = "<group>"; };
 		384EB86C225BA07E0067A283 /* OMLICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OMLICENSE; sourceTree = "<group>"; };
-		384EB86D225BA07E0067A283 /* omsdk-v1.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "omsdk-v1.js"; sourceTree = "<group>"; };
+		384EB86D225BA07E0067A283 /* omsdk-v1.2.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "omsdk-v1.2.js"; sourceTree = "<group>"; };
 		384EB874225C05DF0067A283 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.markdown; };
 		38B305C71F859D2B00557063 /* OM-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OM-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		38B305CA1F859D2B00557063 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -49,18 +188,120 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				384EB86F225BA07E0067A283 /* OMSDK_Demobuild.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B031B22230614A500891C24 /* TestLib */ = {
+			isa = PBXGroup;
+			children = (
+				2BD50B9E23073D4100E6111D /* OMIDAdEvents.h */,
+				2BD50BB323073D4300E6111D /* OMIDAdEvents.m */,
+				2BD50BD423073D4600E6111D /* OMIDAdEventsPublisher.h */,
+				2BD50BC923073D4500E6111D /* OMIDAdSession.h */,
+				2BD50BD323073D4600E6111D /* OMIDAdSession.m */,
+				2BD50BDD23073D4700E6111D /* OMIDAdSession+Private.h */,
+				2BD50BA223073D4100E6111D /* OMIDAdSessionConfiguration.h */,
+				2BD50BA623073D4100E6111D /* OMIDAdSessionConfiguration.m */,
+				2BD50BAF23073D4200E6111D /* OMIDAdSessionContext.h */,
+				2BD50BA923073D4200E6111D /* OMIDAdSessionContext.m */,
+				2BD50BB423073D4300E6111D /* OMIDAdSessionContext+Private.h */,
+				2BD50BCA23073D4500E6111D /* OMIDAdSessionDelegate.h */,
+				2BD50B9F23073D4100E6111D /* OMIDAdSessionRegistry.h */,
+				2BD50B8623073D4000E6111D /* OMIDAdSessionRegistry.m */,
+				2BD50B8923073D4000E6111D /* OMIDAdSessionStatePublisher.h */,
+				2BD50B9223073D4000E6111D /* OMIDAdSessionStatePublisher.m */,
+				2BD50B8123073D4000E6111D /* OMIDAdViewCache.h */,
+				2BD50B9323073D4000E6111D /* OMIDAdViewCache.m */,
+				2BD50BC623073D4500E6111D /* OMIDBridge.h */,
+				2BD50BCF23073D4500E6111D /* OMIDBridge.m */,
+				2BD50B9423073D4000E6111D /* OMIDCommand.h */,
+				2BD50B8023073D3F00E6111D /* OMIDCommand.m */,
+				2BD50B9023073D4000E6111D /* OMIDCommandPublisher.h */,
+				2BD50BB223073D4300E6111D /* OMIDConstants.h */,
+				2BD50BB523073D4300E6111D /* OMIDContext.h */,
+				2BD50BCB23073D4500E6111D /* OMIDContext.m */,
+				2BD50BB623073D4300E6111D /* OMIDDevice.h */,
+				2BD50B8523073D4000E6111D /* OMIDDevice.m */,
+				2BD50B8E23073D4000E6111D /* OMIDDictionaryUtil.h */,
+				2BD50B8223073D4000E6111D /* OMIDDictionaryUtil.m */,
+				2BD50BC823073D4500E6111D /* OMIDError.h */,
+				2BD50B9D23073D4100E6111D /* OMIDError.m */,
+				2BD50B9B23073D4100E6111D /* OMIDEventFilter.h */,
+				2BD50BBA23073D4300E6111D /* OMIDEventFilter.m */,
+				2BD50BDB23073D4700E6111D /* OMIDFriendlyObstruction.h */,
+				2BD50BD923073D4600E6111D /* OMIDFriendlyObstruction.m */,
+				2BD50BB123073D4300E6111D /* OMIDFriendlyObstructionType.h */,
+				2BD50BD623073D4600E6111D /* OMIDImports.h */,
+				2BD50B8823073D4000E6111D /* OMIDJSExecutor.h */,
+				2BD50B9123073D4000E6111D /* OMIDJSExecutorFactory.h */,
+				2BD50BC323073D4400E6111D /* OMIDJSExecutorFactory.m */,
+				2BD50B8D23073D4000E6111D /* OMIDJSInvoker.h */,
+				2BD50BCE23073D4500E6111D /* OMIDJSNetworkBridge.h */,
+				2BD50BAE23073D4200E6111D /* OMIDJSNetworkBridge.m */,
+				2BD50B8F23073D4000E6111D /* OMIDJSTimer.h */,
+				2BD50BD023073D4600E6111D /* OMIDJSTimer.m */,
+				2BD50BBE23073D4400E6111D /* OMIDLightJSExecutor.h */,
+				2BD50BB923073D4300E6111D /* OMIDLightJSExecutor.m */,
+				2BD50B8A23073D4000E6111D /* OMIDLoadTask.h */,
+				2BD50BAB23073D4200E6111D /* OMIDLoadTask.m */,
+				2BD50BAC23073D4200E6111D /* OMIDManager.h */,
+				2BD50BD123073D4600E6111D /* OMIDManager.m */,
+				2BD50BBC23073D4400E6111D /* OMIDMediaEvents.h */,
+				2BD50BA723073D4200E6111D /* OMIDMediaEvents.m */,
+				2BD50B7F23073D3F00E6111D /* OMIDMediaEventsPublisher.h */,
+				2BD50BB723073D4300E6111D /* OMIDMethodInvoker.h */,
+				2BD50BA123073D4100E6111D /* OMIDMethodInvoker.m */,
+				2BD50BC423073D4400E6111D /* OMIDNodeProcessor.h */,
+				2BD50BB023073D4200E6111D /* OMIDObstructionInfo.h */,
+				2BD50BAD23073D4200E6111D /* OMIDObstructionInfo.m */,
+				2BD50B9723073D4000E6111D /* OMIDPartner.h */,
+				2BD50B8B23073D4000E6111D /* OMIDPartner.m */,
+				2BD50BA023073D4100E6111D /* OMIDPartner+Private.h */,
+				2BD50BDE23073D4700E6111D /* OMIDProcessorFactory.h */,
+				2BD50B8323073D4000E6111D /* OMIDProcessorFactory.m */,
+				2BD50BDA23073D4700E6111D /* OMIDScreenProcessor.h */,
+				2BD50BC523073D4500E6111D /* OMIDScreenProcessor.m */,
+				2BD50BD523073D4600E6111D /* OMIDScriptInjector.h */,
+				2BD50BA423073D4100E6111D /* OMIDScriptInjector.m */,
+				2BD50BAA23073D4200E6111D /* OMIDSDK.h */,
+				2BD50BA823073D4200E6111D /* OMIDSDK.m */,
+				2BD50BB823073D4300E6111D /* OMIDSessionEventsPublisher.h */,
+				2BD50BBF23073D4400E6111D /* OMIDStatePublisher.h */,
+				2BD50B8C23073D4000E6111D /* OMIDStatePublisher.m */,
+				2BD50BCC23073D4500E6111D /* OMIDStateWatcher.h */,
+				2BD50BBB23073D4400E6111D /* OMIDStateWatcher.m */,
+				2BD50B8423073D4000E6111D /* OMIDTreeWalker.h */,
+				2BD50BC723073D4500E6111D /* OMIDTreeWalker.m */,
+				2BD50BA323073D4100E6111D /* OMIDUIWebViewJSExecutor.h */,
+				2BD50B9A23073D4000E6111D /* OMIDUIWebViewJSExecutor.m */,
+				2BD50BBD23073D4400E6111D /* OMIDVASTProperties.h */,
+				2BD50BC023073D4400E6111D /* OMIDVASTProperties.m */,
+				2BD50BD223073D4600E6111D /* OMIDVASTProperties+Private.h */,
+				2BD50BD723073D4600E6111D /* OMIDVerificationScriptResource.h */,
+				2BD50B8723073D4000E6111D /* OMIDVerificationScriptResource.m */,
+				2BD50B9C23073D4100E6111D /* OMIDVerificationScriptResource+Private.h */,
+				2BD50BD823073D4600E6111D /* OMIDVideoEvents.h */,
+				2BD50B9523073D4000E6111D /* OMIDVideoEvents.m */,
+				2BD50B9623073D4000E6111D /* OMIDViewKey.h */,
+				2BD50BCD23073D4500E6111D /* OMIDViewKey.m */,
+				2BD50BA523073D4100E6111D /* OMIDViewProcessor.h */,
+				2BD50B9823073D4000E6111D /* OMIDViewProcessor.m */,
+				2BD50BC123073D4400E6111D /* OMIDWindowProcessor.h */,
+				2BD50B9923073D4000E6111D /* OMIDWindowProcessor.m */,
+				2BD50BDC23073D4700E6111D /* OMIDWKWebViewJSExecutor.h */,
+				2BD50BC223073D4400E6111D /* OMIDWKWebViewJSExecutor.m */,
+			);
+			path = TestLib;
+			sourceTree = "<group>";
+		};
 		384EB85A225BA07E0067A283 /* OMSDK */ = {
 			isa = PBXGroup;
 			children = (
+				2B031B22230614A500891C24 /* TestLib */,
 				384EB85B225BA07E0067A283 /* CHANGELOG.md */,
-				384EB85C225BA07E0067A283 /* OMSDK_Demobuild.framework */,
 				384EB86A225BA07E0067A283 /* OMLICENSE */,
 				384EB86B225BA07E0067A283 /* Service */,
 			);
@@ -70,8 +311,9 @@
 		384EB86B225BA07E0067A283 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				2BD50B7B2306354600E6111D /* omsdk-v1.js */,
 				384EB86C225BA07E0067A283 /* OMLICENSE */,
-				384EB86D225BA07E0067A283 /* omsdk-v1.js */,
+				384EB86D225BA07E0067A283 /* omsdk-v1.2.js */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -97,6 +339,8 @@
 		38B305C91F859D2B00557063 /* OM-Demo */ = {
 			isa = PBXGroup;
 			children = (
+				2BD50B7D2307288D00E6111D /* omid-validation-verification-script-v1.js */,
+				2B031B212306130500891C24 /* BridgingHeader.h */,
 				65A041B22081224C0033463C /* Constants.swift */,
 				38B305DD1F859DA500557063 /* AdListViewController.swift */,
 				65F0CE5E208AB09D00E6FDF4 /* BaseAdUnitViewController.swift */,
@@ -144,6 +388,7 @@
 				TargetAttributes = {
 					38B305C61F859D2B00557063 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1030;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -174,9 +419,11 @@
 				384EB875225C05DF0067A283 /* README.md in Resources */,
 				384EB872225BA07E0067A283 /* OMLICENSE in Resources */,
 				38B305D21F859D2B00557063 /* Assets.xcassets in Resources */,
+				2BD50B7E2307288D00E6111D /* omid-validation-verification-script-v1.js in Resources */,
 				38FE29961F8BA9B20049ABFC /* Main.storyboard in Resources */,
 				38FE29971F8BA9B40049ABFC /* LaunchScreen.storyboard in Resources */,
-				384EB873225BA07E0067A283 /* omsdk-v1.js in Resources */,
+				2BD50B7C2306354700E6111D /* omsdk-v1.js in Resources */,
+				384EB873225BA07E0067A283 /* omsdk-v1.2.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,12 +434,52 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BD50BF023073D4700E6111D /* OMIDAdSessionConfiguration.m in Sources */,
+				2BD50BDF23073D4700E6111D /* OMIDCommand.m in Sources */,
+				2BD50BEB23073D4700E6111D /* OMIDWindowProcessor.m in Sources */,
+				2BD50BFC23073D4700E6111D /* OMIDWKWebViewJSExecutor.m in Sources */,
 				65A041B32081224C0033463C /* Constants.swift in Sources */,
+				2BD50BF123073D4700E6111D /* OMIDMediaEvents.m in Sources */,
+				2BD50BEF23073D4700E6111D /* OMIDScriptInjector.m in Sources */,
 				38B305E31F859DA500557063 /* WebViewController.swift in Sources */,
+				2BD50BF523073D4700E6111D /* OMIDObstructionInfo.m in Sources */,
+				2BD50BE023073D4700E6111D /* OMIDDictionaryUtil.m in Sources */,
+				2BD50BF323073D4700E6111D /* OMIDAdSessionContext.m in Sources */,
+				2BD50C0323073D4700E6111D /* OMIDJSTimer.m in Sources */,
+				2BD50BFA23073D4700E6111D /* OMIDStateWatcher.m in Sources */,
+				2BD50BEA23073D4700E6111D /* OMIDViewProcessor.m in Sources */,
+				2BD50BE823073D4700E6111D /* OMIDAdViewCache.m in Sources */,
+				2BD50BF723073D4700E6111D /* OMIDAdEvents.m in Sources */,
+				2BD50BEE23073D4700E6111D /* OMIDMethodInvoker.m in Sources */,
+				2BD50BF423073D4700E6111D /* OMIDLoadTask.m in Sources */,
 				654DDD782086C53000BDAFF8 /* ImageViewController.swift in Sources */,
+				2BD50BFE23073D4700E6111D /* OMIDScreenProcessor.m in Sources */,
+				2BD50BE323073D4700E6111D /* OMIDAdSessionRegistry.m in Sources */,
+				2BD50C0623073D4700E6111D /* OMIDFriendlyObstruction.m in Sources */,
+				2BD50BF823073D4700E6111D /* OMIDLightJSExecutor.m in Sources */,
+				2BD50BED23073D4700E6111D /* OMIDError.m in Sources */,
+				2BD50BE423073D4700E6111D /* OMIDVerificationScriptResource.m in Sources */,
+				2BD50C0523073D4700E6111D /* OMIDAdSession.m in Sources */,
+				2BD50BEC23073D4700E6111D /* OMIDUIWebViewJSExecutor.m in Sources */,
 				38B305E11F859DA500557063 /* AdListViewController.swift in Sources */,
+				2BD50C0423073D4700E6111D /* OMIDManager.m in Sources */,
+				2BD50BFB23073D4700E6111D /* OMIDVASTProperties.m in Sources */,
+				2BD50BFF23073D4700E6111D /* OMIDTreeWalker.m in Sources */,
 				65F0CE5F208AB09D00E6FDF4 /* BaseAdUnitViewController.swift in Sources */,
+				2BD50BE723073D4700E6111D /* OMIDAdSessionStatePublisher.m in Sources */,
+				2BD50C0123073D4700E6111D /* OMIDViewKey.m in Sources */,
+				2BD50C0223073D4700E6111D /* OMIDBridge.m in Sources */,
+				2BD50BE923073D4700E6111D /* OMIDVideoEvents.m in Sources */,
+				2BD50C0023073D4700E6111D /* OMIDContext.m in Sources */,
+				2BD50BE623073D4700E6111D /* OMIDStatePublisher.m in Sources */,
+				2BD50BF223073D4700E6111D /* OMIDSDK.m in Sources */,
+				2BD50BF923073D4700E6111D /* OMIDEventFilter.m in Sources */,
+				2BD50BFD23073D4700E6111D /* OMIDJSExecutorFactory.m in Sources */,
+				2BD50BE523073D4700E6111D /* OMIDPartner.m in Sources */,
+				2BD50BF623073D4700E6111D /* OMIDJSNetworkBridge.m in Sources */,
+				2BD50BE223073D4700E6111D /* OMIDDevice.m in Sources */,
 				2BE68E641FB124A3008ABC64 /* VideoViewController.swift in Sources */,
+				2BD50BE123073D4700E6111D /* OMIDProcessorFactory.m in Sources */,
 				38B305CB1F859D2B00557063 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,6 +623,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W2S2TG8578;
@@ -347,10 +635,16 @@
 				);
 				INFOPLIST_FILE = "OM-Demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/OM-Demo",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.omid.reference;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "$(PROJECT_DIR)/OM-Demo/BridgingHeader.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -360,6 +654,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W2S2TG8578;
@@ -371,6 +666,10 @@
 				);
 				INFOPLIST_FILE = "OM-Demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/OM-Demo",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.omid.reference;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
