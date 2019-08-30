@@ -8,7 +8,6 @@
 import UIKit
 import WebKit
 import MediaPlayer
-//import OMSDK_Demobuild
 
 class WebViewController: BaseAdUnitViewController {
     var webView: WKWebView?
@@ -56,9 +55,11 @@ class WebViewController: BaseAdUnitViewController {
 
     override func createAdSessionConfiguration() -> OMIDAdSessionConfiguration {
         do {
-            return try OMIDAdSessionConfiguration(impressionOwner: .nativeOwner,
-                                                         videoEventsOwner: .noneOwner,
-                                                         isolateVerificationScripts: false)
+            return try OMIDAdSessionConfiguration(creativeType: .htmlDisplay,
+                                                  impressionType: .beginToRender,
+                                                  impressionOwner: .nativeOwner,
+                                                  mediaEventsOwner: .noneOwner,
+                                                  isolateVerificationScripts: true)
         } catch {
             fatalError("Unable to create ad session configuration: \(error)")
         }
@@ -70,7 +71,7 @@ class WebViewController: BaseAdUnitViewController {
         }
 
         do {
-            return try OMIDAdSessionContext(partner: partner, javaScriptWebView: webView, contentUrl: nil, customReferenceIdentifier: nil)
+            return try OMIDAdSessionContext(partner: partner, webView: webView, contentUrl: nil, customReferenceIdentifier: nil)
         } catch {
             fatalError("Unable to create ad session context: \(error)")
         }

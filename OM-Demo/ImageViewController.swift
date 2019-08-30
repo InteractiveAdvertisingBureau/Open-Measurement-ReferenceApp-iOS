@@ -6,9 +6,9 @@
 //
 
 import UIKit
-//import OMSDK_Demobuild
 
 class ImageViewController: BaseAdUnitViewController {
+    
     @IBOutlet weak var imageView: UIImageView!
 
     override var creativeURL: URL {
@@ -53,7 +53,6 @@ class ImageViewController: BaseAdUnitViewController {
 
         //Create native ad session context
         do {
-//            return try OMIDAdSessionContext(partner: partner, script: omidJSService, resources: [verificationResource], customReferenceIdentifier: nil)
             return try OMIDAdSessionContext(partner: partner, script: omidJSService, resources: [verificationResource], contentUrl: nil, customReferenceIdentifier: nil)
         } catch {
             fatalError("Unable to instantiate session context: \(error)")
@@ -63,7 +62,7 @@ class ImageViewController: BaseAdUnitViewController {
     override func createAdSessionConfiguration() -> OMIDAdSessionConfiguration {
         //Create ad session configuration
         do {
-            return try OMIDAdSessionConfiguration(creativeType: .nativeDisplay, impressionType: .beginToRender, impressionOwner: .nativeOwner, mediaEventsOwner: .noneOwner, isolateVerificationScripts: true)
+            return try OMIDAdSessionConfiguration(creativeType: .nativeDisplay, impressionType: .viewable, impressionOwner: .nativeOwner, mediaEventsOwner: .noneOwner, isolateVerificationScripts: true)
         } catch {
             fatalError("Unable to create ad session configuration: \(error)")
         }

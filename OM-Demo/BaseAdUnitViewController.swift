@@ -8,7 +8,6 @@
 import UIKit
 import WebKit
 import MediaPlayer
-//import OMSDK_Demobuild
 
 class BaseAdUnitViewController: UIViewController {
     fileprivate var isDisplayingErrorMessage = false
@@ -19,6 +18,8 @@ class BaseAdUnitViewController: UIViewController {
     @IBOutlet var statusLabel: UILabel!
     @IBOutlet var closeButton: UIButton!
 
+    var adUnit: AdUnit?
+    
     var adSession: OMIDAdSession?
     var adEvents: OMIDAdEvents?
     
@@ -28,7 +29,7 @@ class BaseAdUnitViewController: UIViewController {
 
     var omidJSService: String {
         //Load OMID JS service contents
-        let omidServiceUrl = Bundle.main.url(forResource: "omsdk-v1", withExtension: "js")!
+        let omidServiceUrl = Bundle.main.url(forResource: "omsdk-v1.3", withExtension: "js")!
         return try! String(contentsOf: omidServiceUrl)
     }
     
@@ -204,12 +205,8 @@ class BaseAdUnitViewController: UIViewController {
         }
 
         //Activate the SDK
-        do {
-            try OMIDSDK.shared.activate(withOMIDAPIVersion: "")
-        } catch {
-            fatalError("Unable to activate OMID SDK: \(error)")
-        }
-
+        OMIDSDK.shared.activate()
+       
         return OMIDSDK.shared.isActive
 
     }
@@ -232,7 +229,12 @@ class BaseAdUnitViewController: UIViewController {
         do {
             //Create ad session
             let session = try OMIDAdSession(configuration: configuration, adSessionContext: context)
-
+            
+            //Only add adView if not nativeAudio adUnit
+            if let adUnit = adUnit, adUnit == .nativeAudio {
+                return session
+            }
+            
             //Provide main ad view for measurement
             guard let adView = adView else {
                 fatalError("Ad View is not initialized")

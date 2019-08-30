@@ -7,7 +7,6 @@
 
 import UIKit
 import AVKit
-//import OMSDK_Demobuild
 
 enum Quartile {
     case Init
@@ -42,7 +41,7 @@ class VideoViewController: BaseAdUnitViewController {
     override func didFinishFetchingCreative(_ fileURL: URL) {
         try? FileManager.default.moveItem(at: fileURL, to: localAssetURL)
         NSLog("Did finish fetching creative.")
-        createVideoPlayer(withAssetURL: localAssetURL)
+        createMediaPlayer(withAssetURL: localAssetURL)
         resetTimeLabels()
         addQuartileTrackingToVideoPlayer()
         attachPauseButtonImage()
@@ -56,14 +55,20 @@ class VideoViewController: BaseAdUnitViewController {
         //Report VAST properties to OMID
         //The values should be parsed from the VAST document
         let VASTProperties = OMIDVASTProperties(autoPlay: true, position: .standalone)
-        omidMediaEvents?.loaded(with: VASTProperties)
+        
+        do {
+            try adEvents?.loaded(with: VASTProperties)
+        } catch {
+            fatalError("Unable to trigger loaded event: \(error)")
+        }
+        
 
         //Start playback
         play()
     }
 
     override func destroyAd() {
-        hidePlayerControlls()
+        hidePlayerControls()
 
         guard let videoPlayerLayer = playerLayer else { return }
         videoPlayerLayer.player = nil
@@ -73,7 +78,7 @@ class VideoViewController: BaseAdUnitViewController {
 
     override func presentAd() {
         super.presentAd()
-        showPlayerControlls()
+        showPlayerControls()
     }
 
     override func createAdSessionContext(withPartner partner: OMIDPartner) -> OMIDAdSessionContext {
@@ -119,9 +124,12 @@ class VideoViewController: BaseAdUnitViewController {
     override func createAdSessionConfiguration() -> OMIDAdSessionConfiguration {
         //Create ad session configuration
         do {
-            return try OMIDAdSessionConfiguration(impressionOwner: .nativeOwner,
-                                                         videoEventsOwner: .nativeOwner,
-                                                         isolateVerificationScripts: false)
+            return try
+                OMIDAdSessionConfiguration(creativeType: .video,
+                                           impressionType: .beginToRender,
+                                           impressionOwner: .nativeOwner,
+                                           mediaEventsOwner: .nativeOwner,
+                                           isolateVerificationScripts: false)
         } catch {
             fatalError("Unable to create ad session configuration: \(error)")
         }
@@ -134,9 +142,9 @@ class VideoViewController: BaseAdUnitViewController {
             fatalError("Unable to instantiate video ad events")
         }
     }
-}
-
-extension VideoViewController {
+    
+    // MARK: - Player Controls
+    
     var player: AVPlayer? {
         return playerLayer?.player
     }
@@ -147,8 +155,8 @@ extension VideoViewController {
         }
         return videoPlayerLayer
     }
-
-    func createVideoPlayer(withAssetURL assetURL: URL) {
+    
+    func createMediaPlayer(withAssetURL assetURL: URL) {
         let asset = AVURLAsset(url: assetURL)
         let playerItem = AVPlayerItem(asset: asset)
         let player = AVPlayer(playerItem: playerItem)
@@ -178,8 +186,6 @@ extension VideoViewController {
         currentQuartile = .Init
     }
 }
-
-// MARK: - Player Controlls
 
 extension VideoViewController {
     @IBAction func tappedPlayingControl() {
@@ -227,7 +233,7 @@ extension VideoViewController {
         endTimeLabel.text = "0"
     }
     
-    func hidePlayerControlls() {
+    func hidePlayerControls() {
         UIView.animate(withDuration: 0.5) {
             self.controls.alpha = 0
             self.startTimeLabel.alpha = 0
@@ -235,7 +241,7 @@ extension VideoViewController {
         }
     }
     
-    func showPlayerControlls() {
+    func showPlayerControls() {
         UIView.animate(withDuration: 0.5) {
             self.controls.alpha = 1.0
             self.startTimeLabel.alpha = 1.0
