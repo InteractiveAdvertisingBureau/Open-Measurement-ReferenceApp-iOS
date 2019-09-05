@@ -115,7 +115,7 @@ class VideoViewController: BaseAdUnitViewController {
 
         //Create native ad session context
         do {
-            return try OMIDAdSessionContext(partner: partner, script: omidJSService, resources: [verificationResource], customReferenceIdentifier: nil)
+            return try OMIDAdSessionContext(partner: partner, script: omidJSService, resources: [verificationResource], contentUrl: nil, customReferenceIdentifier: nil)
         } catch {
             fatalError("Unable to instantiate session context: \(error)")
         }
