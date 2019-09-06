@@ -67,4 +67,12 @@ class ImageViewController: BaseAdUnitViewController {
             fatalError("Unable to create ad session configuration: \(error)")
         }
     }
+    
+    override func setupAdditionalAdEvents(adSession: OMIDAdSession) {
+        do {
+            try adEvents?.loaded()
+        } catch {
+            fatalError("Unable to trigger loaded event: \(error)")
+        }
+    }
 }
