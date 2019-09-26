@@ -7,7 +7,7 @@
   // global context.
   } else {
     var exports = {};
-    var versions = ['1.2.17-dev'];
+    var versions = ['1.2.19-dev'];
     var additionalVersionString = '';
     if (!!additionalVersionString) {
        versions.push(additionalVersionString);
@@ -49,29 +49,76 @@
     }
   }
 }(typeof global === 'undefined' ? this : global, function(omidGlobal, omidExports) {
-  'use strict';var $jscomp = $jscomp || {};
+  'use strict';
+var $jscomp = $jscomp || {};
 $jscomp.scope = {};
-$jscomp.inherits = function(a, b) {
-  function c() {
+$jscomp.arrayIteratorImpl = function(a) {
+  var b = 0;
+  return function() {
+    return b < a.length ? {done:!1, value:a[b++]} : {done:!0};
+  };
+};
+$jscomp.arrayIterator = function(a) {
+  return {next:$jscomp.arrayIteratorImpl(a)};
+};
+$jscomp.makeIterator = function(a) {
+  var b = "undefined" != typeof Symbol && Symbol.iterator && a[Symbol.iterator];
+  return b ? b.call(a) : $jscomp.arrayIterator(a);
+};
+$jscomp.arrayFromIterator = function(a) {
+  for (var b, c = []; !(b = a.next()).done;) {
+    c.push(b.value);
   }
-  c.prototype = b.prototype;
-  a.superClass_ = b.prototype;
-  a.prototype = new c;
-  a.prototype.constructor = a;
-  for (var d in b) {
-    if ("prototype" != d) {
-      if (Object.defineProperties) {
-        var e = Object.getOwnPropertyDescriptor(b, d);
-        e && Object.defineProperty(a, d, e);
-      } else {
-        a[d] = b[d];
-      }
-    }
-  }
+  return c;
+};
+$jscomp.arrayFromIterable = function(a) {
+  return a instanceof Array ? a : $jscomp.arrayFromIterator($jscomp.makeIterator(a));
 };
 $jscomp.ASSUME_ES5 = !1;
 $jscomp.ASSUME_NO_NATIVE_MAP = !1;
 $jscomp.ASSUME_NO_NATIVE_SET = !1;
+$jscomp.SIMPLE_FROUND_POLYFILL = !1;
+$jscomp.objectCreate = $jscomp.ASSUME_ES5 || "function" == typeof Object.create ? Object.create : function(a) {
+  var b = function() {
+  };
+  b.prototype = a;
+  return new b;
+};
+$jscomp.underscoreProtoCanBeSet = function() {
+  var a = {a:!0}, b = {};
+  try {
+    return b.__proto__ = a, b.a;
+  } catch (c) {
+  }
+  return !1;
+};
+$jscomp.setPrototypeOf = "function" == typeof Object.setPrototypeOf ? Object.setPrototypeOf : $jscomp.underscoreProtoCanBeSet() ? function(a, b) {
+  a.__proto__ = b;
+  if (a.__proto__ !== b) {
+    throw new TypeError(a + " is not extensible");
+  }
+  return a;
+} : null;
+$jscomp.inherits = function(a, b) {
+  a.prototype = $jscomp.objectCreate(b.prototype);
+  a.prototype.constructor = a;
+  if ($jscomp.setPrototypeOf) {
+    var c = $jscomp.setPrototypeOf;
+    c(a, b);
+  } else {
+    for (c in b) {
+      if ("prototype" != c) {
+        if (Object.defineProperties) {
+          var d = Object.getOwnPropertyDescriptor(b, c);
+          d && Object.defineProperty(a, c, d);
+        } else {
+          a[c] = b[c];
+        }
+      }
+    }
+  }
+  a.superClass_ = b.prototype;
+};
 $jscomp.defineProperty = $jscomp.ASSUME_ES5 || "function" == typeof Object.defineProperties ? Object.defineProperty : function(a, b, c) {
   a != Array.prototype && a != Object.prototype && (a[b] = c.value);
 };
@@ -85,25 +132,39 @@ $jscomp.initSymbol = function() {
   };
   $jscomp.global.Symbol || ($jscomp.global.Symbol = $jscomp.Symbol);
 };
-$jscomp.symbolCounter_ = 0;
-$jscomp.Symbol = function(a) {
-  return $jscomp.SYMBOL_PREFIX + (a || "") + $jscomp.symbolCounter_++;
+$jscomp.SymbolClass = function(a, b) {
+  this.$jscomp$symbol$id_ = a;
+  $jscomp.defineProperty(this, "description", {configurable:!0, writable:!0, value:b});
 };
+$jscomp.SymbolClass.prototype.toString = function() {
+  return this.$jscomp$symbol$id_;
+};
+$jscomp.Symbol = function() {
+  function a(c) {
+    if (this instanceof a) {
+      throw new TypeError("Symbol is not a constructor");
+    }
+    return new $jscomp.SymbolClass($jscomp.SYMBOL_PREFIX + (c || "") + "_" + b++, c);
+  }
+  var b = 0;
+  return a;
+}();
 $jscomp.initSymbolIterator = function() {
   $jscomp.initSymbol();
   var a = $jscomp.global.Symbol.iterator;
-  a || (a = $jscomp.global.Symbol.iterator = $jscomp.global.Symbol("iterator"));
+  a || (a = $jscomp.global.Symbol.iterator = $jscomp.global.Symbol("Symbol.iterator"));
   "function" != typeof Array.prototype[a] && $jscomp.defineProperty(Array.prototype, a, {configurable:!0, writable:!0, value:function() {
-    return $jscomp.arrayIterator(this);
+    return $jscomp.iteratorPrototype($jscomp.arrayIteratorImpl(this));
   }});
   $jscomp.initSymbolIterator = function() {
   };
 };
-$jscomp.arrayIterator = function(a) {
-  var b = 0;
-  return $jscomp.iteratorPrototype(function() {
-    return b < a.length ? {done:!1, value:a[b++]} : {done:!0};
-  });
+$jscomp.initSymbolAsyncIterator = function() {
+  $jscomp.initSymbol();
+  var a = $jscomp.global.Symbol.asyncIterator;
+  a || (a = $jscomp.global.Symbol.asyncIterator = $jscomp.global.Symbol("Symbol.asyncIterator"));
+  $jscomp.initSymbolAsyncIterator = function() {
+  };
 };
 $jscomp.iteratorPrototype = function(a) {
   $jscomp.initSymbolIterator();
@@ -112,20 +173,6 @@ $jscomp.iteratorPrototype = function(a) {
     return this;
   };
   return a;
-};
-$jscomp.makeIterator = function(a) {
-  $jscomp.initSymbolIterator();
-  var b = a[Symbol.iterator];
-  return b ? b.call(a) : $jscomp.arrayIterator(a);
-};
-$jscomp.arrayFromIterator = function(a) {
-  for (var b, c = []; !(b = a.next()).done;) {
-    c.push(b.value);
-  }
-  return c;
-};
-$jscomp.arrayFromIterable = function(a) {
-  return a instanceof Array ? a : $jscomp.arrayFromIterator($jscomp.makeIterator(a));
 };
 $jscomp.iteratorFromArray = function(a, b) {
   $jscomp.initSymbolIterator();
@@ -239,7 +286,7 @@ module$exports$omid$common$constants.Reason = {NOT_FOUND:"notFound", HIDDEN:"hid
 module$exports$omid$common$constants.SupportedFeatures = {CONTAINER:"clid", VIDEO:"vlid"};
 module$exports$omid$common$constants.VideoPosition = {PREROLL:"preroll", MIDROLL:"midroll", POSTROLL:"postroll", STANDALONE:"standalone"};
 module$exports$omid$common$constants.VideoPlayerState = {MINIMIZED:"minimized", COLLAPSED:"collapsed", NORMAL:"normal", EXPANDED:"expanded", FULLSCREEN:"fullscreen"};
-module$exports$omid$common$constants.NativeViewKeys = {X:"x", LEFT:"left", Y:"y", TOP:"top", WIDTH:"width", HEIGHT:"height", AD_SESSION_ID:"adSessionId", IS_FRIENDLY_OBSTRUCTION_FOR:"isFriendlyObstructionFor", CLIPS_TO_BOUNDS:"clipsToBounds", CHILD_VIEWS:"childViews", END_X:"endX", END_Y:"endY", OBSTRUCTIONS:"obstructions", PIXELS:"pixels"};
+module$exports$omid$common$constants.NativeViewKeys = {X:"x", LEFT:"left", Y:"y", TOP:"top", WIDTH:"width", HEIGHT:"height", AD_SESSION_ID:"adSessionId", IS_FRIENDLY_OBSTRUCTION_FOR:"isFriendlyObstructionFor", CLIPS_TO_BOUNDS:"clipsToBounds", CHILD_VIEWS:"childViews", END_X:"endX", END_Y:"endY", OBSTRUCTIONS:"obstructions", OBSTRUCTION_CLASS:"obstructionClass", OBSTRUCTION_PURPOSE:"obstructionPurpose", OBSTRUCTION_REASON:"obstructionReason", PIXELS:"pixels"};
 module$exports$omid$common$constants.MeasurementStateChangeSource = {CONTAINER:"container", CREATIVE:"creative"};
 module$exports$omid$common$constants.ElementMarkup = {OMID_ELEMENT_CLASS_NAME:"omid-element"};
 module$exports$omid$common$constants.CommunicationType = {NONE:"NONE", DIRECT:"DIRECT", POST_MESSAGE:"POST_MESSAGE"};
@@ -290,8 +337,8 @@ var module$exports$omid$common$DetectOmid = {OMID_PRESENT_FRAME_NAME:"omid_v1_pr
     return !1;
   }
 }, declareOmidPresence:function(a) {
-  a.frames && a.document && (module$exports$omid$common$DetectOmid.OMID_PRESENT_FRAME_NAME in a.frames || (null == a.document.body && module$exports$omid$common$DetectOmid.isMutationObserverAvailable_(a) ? module$exports$omid$common$DetectOmid.registerMutationObserver_(a) : a.document.body ? module$exports$omid$common$DetectOmid.appendPresenceIframe_(a) : a.document.write('<iframe style="display:none" ' + ('id="' + module$exports$omid$common$DetectOmid.OMID_PRESENT_FRAME_NAME + '"') + (' name="' + 
-  module$exports$omid$common$DetectOmid.OMID_PRESENT_FRAME_NAME + '">') + "</iframe>")));
+  a.frames && a.document && (module$exports$omid$common$DetectOmid.OMID_PRESENT_FRAME_NAME in a.frames || (null == a.document.body && module$exports$omid$common$DetectOmid.isMutationObserverAvailable_(a) ? module$exports$omid$common$DetectOmid.registerMutationObserver_(a) : a.document.body ? module$exports$omid$common$DetectOmid.appendPresenceIframe_(a) : a.document.write('<iframe style="display:none" id="' + (module$exports$omid$common$DetectOmid.OMID_PRESENT_FRAME_NAME + '" name="') + (module$exports$omid$common$DetectOmid.OMID_PRESENT_FRAME_NAME + 
+  '"></iframe>'))));
 }, appendPresenceIframe_:function(a) {
   var b = a.document.createElement("iframe");
   b.id = module$exports$omid$common$DetectOmid.OMID_PRESENT_FRAME_NAME;
@@ -349,9 +396,9 @@ var module$exports$omid$common$logger = {error:function(a) {
     b[c - 0] = arguments[c];
   }
   module$contents$omid$common$logger_executeLog(function() {
-    throw new (Function.prototype.bind.apply(Error, [null].concat(["Could not complete the test successfully - "], $jscomp.arrayFromIterable(b))));
+    throw new (Function.prototype.bind.apply(Error, [null, "Could not complete the test successfully - "].concat($jscomp.arrayFromIterable(b))));
   }, function() {
-    return console.error.apply(console, [].concat($jscomp.arrayFromIterable(b)));
+    return console.error.apply(console, $jscomp.arrayFromIterable(b));
   });
 }, debug:function(a) {
   for (var b = [], c = 0; c < arguments.length; ++c) {
@@ -359,7 +406,7 @@ var module$exports$omid$common$logger = {error:function(a) {
   }
   module$contents$omid$common$logger_executeLog(function() {
   }, function() {
-    return console.error.apply(console, [].concat($jscomp.arrayFromIterable(b)));
+    return console.error.apply(console, $jscomp.arrayFromIterable(b));
   });
 }};
 function module$contents$omid$common$logger_executeLog(a, b) {
@@ -411,29 +458,83 @@ var module$exports$omid$common$Rectangle = function(a, b, c, d) {
   this.width = c;
   this.height = d;
 };
-var module$exports$omid$common$serviceCommunication = {resolveTopWindowContext:function(a) {
-  "undefined" === typeof a && "undefined" !== typeof window && window && (a = window);
-  if ("undefined" === typeof a || !a || "undefined" === typeof a.top || !a.top) {
-    return module$exports$omid$common$OmidGlobalProvider.omidGlobal;
-  }
-  if (a === a.top) {
-    return a;
+var module$exports$omid$common$serviceCommunication = {}, module$contents$omid$common$serviceCommunication_EXPORTED_SESSION_COMMUNICATION_NAME = ["omid", "v1_SessionServiceCommunication"], module$contents$omid$common$serviceCommunication_EXPORTED_VERIFICATION_COMMUNICATION_NAME = ["omid", "v1_VerificationServiceCommunication"], module$contents$omid$common$serviceCommunication_EXPORTED_SERVICE_WINDOW_NAME = ["omid", "serviceWindow"];
+function module$contents$omid$common$serviceCommunication_isValidWindow(a) {
+  return null != a && "undefined" !== typeof a.top && null != a.top;
+}
+module$exports$omid$common$serviceCommunication.isCrossOrigin = function(a) {
+  if (a === module$exports$omid$common$OmidGlobalProvider.omidGlobal) {
+    return !1;
   }
   try {
-    var b = a.top;
-    return "undefined" === typeof b.location.hostname ? a : "" === b.x || "" !== b.x ? b : a;
-  } catch (c) {
-    return a;
+    if ("undefined" === typeof a.location.hostname) {
+      return !0;
+    }
+    module$contents$omid$common$serviceCommunication_isSameOriginForIE(a);
+  } catch (b) {
+    return !0;
   }
-}};
-function module$contents$omid$common$serviceCommunication_getUnobfuscatedKey(a, b) {
+  return !1;
+};
+function module$contents$omid$common$serviceCommunication_isSameOriginForIE(a) {
+  return "" === a.x || "" !== a.x;
+}
+module$exports$omid$common$serviceCommunication.resolveGlobalContext = function(a) {
+  "undefined" === typeof a && "undefined" !== typeof window && window && (a = window);
+  return module$contents$omid$common$serviceCommunication_isValidWindow(a) ? a : module$exports$omid$common$OmidGlobalProvider.omidGlobal;
+};
+function module$contents$omid$common$serviceCommunication_resolveTopWindowContext(a) {
+  return module$contents$omid$common$serviceCommunication_isValidWindow(a) ? a.top : module$exports$omid$common$OmidGlobalProvider.omidGlobal;
+}
+function module$contents$omid$common$serviceCommunication_getValueForKeypath(a, b) {
   return b.reduce(function(a, b) {
     return a && a[b];
   }, a);
 }
-module$exports$omid$common$serviceCommunication.startServiceCommunication = function(a, b, c) {
+function module$contents$omid$common$serviceCommunication_startServiceCommunication(a, b, c, d) {
+  if (!(0,module$exports$omid$common$serviceCommunication.isCrossOrigin)(b)) {
+    try {
+      var e = module$contents$omid$common$serviceCommunication_getValueForKeypath(b, c);
+      if (e) {
+        return new module$exports$omid$common$DirectCommunication(e);
+      }
+    } catch (f) {
+    }
+  }
+  return d(b) ? new module$exports$omid$common$PostMessageCommunication(a, b) : null;
+}
+function module$contents$omid$common$serviceCommunication_startServiceCommunicationFromCandidates(a, b, c, d) {
+  b = $jscomp.makeIterator(b);
+  for (var e = b.next(); !e.done; e = b.next()) {
+    if (e = module$contents$omid$common$serviceCommunication_startServiceCommunication(a, e.value, c, d)) {
+      return e;
+    }
+  }
+  return null;
+}
+module$exports$omid$common$serviceCommunication.startSessionServiceCommunication = function(a, b, c) {
   c = void 0 === c ? module$exports$omid$common$DetectOmid.isOmidPresent : c;
-  return (b = module$contents$omid$common$serviceCommunication_getUnobfuscatedKey(a, b)) ? new module$exports$omid$common$DirectCommunication(b) : a.top && c(a.top) ? new module$exports$omid$common$PostMessageCommunication(a, a.top) : null;
+  var d = [a, module$contents$omid$common$serviceCommunication_resolveTopWindowContext(a)];
+  b && d.unshift(b);
+  return module$contents$omid$common$serviceCommunication_startServiceCommunicationFromCandidates(a, d, module$contents$omid$common$serviceCommunication_EXPORTED_SESSION_COMMUNICATION_NAME, c);
+};
+module$exports$omid$common$serviceCommunication.startVerificationServiceCommunication = function(a, b) {
+  b = void 0 === b ? module$exports$omid$common$DetectOmid.isOmidPresent : b;
+  var c = [], d = module$contents$omid$common$serviceCommunication_getValueForKeypath(a, module$contents$omid$common$serviceCommunication_EXPORTED_SERVICE_WINDOW_NAME);
+  d && c.push(d);
+  c.push(module$contents$omid$common$serviceCommunication_resolveTopWindowContext(a));
+  return module$contents$omid$common$serviceCommunication_startServiceCommunicationFromCandidates(a, c, module$contents$omid$common$serviceCommunication_EXPORTED_VERIFICATION_COMMUNICATION_NAME, b);
+};
+module$exports$omid$common$serviceCommunication.evaluatePageUrl = function(a) {
+  if (!module$contents$omid$common$serviceCommunication_isValidWindow(a)) {
+    return null;
+  }
+  try {
+    var b = a.top;
+    return (0,module$exports$omid$common$serviceCommunication.isCrossOrigin)(b) ? null : b.location.href;
+  } catch (c) {
+    return null;
+  }
 };
 var module$exports$omid$common$VastProperties = function(a, b, c, d) {
   this.isSkippable = a;
@@ -441,14 +542,14 @@ var module$exports$omid$common$VastProperties = function(a, b, c, d) {
   this.isAutoPlay = c;
   this.position = d;
 };
-var module$exports$omid$common$version = {ApiVersion:"1.0", Version:"1.2.17-dev"};
+var module$exports$omid$common$version = {ApiVersion:"1.0", Version:"1.2.19-dev"};
 var module$contents$omid$verificationClient$VerificationClient_VERIFICATION_CLIENT_VERSION = module$exports$omid$common$version.Version, module$contents$omid$verificationClient$VerificationClient_EventCallback;
 function module$contents$omid$verificationClient$VerificationClient_getThirdPartyOmid() {
   var a = module$exports$omid$common$OmidGlobalProvider.omidGlobal.omid3p;
   return a && "function" === typeof a.registerSessionObserver && "function" === typeof a.addEventListener ? a : null;
 }
 var module$exports$omid$verificationClient$VerificationClient = function(a) {
-  if (this.communication = a = void 0 === a ? (0,module$exports$omid$common$serviceCommunication.startServiceCommunication)((0,module$exports$omid$common$serviceCommunication.resolveTopWindowContext)(), ["omid", "v1_VerificationServiceCommunication"]) : a) {
+  if (this.communication = a || (0,module$exports$omid$common$serviceCommunication.startVerificationServiceCommunication)((0,module$exports$omid$common$serviceCommunication.resolveGlobalContext)())) {
     this.communication.onMessage = this.handleMessage_.bind(this);
   } else {
     if (a = module$contents$omid$verificationClient$VerificationClient_getThirdPartyOmid()) {
@@ -560,7 +661,7 @@ module$exports$omid$verificationClient$VerificationClient.prototype.sendOneWayMe
   for (var c = [], d = 1; d < arguments.length; ++d) {
     c[d - 1] = arguments[d];
   }
-  this.sendMessage_.apply(this, [].concat([a, null], $jscomp.arrayFromIterable(c)));
+  this.sendMessage_.apply(this, [a, null].concat($jscomp.arrayFromIterable(c)));
 };
 module$exports$omid$verificationClient$VerificationClient.prototype.sendMessage_ = function(a, b, c) {
   for (var d = [], e = 2; e < arguments.length; ++e) {
