@@ -11,9 +11,8 @@ struct Constants {
     static let vendorKey = "iabtechlab.com-omid"
     
     // TODO: Update hosted creative with updated omid-validation-verification-script-v1.3
-    //static let HTMLAdURL = "https://s3-us-west-2.amazonaws.com/omsdk-files/demo/creative/banner.html"
+    static let HTMLAdURL = "https://s3-us-west-2.amazonaws.com/omsdk-files/demo/creative/banner.html"
     
-    static let HTMLAdURL = "https://sdcreative.s3-us-west-2.amazonaws.com/om/creative.html"
     static let videoAdURL = "https://s3-us-west-2.amazonaws.com/omsdk-files/demo/creative/MANIA.mp4"
     static let staticImageAdURL = "https://s3-us-west-2.amazonaws.com/omsdk-files/demo/creative/mania.jpeg"
     
