@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 class AudioViewController: VideoViewController {
-    var audioPlayer: AVPlayer?
+    private var audioPlayer: AVPlayer?
     
     override var player: AVPlayer? {
         return audioPlayer

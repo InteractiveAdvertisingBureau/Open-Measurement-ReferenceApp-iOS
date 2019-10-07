@@ -23,7 +23,7 @@ struct Constants {
     
     //TODO: update hosted omid-validation-verification-script-v1 to 1.3
     
-    // static let verificationScriptURL = "http://s3-us-west-2.amazonaws.com/omsdk-files/demo/creative/omid-validation-verification-script-v1.js"
+//    static let verificationScriptURL = "http://www.pandora.com/static/ads/omsdk-v1_3/omid-validation-verification-script-v1.js"
     
     //TODO: remove verification script as a resource
     

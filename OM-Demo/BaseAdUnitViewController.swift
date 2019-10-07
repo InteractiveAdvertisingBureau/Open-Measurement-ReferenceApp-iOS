@@ -131,7 +131,6 @@ class BaseAdUnitViewController: UIViewController {
         //This is the point where other impression trackers (ad server impression, etc) should fire
 
         startMeasurement()
-
     }
 
     /**
