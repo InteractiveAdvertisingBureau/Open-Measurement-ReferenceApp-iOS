@@ -68,7 +68,7 @@ class ImageViewController: BaseAdUnitViewController {
         }
     }
     
-    override func setupAdditionalAdEvents(adSession: OMIDAdSession) {
+    override func adLoaded() {
         do {
             try adEvents?.loaded()
         } catch {

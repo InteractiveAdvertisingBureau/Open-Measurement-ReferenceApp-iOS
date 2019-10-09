@@ -52,17 +52,6 @@ class VideoViewController: BaseAdUnitViewController {
     override func willPresentAd() {
         super.willPresentAd()
 
-        //Report VAST properties to OMID
-        //The values should be parsed from the VAST document
-        let VASTProperties = OMIDVASTProperties(autoPlay: true, position: .standalone)
-        
-        do {
-            try adEvents?.loaded(with: VASTProperties)
-        } catch {
-            fatalError("Unable to trigger loaded event: \(error)")
-        }
-        
-
         //Start playback
         play()
     }
@@ -140,6 +129,18 @@ class VideoViewController: BaseAdUnitViewController {
             omidMediaEvents = try OMIDMediaEvents(adSession: adSession)
         } catch {
             fatalError("Unable to instantiate video ad events")
+        }
+    }
+    
+    override func adLoaded() {
+        //Report VAST properties to OMID
+        //The values should be parsed from the VAST document
+        let VASTProperties = OMIDVASTProperties(autoPlay: true, position: .standalone)
+        
+        do {
+            try adEvents?.loaded(with: VASTProperties)
+        } catch {
+            fatalError("Unable to trigger loaded event: \(error)")
         }
     }
     

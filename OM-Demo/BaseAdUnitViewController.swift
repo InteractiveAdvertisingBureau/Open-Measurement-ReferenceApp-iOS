@@ -180,6 +180,9 @@ class BaseAdUnitViewController: UIViewController {
         NSLog("Starting measurement session.")
         //Start measuring
         adSession?.start()
+        
+        //Fire loaded event
+        adLoaded()
 
         //Record OMID native impression
         do {
@@ -189,7 +192,15 @@ class BaseAdUnitViewController: UIViewController {
             fatalError("OMID impression error: \(error.localizedDescription)")
         }
     }
-
+    
+    /**
+     Calls AdEvents loaded.
+     Subclasses have to implement this method.
+    */
+    func adLoaded() {
+        fatalError("Not implemented")
+    }
+    
     /**
      Finishes the ad session. This method is called when the ad is dismissed.
      */

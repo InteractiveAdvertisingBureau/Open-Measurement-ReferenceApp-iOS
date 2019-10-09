@@ -76,6 +76,14 @@ class WebViewController: BaseAdUnitViewController {
             fatalError("Unable to create ad session context: \(error)")
         }
     }
+    
+    override func adLoaded() {
+        do {
+            try adEvents?.loaded()
+        } catch {
+            fatalError("Unable to trigger loaded event: \(error)")
+        }
+    }
 }
 
 // MARK: - WKScriptMessageHandler
