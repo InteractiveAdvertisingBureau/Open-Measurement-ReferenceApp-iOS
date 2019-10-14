@@ -675,19 +675,15 @@ var module$contents$omid$validationVerificationScript$ValidationVerificationClie
   this.verificationClient_ = a;
   a = this.verificationClient_.isSupported();
   this.logMessage_("OmidSupported[" + a + "]", (new Date).getTime());
-  if (a) {
-    var d = this;
-    this.verificationClient_.registerSessionObserver(function(a) {
-      return c.sessionObserverCallback_(a);
-    }, b);
-    Object.keys(module$exports$omid$common$constants.AdEventType).filter(function(a) {
-      return a !== module$exports$omid$common$constants.AdEventType.MEDIA && a !== module$exports$omid$common$constants.AdEventType.VIDEO;
-    }).forEach(function(a) {
-      d.verificationClient_.addEventListener(module$exports$omid$common$constants.AdEventType[a], function(a) {
-        return d.omidEventListenerCallback_(a);
-      });
+  a && (this.verificationClient_.registerSessionObserver(function(a) {
+    return c.sessionObserverCallback_(a);
+  }, b), Object.keys(module$exports$omid$common$constants.AdEventType).filter(function(a) {
+    return module$exports$omid$common$constants.AdEventType[a] !== module$exports$omid$common$constants.AdEventType.MEDIA && module$exports$omid$common$constants.AdEventType[a] !== module$exports$omid$common$constants.AdEventType.VIDEO;
+  }).forEach(function(a) {
+    return c.verificationClient_.addEventListener(module$exports$omid$common$constants.AdEventType[a], function(a) {
+      return c.omidEventListenerCallback_(a);
     });
-  }
+  }));
 };
 module$exports$omid$validationVerificationScript$ValidationVerificationClient.prototype.logMessage_ = function(a, b) {
   a = (new Date(b)).toLocaleString() + "::" + JSON.stringify(a);

@@ -17,11 +17,9 @@ struct Constants {
     static let staticImageAdURL = "https://s3-us-west-2.amazonaws.com/omsdk-files/demo/creative/mania.jpeg"
     
     static var audioAdURL: URL {
-        let url = Bundle.main.url(forResource: "audioAd", withExtension: "mp3")!
+        let url = Bundle.main.url(forResource: "sampleAudioAd", withExtension: "mp3")!
         return url
     }
-    
-    //TODO: update hosted omid-validation-verification-script-v1 to 1.3
     
 //    static let verificationScriptURL = "http://www.pandora.com/static/ads/omsdk-v1_3/omid-validation-verification-script-v1.js"
     
