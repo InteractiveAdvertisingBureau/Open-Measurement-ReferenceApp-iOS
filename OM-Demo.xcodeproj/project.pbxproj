@@ -44,7 +44,6 @@
 		2B819EE22318A38B00487326 /* OMIDVerificationScriptResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDVerificationScriptResource.h; sourceTree = "<group>"; };
 		2B819EE32318A38B00487326 /* OMIDAdSessionConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDAdSessionConfiguration.h; sourceTree = "<group>"; };
 		2B819EE42318A38B00487326 /* OMIDMediaEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDMediaEvents.h; sourceTree = "<group>"; };
-		2B819EE52318A3CE00487326 /* BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		2BD50B7D2307288D00E6111D /* omid-validation-verification-script-v1.3.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "omid-validation-verification-script-v1.3.js"; sourceTree = "<group>"; };
 		2BE68E631FB124A3008ABC64 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		384EB85B225BA07E0067A283 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
@@ -156,7 +155,6 @@
 			isa = PBXGroup;
 			children = (
 				2B61938F2354DE80004FB89C /* sampleAudioAd.mp3 */,
-				2B819EE52318A3CE00487326 /* BridgingHeader.h */,
 				65A041B22081224C0033463C /* Constants.swift */,
 				38B305DD1F859DA500557063 /* AdListViewController.swift */,
 				65F0CE5E208AB09D00E6FDF4 /* BaseAdUnitViewController.swift */,
