@@ -1,4 +1,4 @@
-module OMSDK_Demobuild {
+module OMSDK {
     header "Headers/OMIDImports.h"
     export *
 }
