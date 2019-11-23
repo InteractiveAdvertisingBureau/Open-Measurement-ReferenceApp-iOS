@@ -8,6 +8,7 @@
 import UIKit
 import WebKit
 import MediaPlayer
+import OMSDK_Demoapp
 
 class WebViewController: BaseAdUnitViewController {
     var webView: WKWebView?
@@ -53,9 +54,9 @@ class WebViewController: BaseAdUnitViewController {
         }
     }
 
-    override func createAdSessionConfiguration() -> OMIDAdSessionConfiguration {
+    override func createAdSessionConfiguration() -> OMIDDemoappAdSessionConfiguration {
         do {
-            return try OMIDAdSessionConfiguration(creativeType: .htmlDisplay,
+            return try OMIDDemoappAdSessionConfiguration(creativeType: .htmlDisplay,
                                                   impressionType: .beginToRender,
                                                   impressionOwner: .nativeOwner,
                                                   mediaEventsOwner: .noneOwner,
@@ -65,13 +66,13 @@ class WebViewController: BaseAdUnitViewController {
         }
     }
 
-    override func createAdSessionContext(withPartner partner: OMIDPartner) -> OMIDAdSessionContext {
+    override func createAdSessionContext(withPartner partner: OMIDDemoappPartner) -> OMIDDemoappAdSessionContext {
         guard let webView = webView else {
             fatalError("Unable to create ad session context: webView is not initialized")
         }
 
         do {
-            return try OMIDAdSessionContext(partner: partner, webView: webView, contentUrl: nil, customReferenceIdentifier: nil)
+            return try OMIDDemoappAdSessionContext(partner: partner, webView: webView, contentUrl: nil, customReferenceIdentifier: nil)
         } catch {
             fatalError("Unable to create ad session context: \(error)")
         }
@@ -106,7 +107,7 @@ extension WebViewController: WKNavigationDelegate {
 extension WebViewController {
     func injectOMID(intoHTML HTML: String) -> String {
         do {
-            let creativeWithOMID = try OMIDScriptInjector.injectScriptContent(omidJSService,
+            let creativeWithOMID = try OMIDDemoappScriptInjector.injectScriptContent(omidJSService,
                                                                                      intoHTML:HTML)
             return creativeWithOMID
         } catch {

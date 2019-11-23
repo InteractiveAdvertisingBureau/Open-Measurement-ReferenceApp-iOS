@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B26F02123888F43005F798D /* OMSDK_Demoapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B26F02023888F43005F798D /* OMSDK_Demoapp.framework */; };
+		2B1A68C32388AD7500DDEFFA /* OMSDK_Demoapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B1A68C22388AD7500DDEFFA /* OMSDK_Demoapp.framework */; };
+		2B1A68C42388AD7500DDEFFA /* OMSDK_Demoapp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2B1A68C22388AD7500DDEFFA /* OMSDK_Demoapp.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2B50FC64230CA493004CF05B /* AudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B50FC63230CA493004CF05B /* AudioViewController.swift */; };
 		2B8F87D52355122600824AC8 /* sampleAudioAd.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2B8F87D42355122600824AC8 /* sampleAudioAd.mp3 */; };
 		2BD50B7E2307288D00E6111D /* omid-validation-verification-script-v1.3.js in Resources */ = {isa = PBXBuildFile; fileRef = 2BD50B7D2307288D00E6111D /* omid-validation-verification-script-v1.3.js */; };
 		2BE68E641FB124A3008ABC64 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE68E631FB124A3008ABC64 /* VideoViewController.swift */; };
-		384EB872225BA07E0067A283 /* OMLICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 384EB86C225BA07E0067A283 /* OMLICENSE */; };
 		384EB875225C05DF0067A283 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 384EB874225C05DF0067A283 /* README.md */; };
 		38B305CB1F859D2B00557063 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B305CA1F859D2B00557063 /* AppDelegate.swift */; };
 		38B305D21F859D2B00557063 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38B305D11F859D2B00557063 /* Assets.xcassets */; };
@@ -25,28 +25,28 @@
 		65F0CE5F208AB09D00E6FDF4 /* BaseAdUnitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F0CE5E208AB09D00E6FDF4 /* BaseAdUnitViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		2B1A68BC2388AA0600DDEFFA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2B1A68C42388AD7500DDEFFA /* OMSDK_Demoapp.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		2B26F02023888F43005F798D /* OMSDK_Demoapp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OMSDK_Demoapp.framework; path = OMSDK/Service/OMSDK_Demoapp.framework; sourceTree = "<group>"; };
+		2B1A68C22388AD7500DDEFFA /* OMSDK_Demoapp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OMSDK_Demoapp.framework; path = OMSDK/OMSDK_Demoapp.framework; sourceTree = "<group>"; };
 		2B50FC63230CA493004CF05B /* AudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewController.swift; sourceTree = "<group>"; };
-		2B819ED82318A38B00487326 /* OMIDAdSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDAdSession.h; sourceTree = "<group>"; };
-		2B819ED92318A38B00487326 /* OMIDImports.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDImports.h; sourceTree = "<group>"; };
-		2B819EDA2318A38B00487326 /* OMIDAdSessionContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDAdSessionContext.h; sourceTree = "<group>"; };
-		2B819EDB2318A38B00487326 /* OMIDVASTProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDVASTProperties.h; sourceTree = "<group>"; };
-		2B819EDC2318A38B00487326 /* OMIDFriendlyObstructionType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDFriendlyObstructionType.h; sourceTree = "<group>"; };
-		2B819EDD2318A38B00487326 /* OMIDSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDSDK.h; sourceTree = "<group>"; };
-		2B819EDE2318A38B00487326 /* OMIDScriptInjector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDScriptInjector.h; sourceTree = "<group>"; };
-		2B819EDF2318A38B00487326 /* OMIDPartner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDPartner.h; sourceTree = "<group>"; };
-		2B819EE02318A38B00487326 /* OMIDVideoEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDVideoEvents.h; sourceTree = "<group>"; };
-		2B819EE12318A38B00487326 /* OMIDAdEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDAdEvents.h; sourceTree = "<group>"; };
-		2B819EE22318A38B00487326 /* OMIDVerificationScriptResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDVerificationScriptResource.h; sourceTree = "<group>"; };
-		2B819EE32318A38B00487326 /* OMIDAdSessionConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDAdSessionConfiguration.h; sourceTree = "<group>"; };
-		2B819EE42318A38B00487326 /* OMIDMediaEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMIDMediaEvents.h; sourceTree = "<group>"; };
 		2B8F87D42355122600824AC8 /* sampleAudioAd.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sampleAudioAd.mp3; sourceTree = "<group>"; };
 		2BD50B7D2307288D00E6111D /* omid-validation-verification-script-v1.3.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "omid-validation-verification-script-v1.3.js"; sourceTree = "<group>"; };
 		2BE68E631FB124A3008ABC64 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		384EB85B225BA07E0067A283 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		384EB86A225BA07E0067A283 /* OMLICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OMLICENSE; sourceTree = "<group>"; };
-		384EB86C225BA07E0067A283 /* OMLICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OMLICENSE; sourceTree = "<group>"; };
 		384EB874225C05DF0067A283 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.markdown; };
 		38B305C71F859D2B00557063 /* OM-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OM-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		38B305CA1F859D2B00557063 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,7 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B26F02123888F43005F798D /* OMSDK_Demoapp.framework in Frameworks */,
+				2B1A68C32388AD7500DDEFFA /* OMSDK_Demoapp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,29 +84,9 @@
 		2B819E662318644700487326 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2B26F02023888F43005F798D /* OMSDK_Demoapp.framework */,
+				2B1A68C22388AD7500DDEFFA /* OMSDK_Demoapp.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		2BB215CB23195E2C00140977 /* Headers */ = {
-			isa = PBXGroup;
-			children = (
-				2B819ED82318A38B00487326 /* OMIDAdSession.h */,
-				2B819EE32318A38B00487326 /* OMIDAdSessionConfiguration.h */,
-				2B819EDA2318A38B00487326 /* OMIDAdSessionContext.h */,
-				2B819EDC2318A38B00487326 /* OMIDFriendlyObstructionType.h */,
-				2B819ED92318A38B00487326 /* OMIDImports.h */,
-				2B819EE42318A38B00487326 /* OMIDMediaEvents.h */,
-				2B819EDF2318A38B00487326 /* OMIDPartner.h */,
-				2B819EDE2318A38B00487326 /* OMIDScriptInjector.h */,
-				2B819EDD2318A38B00487326 /* OMIDSDK.h */,
-				2B819EDB2318A38B00487326 /* OMIDVASTProperties.h */,
-				2B819EE22318A38B00487326 /* OMIDVerificationScriptResource.h */,
-				2B819EE02318A38B00487326 /* OMIDVideoEvents.h */,
-				2B819EE12318A38B00487326 /* OMIDAdEvents.h */,
-			);
-			path = Headers;
 			sourceTree = "<group>";
 		};
 		384EB85A225BA07E0067A283 /* OMSDK */ = {
@@ -114,19 +94,9 @@
 			children = (
 				384EB85B225BA07E0067A283 /* CHANGELOG.md */,
 				384EB86A225BA07E0067A283 /* OMLICENSE */,
-				2BB215CB23195E2C00140977 /* Headers */,
 				2B52378E231424AE00734E57 /* Verification */,
-				384EB86B225BA07E0067A283 /* Service */,
 			);
 			path = OMSDK;
-			sourceTree = "<group>";
-		};
-		384EB86B225BA07E0067A283 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				384EB86C225BA07E0067A283 /* OMLICENSE */,
-			);
-			path = Service;
 			sourceTree = "<group>";
 		};
 		38B305BE1F859D2B00557063 = {
@@ -178,6 +148,7 @@
 				38B305C31F859D2B00557063 /* Sources */,
 				38B305C41F859D2B00557063 /* Frameworks */,
 				38B305C51F859D2B00557063 /* Resources */,
+				2B1A68BC2388AA0600DDEFFA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -230,7 +201,6 @@
 			files = (
 				2B8F87D52355122600824AC8 /* sampleAudioAd.mp3 in Resources */,
 				384EB875225C05DF0067A283 /* README.md in Resources */,
-				384EB872225BA07E0067A283 /* OMLICENSE in Resources */,
 				38B305D21F859D2B00557063 /* Assets.xcassets in Resources */,
 				2BD50B7E2307288D00E6111D /* omid-validation-verification-script-v1.3.js in Resources */,
 				38FE29961F8BA9B20049ABFC /* Main.storyboard in Resources */,
@@ -334,7 +304,6 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/OM-Demo/BridgingHeader.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
 			};
@@ -388,7 +357,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/OM-Demo/BridgingHeader.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
 				VALIDATE_PRODUCT = YES;
@@ -415,6 +383,7 @@
 					"$(PROJECT_DIR)/OMSDK/Service",
 				);
 				INFOPLIST_FILE = "OM-Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -451,6 +420,7 @@
 					"$(PROJECT_DIR)/OMSDK/Service",
 				);
 				INFOPLIST_FILE = "OM-Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

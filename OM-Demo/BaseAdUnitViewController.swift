@@ -8,6 +8,7 @@
 import UIKit
 import WebKit
 import MediaPlayer
+import OMSDK_Demoapp
 
 class BaseAdUnitViewController: UIViewController {
     fileprivate var isDisplayingErrorMessage = false
@@ -20,8 +21,8 @@ class BaseAdUnitViewController: UIViewController {
 
     var adUnit: AdUnit?
     
-    var adSession: OMIDAdSession?
-    var adEvents: OMIDAdEvents?
+    var adSession: OMIDDemoappAdSession?
+    var adEvents: OMIDDemoappAdEvents?
     
     var creativeURL: URL {
         fatalError("Not implemented")
@@ -210,22 +211,22 @@ class BaseAdUnitViewController: UIViewController {
     }
 
     private func activateOMSDK() -> Bool {
-        if OMIDSDK.shared.isActive {
+        if OMIDDemoappSDK.shared.isActive {
             return true
         }
 
         //Activate the SDK
-        OMIDSDK.shared.activate()
+        OMIDDemoappSDK.shared.activate()
        
-        return OMIDSDK.shared.isActive
+        return OMIDDemoappSDK.shared.isActive
 
     }
 
-    private func createAdSession() -> OMIDAdSession {
+    private func createAdSession() -> OMIDDemoappAdSession {
         //Partner name has to be unique to your integration
         let partnerName = "Pandora"
         let partnerVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String
-        guard let partner = OMIDPartner(name: partnerName, versionString: partnerVersion ?? "1.0")
+        guard let partner = OMIDDemoappPartner(name: partnerName, versionString: partnerVersion ?? "1.0")
             else {
                 fatalError("Unable to initialize OMID partner")
         }
@@ -238,7 +239,7 @@ class BaseAdUnitViewController: UIViewController {
 
         do {
             //Create ad session
-            let session = try OMIDAdSession(configuration: configuration, adSessionContext: context)
+            let session = try OMIDDemoappAdSession(configuration: configuration, adSessionContext: context)
             
             //Only add adView if not nativeAudio adUnit
             if let adUnit = adUnit, adUnit == .nativeAudio {
@@ -267,7 +268,7 @@ class BaseAdUnitViewController: UIViewController {
      Subclasses can use this method to create `OMIDMediaEvents`.
      Default implementation does nothing.
      */
-    func setupAdditionalAdEvents(adSession: OMIDAdSession) {
+    func setupAdditionalAdEvents(adSession: OMIDDemoappAdSession) {
         return
     }
 
@@ -282,7 +283,7 @@ class BaseAdUnitViewController: UIViewController {
      - Returns: an instance of `OMIDAdSessionContext` that was created
 
      */
-    func createAdSessionContext(withPartner partner: OMIDPartner) -> OMIDAdSessionContext {
+    func createAdSessionContext(withPartner partner: OMIDDemoappPartner) -> OMIDDemoappAdSessionContext {
         fatalError("Not implemented")
     }
 
@@ -293,11 +294,11 @@ class BaseAdUnitViewController: UIViewController {
      - Returns: an instance of `OMIDAdSessionConfiguration` that was created
 
      */
-    func createAdSessionConfiguration() -> OMIDAdSessionConfiguration {
+    func createAdSessionConfiguration() -> OMIDDemoappAdSessionConfiguration {
         fatalError("Not implemented")
     }
     
-    func createVerificationScriptResource(vendorKey: String?, verificationScriptURL: String, parameters: String?) -> OMIDVerificationScriptResource? {
+    func createVerificationScriptResource(vendorKey: String?, verificationScriptURL: String, parameters: String?) -> OMIDDemoappVerificationScriptResource? {
         guard let URL = URL(string: verificationScriptURL) else {
             fatalError("Unable to parse Verification Script URL")
         }
@@ -305,11 +306,11 @@ class BaseAdUnitViewController: UIViewController {
         if let vendorKey = vendorKey,
             let parameters = parameters,
             vendorKey.count > 0 && parameters.count > 0 {
-                return OMIDVerificationScriptResource(url: URL,
+                return OMIDDemoappVerificationScriptResource(url: URL,
                                                                vendorKey: vendorKey,
                                                                parameters: parameters)
         } else {
-            return OMIDVerificationScriptResource(url: URL)
+            return OMIDDemoappVerificationScriptResource(url: URL)
         }
     }
 }

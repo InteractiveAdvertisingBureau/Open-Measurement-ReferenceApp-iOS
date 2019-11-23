@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import OMSDK_Demoapp
 
 class ImageViewController: BaseAdUnitViewController {
     
@@ -25,7 +26,7 @@ class ImageViewController: BaseAdUnitViewController {
         imageView.image = nil
     }
 
-    override func createAdSessionContext(withPartner partner: OMIDPartner) -> OMIDAdSessionContext {
+    override func createAdSessionContext(withPartner partner: OMIDDemoappPartner) -> OMIDDemoappAdSessionContext {
         //These values should be parsed from the ad response
         //For example:
         //[
@@ -53,16 +54,16 @@ class ImageViewController: BaseAdUnitViewController {
 
         //Create native ad session context
         do {
-            return try OMIDAdSessionContext(partner: partner, script: omidJSService, resources: [verificationResource], contentUrl: nil, customReferenceIdentifier: nil)
+            return try OMIDDemoappAdSessionContext(partner: partner, script: omidJSService, resources: [verificationResource], contentUrl: nil, customReferenceIdentifier: nil)
         } catch {
             fatalError("Unable to instantiate session context: \(error)")
         }
     }
 
-    override func createAdSessionConfiguration() -> OMIDAdSessionConfiguration {
+    override func createAdSessionConfiguration() -> OMIDDemoappAdSessionConfiguration {
         //Create ad session configuration
         do {
-            return try OMIDAdSessionConfiguration(creativeType: .nativeDisplay, impressionType: .viewable, impressionOwner: .nativeOwner, mediaEventsOwner: .noneOwner, isolateVerificationScripts: true)
+            return try OMIDDemoappAdSessionConfiguration(creativeType: .nativeDisplay, impressionType: .viewable, impressionOwner: .nativeOwner, mediaEventsOwner: .noneOwner, isolateVerificationScripts: true)
         } catch {
             fatalError("Unable to create ad session configuration: \(error)")
         }

@@ -39,11 +39,11 @@ class AudioViewController: VideoViewController {
         self.audioPlayer = player
     }
     
-    override func createAdSessionConfiguration() -> OMIDAdSessionConfiguration {
+    override func createAdSessionConfiguration() -> OMIDDemoappAdSessionConfiguration {
         //Create ad session configuration
         do {
             return try
-                OMIDAdSessionConfiguration(creativeType: .audio, impressionType: .audible, impressionOwner: .nativeOwner, mediaEventsOwner: .nativeOwner, isolateVerificationScripts: false)
+                OMIDDemoappAdSessionConfiguration(creativeType: .audio, impressionType: .audible, impressionOwner: .nativeOwner, mediaEventsOwner: .nativeOwner, isolateVerificationScripts: false)
         } catch {
             fatalError("Unable to create ad session configuration: \(error)")
         }

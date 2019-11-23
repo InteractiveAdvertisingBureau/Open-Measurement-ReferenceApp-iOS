@@ -7,6 +7,7 @@
 
 import UIKit
 import AVKit
+import OMSDK_Framework
 
 enum Quartile {
     case Init
@@ -26,7 +27,7 @@ class VideoViewController: BaseAdUnitViewController {
     @IBOutlet weak var endTimeLabel: UILabel!
     @IBOutlet weak var muteButton: UIButton!
 
-    var omidMediaEvents: OMIDMediaEvents?
+    var omidMediaEvents: OMIDDemoappMediaEvents?
     var currentQuartile: Quartile = .Init
 
     override var creativeURL: URL {
@@ -70,7 +71,7 @@ class VideoViewController: BaseAdUnitViewController {
         showPlayerControls()
     }
 
-    override func createAdSessionContext(withPartner partner: OMIDPartner) -> OMIDAdSessionContext {
+    override func createAdSessionContext(withPartner partner: OMIDDemoappPartner) -> OMIDDemoappAdSessionContext {
         //Ad Verification
         //These values should be parsed from the VAST document
 
@@ -104,17 +105,17 @@ class VideoViewController: BaseAdUnitViewController {
 
         //Create native ad session context
         do {
-            return try OMIDAdSessionContext(partner: partner, script: omidJSService, resources: [verificationResource], contentUrl: nil, customReferenceIdentifier: nil)
+            return try OMIDDemoappAdSessionContext(partner: partner, script: omidJSService, resources: [verificationResource], contentUrl: nil, customReferenceIdentifier: nil)
         } catch {
             fatalError("Unable to instantiate session context: \(error)")
         }
     }
 
-    override func createAdSessionConfiguration() -> OMIDAdSessionConfiguration {
+    override func createAdSessionConfiguration() -> OMIDDemoappAdSessionConfiguration {
         //Create ad session configuration
         do {
             return try
-                OMIDAdSessionConfiguration(creativeType: .video,
+                OMIDDemoappAdSessionConfiguration(creativeType: .video,
                                            impressionType: .beginToRender,
                                            impressionOwner: .nativeOwner,
                                            mediaEventsOwner: .nativeOwner,
@@ -124,9 +125,9 @@ class VideoViewController: BaseAdUnitViewController {
         }
     }
 
-    override func setupAdditionalAdEvents(adSession: OMIDAdSession) {
+    override func setupAdditionalAdEvents(adSession: OMIDDemoappAdSession) {
         do {
-            omidMediaEvents = try OMIDMediaEvents(adSession: adSession)
+            omidMediaEvents = try OMIDDemoappMediaEvents(adSession: adSession)
         } catch {
             fatalError("Unable to instantiate video ad events")
         }
@@ -135,7 +136,7 @@ class VideoViewController: BaseAdUnitViewController {
     override func adLoaded() {
         //Report VAST properties to OMID
         //The values should be parsed from the VAST document
-        let VASTProperties = OMIDVASTProperties(autoPlay: true, position: .standalone)
+        let VASTProperties = OMIDDemoappVASTProperties(autoPlay: true, position: .standalone)
         
         do {
             try adEvents?.loaded(with: VASTProperties)
