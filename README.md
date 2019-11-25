@@ -9,11 +9,12 @@ Included are 3 sample integrations:
 * Native display ad 
 * HTML display ad
 * Native video ad
+* Native audio ad
 
 ## Getting Started
 
 1. Clone the project on to your local machine to get started
-2. Download the latest omsdk-v1.js release from the IAB portal (https://tools.iab.techlab.com/omsdk) and drop it into /OMSDK/Service/
+2. Download the latest omsdk-v1.js and omid-validation-verification-script-v1.js release from the IAB portal (https://tools.iab.techlab.com/omsdk) and drop it into /OMSDK/Service/ and /OMSDK/Verification respectively.
 3. Build and run in Simulator
 4. Use Charles proxy or Safari Web Inspector to see what events OM SDK is receiving
 5. Choose one of the sample implementations from the table
