@@ -20,9 +20,7 @@ struct Constants {
         let url = Bundle.main.url(forResource: "sampleAudioAd", withExtension: "mp3")!
         return url
     }
-    
-//    static let verificationScriptURL = "http://www.pandora.com/static/ads/omsdk-v1_3/omid-validation-verification-script-v1.js"
-    
+        
     //TODO: remove verification script as a resource
     
     static var verificationScriptURL: URL {
