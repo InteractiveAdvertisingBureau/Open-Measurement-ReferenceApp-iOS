@@ -13,7 +13,7 @@
  *  Ad event API enabling the integration partner to signal to all verification providers when key events have occurred.
  * Only one ad events implementation can be associated with the ad session and any attempt to create multiple instances will result in an error.
  */
-@interface OMIDAdEvents : NSObject
+@interface OMIDDemoappAdEvents : NSObject
 
 /**
  *  Initializes ad events instance associated with the supplied ad session.
@@ -21,7 +21,7 @@
  * @param session The ad session associated with the ad events.
  * @return A new ad events instance associated with the supplied ad session. Returns nil if the supplied ad session is nil or if an ad events instance has already been registered with the ad session.
  */
-- (nullable instancetype)initWithAdSession:(nonnull OMIDAdSession *)session error:(NSError * _Nullable * _Nullable)error;
+- (nullable instancetype)initWithAdSession:(nonnull OMIDDemoappAdSession *)session error:(NSError * _Nullable * _Nullable)error;
 
 /**
  *  Notifies the ad session that an impression event has occurred.
@@ -45,6 +45,6 @@
  *  When triggered all registered verification providers will be notified of this event.
  * @param vastProperties contains static information about the video/audio placement.
  */
-- (BOOL)loadedWithVastProperties:(OMIDVASTProperties *_Nonnull)vastProperties
+- (BOOL)loadedWithVastProperties:(OMIDDemoappVASTProperties *_Nonnull)vastProperties
                            error:(NSError *_Nullable *_Nullable)error;
 @end

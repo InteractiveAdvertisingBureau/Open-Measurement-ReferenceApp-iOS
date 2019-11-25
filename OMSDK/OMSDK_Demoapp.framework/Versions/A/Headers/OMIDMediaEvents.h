@@ -33,7 +33,7 @@ typedef NS_ENUM(NSUInteger, OMIDInteractionType) {
  * Using this event API assumes the media player is fully responsible for communicating all media events at the appropriate times.
  * Only one media events implementation can be associated with the ad session and any attempt to create multiple instances will result in an error.
  */
-@interface OMIDMediaEvents : NSObject
+@interface OMIDDemoappMediaEvents : NSObject
 
 /**
  *  Initializes media events instance for the associated ad session.
@@ -43,7 +43,7 @@ typedef NS_ENUM(NSUInteger, OMIDInteractionType) {
  * @return A new media events instance. Returns nil if the supplied ad session is nil or if a media events instance has already been registered with the ad session or if a media events instance has been created after the ad session has started.
  * @see OMIDAdSession
  */
-- (nullable instancetype)initWithAdSession:(nonnull OMIDAdSession *)session error:(NSError *_Nullable *_Nullable)error;
+- (nullable instancetype)initWithAdSession:(nonnull OMIDDemoappAdSession *)session error:(NSError *_Nullable *_Nullable)error;
 
 /**
  *  Notifies all media listeners that media content has been loaded and ready to start playing.
@@ -51,7 +51,7 @@ typedef NS_ENUM(NSUInteger, OMIDInteractionType) {
  * @param vastProperties The parameters containing static information about the media placement.
  * @see OMIDVASTProperties
  */
-- (void)loadedWithVastProperties:(nonnull OMIDVASTProperties *)vastProperties;
+- (void)loadedWithVastProperties:(nonnull OMIDDemoappVASTProperties *)vastProperties;
 
 /**
  *  Notifies all media listeners that media content has started playing.

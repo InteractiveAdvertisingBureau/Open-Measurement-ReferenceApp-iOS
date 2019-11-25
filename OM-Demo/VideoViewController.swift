@@ -7,7 +7,7 @@
 
 import UIKit
 import AVKit
-import OMSDK_Framework
+import OMSDK_Demoapp
 
 enum Quartile {
     case Init

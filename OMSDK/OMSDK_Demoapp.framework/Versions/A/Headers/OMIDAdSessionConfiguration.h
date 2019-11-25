@@ -56,7 +56,7 @@ typedef NS_ENUM(NSUInteger, OMIDImpressionType) {
  * The OMID JS service will use this information to help identify where the source of these
  * events is expected to be received.
  */
-@interface OMIDAdSessionConfiguration : NSObject
+@interface OMIDDemoappAdSessionConfiguration : NSObject
 
 @property OMIDCreativeType creativeType;
 @property OMIDImpressionType impressionType;

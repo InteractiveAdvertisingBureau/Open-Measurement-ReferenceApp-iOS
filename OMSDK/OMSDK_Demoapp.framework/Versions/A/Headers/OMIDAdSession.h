@@ -20,12 +20,12 @@ typedef NS_ENUM(NSUInteger, OMIDErrorType) {
  *  Ad session API enabling the integration partner to notify OMID of key state relating to viewability calculations.
  * In addition to viewability this API will also notify all verification providers of key ad session lifecycle events.
  */
-@interface OMIDAdSession : NSObject
+@interface OMIDDemoappAdSession : NSObject
 
 /**
  *  The AdSession configuration is used for check owners.
  */
-@property(nonatomic, readonly, nonnull) OMIDAdSessionConfiguration *configuration;
+@property(nonatomic, readonly, nonnull) OMIDDemoappAdSessionConfiguration *configuration;
 /**
  *  The native view which is used for viewability tracking.
  */
@@ -48,8 +48,8 @@ typedef NS_ENUM(NSUInteger, OMIDErrorType) {
  * @param context The context that provides the required information for initialising the ad session.
  * @return A new OMIDAdSession instance, or nil if the supplied context is nil.
  */
-- (nullable instancetype)initWithConfiguration:(nonnull OMIDAdSessionConfiguration *)configuration
-                              adSessionContext:(nonnull OMIDAdSessionContext *)context
+- (nullable instancetype)initWithConfiguration:(nonnull OMIDDemoappAdSessionConfiguration *)configuration
+                              adSessionContext:(nonnull OMIDDemoappAdSessionContext *)context
                                          error:(NSError *_Nullable *_Nullable)error;
 
 

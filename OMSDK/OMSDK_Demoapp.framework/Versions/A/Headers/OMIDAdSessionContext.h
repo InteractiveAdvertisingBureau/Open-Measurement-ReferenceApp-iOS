@@ -9,7 +9,7 @@
 /**
  *  This class will provide the ad session both details of the partner and whether this is considered HTML or native.
  */
-@interface OMIDAdSessionContext : NSObject
+@interface OMIDDemoappAdSessionContext : NSObject
 
 - (null_unspecified instancetype)init NS_UNAVAILABLE;
 
@@ -26,7 +26,7 @@
  * @return A new HTML context instance. Returns nil if OMID has not been activated or if any of the parameters are nil.
  * @see OMIDSDK
  */
-- (nullable instancetype)initWithPartner:(nonnull OMIDPartner *)partner
+- (nullable instancetype)initWithPartner:(nonnull OMIDDemoappPartner *)partner
                                  webView:(nonnull UIView *)webView
                customReferenceIdentifier:(nullable NSString *)customReferenceIdentifier
                                    error:(NSError *_Nullable *_Nullable)error;
@@ -44,7 +44,7 @@
  * @return A new HTML context instance. Returns nil if OMID has not been activated or if any of the parameters are nil.
  * @see OMIDSDK
  */
-- (nullable instancetype)initWithPartner:(nonnull OMIDPartner *)partner
+- (nullable instancetype)initWithPartner:(nonnull OMIDDemoappPartner *)partner
                                  webView:(nonnull UIView *)webView
                               contentUrl:(nullable NSString *)contentUrl
                customReferenceIdentifier:(nullable NSString *)customReferenceIdentifier
@@ -63,9 +63,9 @@
  * @return A new native context instance. Returns nil if OMID has not been activated or if any of the parameters are invalid.
  * @see OMIDSDK
  */
-- (nullable instancetype)initWithPartner:(nonnull OMIDPartner *)partner
+- (nullable instancetype)initWithPartner:(nonnull OMIDDemoappPartner *)partner
                                   script:(nonnull NSString *)script
-                               resources:(nonnull NSArray<OMIDVerificationScriptResource *> *)resources
+                               resources:(nonnull NSArray<OMIDDemoappVerificationScriptResource *> *)resources
                customReferenceIdentifier:(nullable NSString *)customReferenceIdentifier
                                    error:(NSError *_Nullable *_Nullable)error;
 
@@ -82,9 +82,9 @@
  * @return A new native context instance. Returns nil if OMID has not been activated or if any of the parameters are invalid.
  * @see OMIDSDK
  */
-- (nullable instancetype)initWithPartner:(nonnull OMIDPartner *)partner
+- (nullable instancetype)initWithPartner:(nonnull OMIDDemoappPartner *)partner
                                   script:(nonnull NSString *)script
-                               resources:(nonnull NSArray<OMIDVerificationScriptResource *> *)resources
+                               resources:(nonnull NSArray<OMIDDemoappVerificationScriptResource *> *)resources
                               contentUrl:(nullable NSString *)contentUrl
                customReferenceIdentifier:(nullable NSString *)customReferenceIdentifier
                                    error:(NSError *_Nullable *_Nullable)error;
@@ -102,7 +102,7 @@
  * @return A new JavaScript context instance. Returns nil if OMID has not been activated or if any of the parameters are invalid.
  * @see OMIDSDK
  */
-- (nullable instancetype)initWithPartner:(nonnull OMIDPartner *)partner
+- (nullable instancetype)initWithPartner:(nonnull OMIDDemoappPartner *)partner
                        javaScriptWebView:(nonnull UIView *)webView
                               contentUrl:(nullable NSString *)contentUrl
                customReferenceIdentifier:(nullable NSString *)customReferenceIdentifier

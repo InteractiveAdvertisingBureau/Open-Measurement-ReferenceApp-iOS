@@ -10,7 +10,7 @@
 /**
  *  Details about the integration partner which will be supplied to the ad session.
  */
-@interface OMIDPartner : NSObject
+@interface OMIDDemoappPartner : NSObject
 
 @property(nonatomic, readonly, nonnull) NSString *name;
 @property(nonatomic, readonly, nonnull) NSString *versionString;

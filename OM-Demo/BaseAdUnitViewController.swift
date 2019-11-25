@@ -171,7 +171,7 @@ class BaseAdUnitViewController: UIViewController {
                 fatalError("Ad session cannot be nil")
             }
 
-            adEvents = try OMIDAdEvents(adSession: adSession)
+            adEvents = try OMIDDemoappAdEvents(adSession: adSession)
             setupAdditionalAdEvents(adSession: adSession)
 
         } catch {

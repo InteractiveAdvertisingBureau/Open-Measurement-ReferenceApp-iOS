@@ -19,7 +19,7 @@
  * Make sure you are on the main thread when you initialize the SDK, create its
  * objects, and invoke its methods.
  */
-@interface OMIDSDK : NSObject
+@interface OMIDDemoappSDK : NSObject
 
 /**
  *  The current semantic version of the integrated OMID library.
@@ -29,7 +29,7 @@
 /**
  *  Shared OMIDSDK instance.
  */
-@property(class, readonly, nonnull) OMIDSDK *sharedInstance
+@property(class, readonly, nonnull) OMIDDemoappSDK *sharedInstance
 NS_SWIFT_NAME(shared);
 
 /**

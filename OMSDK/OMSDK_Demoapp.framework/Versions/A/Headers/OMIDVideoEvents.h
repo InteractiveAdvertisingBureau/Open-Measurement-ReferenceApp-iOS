@@ -17,7 +17,7 @@
  * Using this event API assumes the video player is fully responsible for communicating all video events at the appropriate times.
  * Only one video events implementation can be associated with the ad session and any attempt to create multiple instances will result in an error.
  */
-@interface OMIDVideoEvents : NSObject
+@interface OMIDDemoappVideoEvents : NSObject
 
 /**
  *  Initializes video events instance for the associated ad session.
@@ -27,7 +27,7 @@
  * @return A new video events instance. Returns nil if the supplied ad session is nil or if a video events instance has already been registered with the ad session or if a video events instance has been created after the ad session has started.
  * @see OMIDAdSession
  */
-- (nullable instancetype)initWithAdSession:(nonnull OMIDAdSession *)session error:(NSError *_Nullable *_Nullable)error;
+- (nullable instancetype)initWithAdSession:(nonnull OMIDDemoappAdSession *)session error:(NSError *_Nullable *_Nullable)error;
 
 /**
  * Note: Planned to be deprecated in OM SDK 1.3.2.
@@ -37,7 +37,7 @@
  * @param vastProperties The parameters containing static information about the video placement.
  * @see OMIDVASTProperties
  */
-- (void)loadedWithVastProperties:(nonnull OMIDVASTProperties *)vastProperties;
+- (void)loadedWithVastProperties:(nonnull OMIDDemoappVASTProperties *)vastProperties;
 
 /**
  *  Notifies all video listeners that video content has started playing.
