@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2B1A68C32388AD7500DDEFFA /* OMSDK_Demoapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B1A68C22388AD7500DDEFFA /* OMSDK_Demoapp.framework */; };
-		2B1A68C42388AD7500DDEFFA /* OMSDK_Demoapp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2B1A68C22388AD7500DDEFFA /* OMSDK_Demoapp.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2B50FC64230CA493004CF05B /* AudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B50FC63230CA493004CF05B /* AudioViewController.swift */; };
 		2B8F87D52355122600824AC8 /* sampleAudioAd.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2B8F87D42355122600824AC8 /* sampleAudioAd.mp3 */; };
 		2BD50B7E2307288D00E6111D /* omid-validation-verification-script-v1.js in Resources */ = {isa = PBXBuildFile; fileRef = 2BD50B7D2307288D00E6111D /* omid-validation-verification-script-v1.js */; };
@@ -24,20 +23,6 @@
 		65A041B32081224C0033463C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A041B22081224C0033463C /* Constants.swift */; };
 		65F0CE5F208AB09D00E6FDF4 /* BaseAdUnitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F0CE5E208AB09D00E6FDF4 /* BaseAdUnitViewController.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		2B1A68BC2388AA0600DDEFFA /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				2B1A68C42388AD7500DDEFFA /* OMSDK_Demoapp.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2B1A68C22388AD7500DDEFFA /* OMSDK_Demoapp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OMSDK_Demoapp.framework; path = OMSDK/OMSDK_Demoapp.framework; sourceTree = "<group>"; };
@@ -148,7 +133,6 @@
 				38B305C31F859D2B00557063 /* Sources */,
 				38B305C41F859D2B00557063 /* Frameworks */,
 				38B305C51F859D2B00557063 /* Resources */,
-				2B1A68BC2388AA0600DDEFFA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
