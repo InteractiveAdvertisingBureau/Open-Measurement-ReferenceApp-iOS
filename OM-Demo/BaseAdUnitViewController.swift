@@ -30,7 +30,7 @@ class BaseAdUnitViewController: UIViewController {
 
     var omidJSService: String {
         //Load OMID JS service contents
-        let omidServiceUrl = Bundle.main.url(forResource: "omsdk-v1.3", withExtension: "js")!
+        let omidServiceUrl = Bundle.main.url(forResource: "omsdk-v1", withExtension: "js")!
         return try! String(contentsOf: omidServiceUrl)
     }
     

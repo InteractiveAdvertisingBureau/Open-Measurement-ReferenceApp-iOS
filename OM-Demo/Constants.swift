@@ -26,7 +26,7 @@ struct Constants {
     //TODO: remove verification script as a resource
     
     static var verificationScriptURL: URL {
-        let url = Bundle.main.url(forResource: "omid-validation-verification-script-v1.3", withExtension: "js")!
+        let url = Bundle.main.url(forResource: "omid-validation-verification-script-v1", withExtension: "js")!
         return url
     }
 

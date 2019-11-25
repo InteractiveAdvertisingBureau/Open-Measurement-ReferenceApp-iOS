@@ -11,7 +11,7 @@
 		2B1A68C42388AD7500DDEFFA /* OMSDK_Demoapp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2B1A68C22388AD7500DDEFFA /* OMSDK_Demoapp.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2B50FC64230CA493004CF05B /* AudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B50FC63230CA493004CF05B /* AudioViewController.swift */; };
 		2B8F87D52355122600824AC8 /* sampleAudioAd.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2B8F87D42355122600824AC8 /* sampleAudioAd.mp3 */; };
-		2BD50B7E2307288D00E6111D /* omid-validation-verification-script-v1.3.js in Resources */ = {isa = PBXBuildFile; fileRef = 2BD50B7D2307288D00E6111D /* omid-validation-verification-script-v1.3.js */; };
+		2BD50B7E2307288D00E6111D /*  in Resources */ = {isa = PBXBuildFile; fileRef = 2BD50B7D2307288D00E6111D /*  */; };
 		2BE68E641FB124A3008ABC64 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE68E631FB124A3008ABC64 /* VideoViewController.swift */; };
 		384EB875225C05DF0067A283 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 384EB874225C05DF0067A283 /* README.md */; };
 		38B305CB1F859D2B00557063 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B305CA1F859D2B00557063 /* AppDelegate.swift */; };
@@ -43,7 +43,7 @@
 		2B1A68C22388AD7500DDEFFA /* OMSDK_Demoapp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OMSDK_Demoapp.framework; path = OMSDK/OMSDK_Demoapp.framework; sourceTree = "<group>"; };
 		2B50FC63230CA493004CF05B /* AudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewController.swift; sourceTree = "<group>"; };
 		2B8F87D42355122600824AC8 /* sampleAudioAd.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sampleAudioAd.mp3; sourceTree = "<group>"; };
-		2BD50B7D2307288D00E6111D /* omid-validation-verification-script-v1.3.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "omid-validation-verification-script-v1.3.js"; sourceTree = "<group>"; };
+		2BD50B7D2307288D00E6111D /*  */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; name = ""; sourceTree = "<group>"; };
 		2BE68E631FB124A3008ABC64 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		384EB85B225BA07E0067A283 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		384EB86A225BA07E0067A283 /* OMLICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OMLICENSE; sourceTree = "<group>"; };
@@ -76,7 +76,7 @@
 		2B52378E231424AE00734E57 /* Verification */ = {
 			isa = PBXGroup;
 			children = (
-				2BD50B7D2307288D00E6111D /* omid-validation-verification-script-v1.3.js */,
+				2BD50B7D2307288D00E6111D /*  */,
 			);
 			path = Verification;
 			sourceTree = "<group>";
@@ -202,7 +202,7 @@
 				2B8F87D52355122600824AC8 /* sampleAudioAd.mp3 in Resources */,
 				384EB875225C05DF0067A283 /* README.md in Resources */,
 				38B305D21F859D2B00557063 /* Assets.xcassets in Resources */,
-				2BD50B7E2307288D00E6111D /* omid-validation-verification-script-v1.3.js in Resources */,
+				2BD50B7E2307288D00E6111D /*  in Resources */,
 				38FE29961F8BA9B20049ABFC /* Main.storyboard in Resources */,
 				38FE29971F8BA9B40049ABFC /* LaunchScreen.storyboard in Resources */,
 			);
