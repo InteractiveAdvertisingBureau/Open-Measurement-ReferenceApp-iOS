@@ -224,7 +224,7 @@ class BaseAdUnitViewController: UIViewController {
 
     private func createAdSession() -> OMIDDemoappAdSession {
         //Partner name has to be unique to your integration
-        let partnerName = "Pandora"
+        let partnerName = "Demoapp"
         let partnerVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String
         guard let partner = OMIDDemoappPartner(name: partnerName, versionString: partnerVersion ?? "1.0")
             else {
@@ -368,4 +368,3 @@ extension BaseAdUnitViewController {
         }
     }
 }
-
