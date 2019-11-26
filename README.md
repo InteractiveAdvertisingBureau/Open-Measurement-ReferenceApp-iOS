@@ -9,16 +9,18 @@ Included are 3 sample integrations:
 * Native display ad 
 * HTML display ad
 * Native video ad
+* Native audio ad
 
 ## Getting Started
 
 1. Clone the project on to your local machine to get started
-2. Download the latest omsdk-v1.js release from the IAB portal (https://tools.iab.techlab.com/omsdk) and drop it into /OMSDK/Service/
-3. Build and run in Simulator
-4. Use Charles proxy or Safari Web Inspector to see what events OM SDK is receiving
-5. Choose one of the sample implementations from the table
-6. Wait for the ad to load
-7. Observe network calls to `http://iabtechlab.com:66` (the query string will include URL-encoded JSON object with OM SDK event parameters)
+2. Download the latest "Demoapp" namespaced OM SDK iOS from IAB portal (https://tools.iab.techlab.com/omsdk) and link the framework to the project. Add the framework into the /OMSDK/ folder.
+3. Download the latest omsdk-v1.js and omid-validation-verification-script-v1.js release from the IAB portal (https://tools.iab.techlab.com/omsdk) and drop it into /OMSDK/Service/ and /OMSDK/Verification respectively.
+4. Build and run in Simulator
+5. Use Charles proxy or Safari Web Inspector to see what events OM SDK is receiving
+6. Choose one of the sample implementations from the table
+7. Wait for the ad to load
+8. Observe network calls to `http://iabtechlab.com:66` (the query string will include URL-encoded JSON object with OM SDK event parameters)
 
 ## Clarifications
 

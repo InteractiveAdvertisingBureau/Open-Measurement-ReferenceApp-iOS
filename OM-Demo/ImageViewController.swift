@@ -6,9 +6,10 @@
 //
 
 import UIKit
-import OMSDK_Demobuild
+import OMSDK_Demoapp
 
 class ImageViewController: BaseAdUnitViewController {
+    
     @IBOutlet weak var imageView: UIImageView!
 
     override var creativeURL: URL {
@@ -25,7 +26,7 @@ class ImageViewController: BaseAdUnitViewController {
         imageView.image = nil
     }
 
-    override func createAdSessionContext(withPartner partner: OMIDDemobuildPartner) -> OMIDDemobuildAdSessionContext {
+    override func createAdSessionContext(withPartner partner: OMIDDemoappPartner) -> OMIDDemoappAdSessionContext {
         //These values should be parsed from the ad response
         //For example:
         //[
@@ -45,7 +46,7 @@ class ImageViewController: BaseAdUnitViewController {
 
         //Create verification resource using the values provided in the ad response
         guard let verificationResource = createVerificationScriptResource(vendorKey: vendorKey,
-                                                                          verificationScriptURL: urlToMeasurementScript,
+                                                                          verificationScriptURL: urlToMeasurementScript.absoluteString,
                                                                           parameters: parameters)
             else {
                 fatalError("Unable to instantiate session context: verification resource cannot be nil")
@@ -53,20 +54,26 @@ class ImageViewController: BaseAdUnitViewController {
 
         //Create native ad session context
         do {
-            return try OMIDDemobuildAdSessionContext(partner: partner, script: omidJSService, resources: [verificationResource], customReferenceIdentifier: nil)
+            return try OMIDDemoappAdSessionContext(partner: partner, script: omidJSService, resources: [verificationResource], contentUrl: nil, customReferenceIdentifier: nil)
         } catch {
             fatalError("Unable to instantiate session context: \(error)")
         }
     }
 
-    override func createAdSessionConfiguration() -> OMIDDemobuildAdSessionConfiguration {
+    override func createAdSessionConfiguration() -> OMIDDemoappAdSessionConfiguration {
         //Create ad session configuration
         do {
-            return try OMIDDemobuildAdSessionConfiguration(impressionOwner: .nativeOwner,
-                                                         videoEventsOwner: .noneOwner,
-                                                         isolateVerificationScripts: false)
+            return try OMIDDemoappAdSessionConfiguration(creativeType: .nativeDisplay, impressionType: .viewable, impressionOwner: .nativeOwner, mediaEventsOwner: .noneOwner, isolateVerificationScripts: true)
         } catch {
             fatalError("Unable to create ad session configuration: \(error)")
+        }
+    }
+    
+    override func adLoaded() {
+        do {
+            try adEvents?.loaded()
+        } catch {
+            fatalError("Unable to trigger loaded event: \(error)")
         }
     }
 }

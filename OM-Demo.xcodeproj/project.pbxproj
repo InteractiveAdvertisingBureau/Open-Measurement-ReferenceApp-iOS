@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B1A68C32388AD7500DDEFFA /* OMSDK_Demoapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B1A68C22388AD7500DDEFFA /* OMSDK_Demoapp.framework */; };
+		2B50FC64230CA493004CF05B /* AudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B50FC63230CA493004CF05B /* AudioViewController.swift */; };
+		2B8F87D52355122600824AC8 /* sampleAudioAd.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2B8F87D42355122600824AC8 /* sampleAudioAd.mp3 */; };
+		2BD50B7E2307288D00E6111D /* omid-validation-verification-script-v1.js in Resources */ = {isa = PBXBuildFile; fileRef = 2BD50B7D2307288D00E6111D /* omid-validation-verification-script-v1.js */; };
 		2BE68E641FB124A3008ABC64 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE68E631FB124A3008ABC64 /* VideoViewController.swift */; };
-		384EB86F225BA07E0067A283 /* OMSDK_Demobuild.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384EB85C225BA07E0067A283 /* OMSDK_Demobuild.framework */; };
-		384EB872225BA07E0067A283 /* OMLICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 384EB86C225BA07E0067A283 /* OMLICENSE */; };
-		384EB873225BA07E0067A283 /* omsdk-v1.js in Resources */ = {isa = PBXBuildFile; fileRef = 384EB86D225BA07E0067A283 /* omsdk-v1.js */; };
 		384EB875225C05DF0067A283 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 384EB874225C05DF0067A283 /* README.md */; };
 		38B305CB1F859D2B00557063 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B305CA1F859D2B00557063 /* AppDelegate.swift */; };
 		38B305D21F859D2B00557063 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38B305D11F859D2B00557063 /* Assets.xcassets */; };
@@ -21,15 +22,17 @@
 		654DDD782086C53000BDAFF8 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654DDD772086C53000BDAFF8 /* ImageViewController.swift */; };
 		65A041B32081224C0033463C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A041B22081224C0033463C /* Constants.swift */; };
 		65F0CE5F208AB09D00E6FDF4 /* BaseAdUnitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F0CE5E208AB09D00E6FDF4 /* BaseAdUnitViewController.swift */; };
+		86828451238C96CB00C900AE /* omsdk-v1.js in Resources */ = {isa = PBXBuildFile; fileRef = 86828450238C96CB00C900AE /* omsdk-v1.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B1A68C22388AD7500DDEFFA /* OMSDK_Demoapp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OMSDK_Demoapp.framework; path = OMSDK/OMSDK_Demoapp.framework; sourceTree = "<group>"; };
+		2B50FC63230CA493004CF05B /* AudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewController.swift; sourceTree = "<group>"; };
+		2B8F87D42355122600824AC8 /* sampleAudioAd.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sampleAudioAd.mp3; sourceTree = "<group>"; };
+		2BD50B7D2307288D00E6111D /* omid-validation-verification-script-v1.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "omid-validation-verification-script-v1.js"; path = "../Verification/omid-validation-verification-script-v1.js"; sourceTree = "<group>"; };
 		2BE68E631FB124A3008ABC64 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		384EB85B225BA07E0067A283 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
-		384EB85C225BA07E0067A283 /* OMSDK_Demobuild.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OMSDK_Demobuild.framework; sourceTree = "<group>"; };
 		384EB86A225BA07E0067A283 /* OMLICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OMLICENSE; sourceTree = "<group>"; };
-		384EB86C225BA07E0067A283 /* OMLICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OMLICENSE; sourceTree = "<group>"; };
-		384EB86D225BA07E0067A283 /* omsdk-v1.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "omsdk-v1.js"; sourceTree = "<group>"; };
 		384EB874225C05DF0067A283 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.markdown; };
 		38B305C71F859D2B00557063 /* OM-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OM-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		38B305CA1F859D2B00557063 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +45,7 @@
 		654DDD772086C53000BDAFF8 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		65A041B22081224C0033463C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		65F0CE5E208AB09D00E6FDF4 /* BaseAdUnitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAdUnitViewController.swift; sourceTree = "<group>"; };
+		86828450238C96CB00C900AE /* omsdk-v1.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = "omsdk-v1.js"; path = "/Users/ohjames/Desktop/Open-Measurement-ReferenceApp-iOS/OMSDK/Service/omsdk-v1.js"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,31 +53,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				384EB86F225BA07E0067A283 /* OMSDK_Demobuild.framework in Frameworks */,
+				2B1A68C32388AD7500DDEFFA /* OMSDK_Demoapp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B52378E231424AE00734E57 /* Verification */ = {
+			isa = PBXGroup;
+			children = (
+				2BD50B7D2307288D00E6111D /* omid-validation-verification-script-v1.js */,
+			);
+			path = Verification;
+			sourceTree = "<group>";
+		};
+		2B819E662318644700487326 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2B1A68C22388AD7500DDEFFA /* OMSDK_Demoapp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		384EB85A225BA07E0067A283 /* OMSDK */ = {
 			isa = PBXGroup;
 			children = (
 				384EB85B225BA07E0067A283 /* CHANGELOG.md */,
-				384EB85C225BA07E0067A283 /* OMSDK_Demobuild.framework */,
 				384EB86A225BA07E0067A283 /* OMLICENSE */,
-				384EB86B225BA07E0067A283 /* Service */,
+				86828454238C989E00C900AE /* Service */,
+				2B52378E231424AE00734E57 /* Verification */,
 			);
 			path = OMSDK;
-			sourceTree = "<group>";
-		};
-		384EB86B225BA07E0067A283 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				384EB86C225BA07E0067A283 /* OMLICENSE */,
-				384EB86D225BA07E0067A283 /* omsdk-v1.js */,
-			);
-			path = Service;
 			sourceTree = "<group>";
 		};
 		38B305BE1F859D2B00557063 = {
@@ -83,6 +94,7 @@
 				384EB85A225BA07E0067A283 /* OMSDK */,
 				38B305C91F859D2B00557063 /* OM-Demo */,
 				38B305C81F859D2B00557063 /* Products */,
+				2B819E662318644700487326 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,13 +115,23 @@
 				38B305DF1F859DA500557063 /* WebViewController.swift */,
 				2BE68E631FB124A3008ABC64 /* VideoViewController.swift */,
 				654DDD772086C53000BDAFF8 /* ImageViewController.swift */,
+				2B50FC63230CA493004CF05B /* AudioViewController.swift */,
 				38B305CA1F859D2B00557063 /* AppDelegate.swift */,
 				38B305E61F859DDE00557063 /* LaunchScreen.storyboard */,
 				38B305E81F859DDE00557063 /* Main.storyboard */,
+				2B8F87D42355122600824AC8 /* sampleAudioAd.mp3 */,
 				38B305D11F859D2B00557063 /* Assets.xcassets */,
 				38B305D61F859D2B00557063 /* Info.plist */,
 			);
 			path = "OM-Demo";
+			sourceTree = "<group>";
+		};
+		86828454238C989E00C900AE /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				86828450238C96CB00C900AE /* omsdk-v1.js */,
+			);
+			name = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,6 +166,7 @@
 				TargetAttributes = {
 					38B305C61F859D2B00557063 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1030;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -171,12 +194,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86828451238C96CB00C900AE /* omsdk-v1.js in Resources */,
+				2B8F87D52355122600824AC8 /* sampleAudioAd.mp3 in Resources */,
 				384EB875225C05DF0067A283 /* README.md in Resources */,
-				384EB872225BA07E0067A283 /* OMLICENSE in Resources */,
 				38B305D21F859D2B00557063 /* Assets.xcassets in Resources */,
+				2BD50B7E2307288D00E6111D /* omid-validation-verification-script-v1.js in Resources */,
 				38FE29961F8BA9B20049ABFC /* Main.storyboard in Resources */,
 				38FE29971F8BA9B40049ABFC /* LaunchScreen.storyboard in Resources */,
-				384EB873225BA07E0067A283 /* omsdk-v1.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65A041B32081224C0033463C /* Constants.swift in Sources */,
+				2B50FC64230CA493004CF05B /* AudioViewController.swift in Sources */,
 				38B305E31F859DA500557063 /* WebViewController.swift in Sources */,
 				654DDD782086C53000BDAFF8 /* ImageViewController.swift in Sources */,
 				38B305E11F859DA500557063 /* AdListViewController.swift in Sources */,
@@ -255,6 +280,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -315,6 +341,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -335,7 +362,12 @@
 		38B305DA1F859D2B00557063 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					x86_64,
+					"$(ARCHS_STANDARD)",
+				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W2S2TG8578;
@@ -344,22 +376,35 @@
 					"$(PROJECT_DIR)/OM-Demo",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/OMSDK",
+					"$(PROJECT_DIR)/OMSDK/Service",
 				);
 				INFOPLIST_FILE = "OM-Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/OMSDK",
+					"$(PROJECT_DIR)/OMSDK/IABDemolab-Library",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.omid.reference;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 arm64e armv7 armv7s x86_64";
 			};
 			name = Debug;
 		};
 		38B305DB1F859D2B00557063 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					x86_64,
+					"$(ARCHS_STANDARD)",
+				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W2S2TG8578;
@@ -368,15 +413,22 @@
 					"$(PROJECT_DIR)/OM-Demo",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/OMSDK",
+					"$(PROJECT_DIR)/OMSDK/Service",
 				);
 				INFOPLIST_FILE = "OM-Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/OMSDK",
+					"$(PROJECT_DIR)/OMSDK/IABDemolab-Library",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.omid.reference;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 arm64e armv7 armv7s x86_64";
 			};
 			name = Release;
 		};

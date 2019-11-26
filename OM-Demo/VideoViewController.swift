@@ -7,7 +7,7 @@
 
 import UIKit
 import AVKit
-import OMSDK_Demobuild
+import OMSDK_Demoapp
 
 enum Quartile {
     case Init
@@ -27,7 +27,7 @@ class VideoViewController: BaseAdUnitViewController {
     @IBOutlet weak var endTimeLabel: UILabel!
     @IBOutlet weak var muteButton: UIButton!
 
-    var omidVideoEvents: OMIDDemobuildVideoEvents?
+    var omidMediaEvents: OMIDDemoappMediaEvents?
     var currentQuartile: Quartile = .Init
 
     override var creativeURL: URL {
@@ -42,7 +42,7 @@ class VideoViewController: BaseAdUnitViewController {
     override func didFinishFetchingCreative(_ fileURL: URL) {
         try? FileManager.default.moveItem(at: fileURL, to: localAssetURL)
         NSLog("Did finish fetching creative.")
-        createVideoPlayer(withAssetURL: localAssetURL)
+        createMediaPlayer(withAssetURL: localAssetURL)
         resetTimeLabels()
         addQuartileTrackingToVideoPlayer()
         attachPauseButtonImage()
@@ -53,17 +53,12 @@ class VideoViewController: BaseAdUnitViewController {
     override func willPresentAd() {
         super.willPresentAd()
 
-        //Report VAST properties to OMID
-        //The values should be parsed from the VAST document
-        let VASTProperties = OMIDDemobuildVASTProperties(autoPlay: true, position: .standalone)
-        omidVideoEvents?.loaded(with: VASTProperties)
-
         //Start playback
         play()
     }
 
     override func destroyAd() {
-        hidePlayerControlls()
+        hidePlayerControls()
 
         guard let videoPlayerLayer = playerLayer else { return }
         videoPlayerLayer.player = nil
@@ -73,10 +68,10 @@ class VideoViewController: BaseAdUnitViewController {
 
     override func presentAd() {
         super.presentAd()
-        showPlayerControlls()
+        showPlayerControls()
     }
 
-    override func createAdSessionContext(withPartner partner: OMIDDemobuildPartner) -> OMIDDemobuildAdSessionContext {
+    override func createAdSessionContext(withPartner partner: OMIDDemoappPartner) -> OMIDDemoappAdSessionContext {
         //Ad Verification
         //These values should be parsed from the VAST document
 
@@ -99,9 +94,10 @@ class VideoViewController: BaseAdUnitViewController {
         //Verification Parameters. This is just an arbitary string, however with validation verification script, the value that is passed here will be used as a remote URL for tracking events
         let parameters = Constants.verificationParameters
 
+        print(urlToMeasurementScript.absoluteString)
         //Create verification resource for <AdVerification> from above
         guard let verificationResource = createVerificationScriptResource(vendorKey: vendorKey,
-                                                                          verificationScriptURL: urlToMeasurementScript,
+                                                                          verificationScriptURL: urlToMeasurementScript.absoluteString,
                                                                           parameters: parameters)
             else {
                 fatalError("Unable to instantiate session context: verification resource cannot be nil")
@@ -109,33 +105,48 @@ class VideoViewController: BaseAdUnitViewController {
 
         //Create native ad session context
         do {
-            return try OMIDDemobuildAdSessionContext(partner: partner, script: omidJSService, resources: [verificationResource], customReferenceIdentifier: nil)
+            return try OMIDDemoappAdSessionContext(partner: partner, script: omidJSService, resources: [verificationResource], contentUrl: nil, customReferenceIdentifier: nil)
         } catch {
             fatalError("Unable to instantiate session context: \(error)")
         }
     }
 
-    override func createAdSessionConfiguration() -> OMIDDemobuildAdSessionConfiguration {
+    override func createAdSessionConfiguration() -> OMIDDemoappAdSessionConfiguration {
         //Create ad session configuration
         do {
-            return try OMIDDemobuildAdSessionConfiguration(impressionOwner: .nativeOwner,
-                                                         videoEventsOwner: .nativeOwner,
-                                                         isolateVerificationScripts: false)
+            return try
+                OMIDDemoappAdSessionConfiguration(creativeType: .video,
+                                           impressionType: .beginToRender,
+                                           impressionOwner: .nativeOwner,
+                                           mediaEventsOwner: .nativeOwner,
+                                           isolateVerificationScripts: false)
         } catch {
             fatalError("Unable to create ad session configuration: \(error)")
         }
     }
 
-    override func setupAdditionalAdEvents(adSession: OMIDDemobuildAdSession) {
+    override func setupAdditionalAdEvents(adSession: OMIDDemoappAdSession) {
         do {
-            omidVideoEvents = try OMIDDemobuildVideoEvents(adSession: adSession)
+            omidMediaEvents = try OMIDDemoappMediaEvents(adSession: adSession)
         } catch {
             fatalError("Unable to instantiate video ad events")
         }
     }
-}
-
-extension VideoViewController {
+    
+    override func adLoaded() {
+        //Report VAST properties to OMID
+        //The values should be parsed from the VAST document
+        let VASTProperties = OMIDDemoappVASTProperties(autoPlay: true, position: .standalone)
+        
+        do {
+            try adEvents?.loaded(with: VASTProperties)
+        } catch {
+            fatalError("Unable to trigger loaded event: \(error)")
+        }
+    }
+    
+    // MARK: - Player Controls
+    
     var player: AVPlayer? {
         return playerLayer?.player
     }
@@ -146,8 +157,8 @@ extension VideoViewController {
         }
         return videoPlayerLayer
     }
-
-    func createVideoPlayer(withAssetURL assetURL: URL) {
+    
+    func createMediaPlayer(withAssetURL assetURL: URL) {
         let asset = AVURLAsset(url: assetURL)
         let playerItem = AVPlayerItem(asset: asset)
         let player = AVPlayer(playerItem: playerItem)
@@ -178,8 +189,6 @@ extension VideoViewController {
     }
 }
 
-// MARK: - Player Controlls
-
 extension VideoViewController {
     @IBAction func tappedPlayingControl() {
         if player?.currentItem?.currentTime() == player?.currentItem?.duration {
@@ -192,11 +201,11 @@ extension VideoViewController {
         if let player = player, player.rate == 0 {
             play()
             attachPauseButtonImage()
-            omidVideoEvents?.resume()
+            omidMediaEvents?.resume()
         } else {
             pause()
             attachPlayButtonImage()
-            omidVideoEvents?.pause()
+            omidMediaEvents?.pause()
         }
     }
     
@@ -226,7 +235,7 @@ extension VideoViewController {
         endTimeLabel.text = "0"
     }
     
-    func hidePlayerControlls() {
+    func hidePlayerControls() {
         UIView.animate(withDuration: 0.5) {
             self.controls.alpha = 0
             self.startTimeLabel.alpha = 0
@@ -234,7 +243,7 @@ extension VideoViewController {
         }
     }
     
-    func showPlayerControlls() {
+    func showPlayerControls() {
         UIView.animate(withDuration: 0.5) {
             self.controls.alpha = 1.0
             self.startTimeLabel.alpha = 1.0
@@ -249,11 +258,11 @@ extension VideoViewController {
 
         player.isMuted = !player.isMuted
         muteButton.isSelected = player.isMuted
-        omidVideoEvents?.volumeChange(to: playerVolume())
+        omidMediaEvents?.volumeChange(to: playerVolume())
     }
 
     @IBAction func handleClick() {
-        omidVideoEvents?.adUserInteraction(withType: .click)
+        omidMediaEvents?.adUserInteraction(withType: .click)
         let clickThroughURL = URL(string: "https://www.pandora.com/artist/fall-out-boy/mania/ALJxxPp4qfg6wvg")!
         UIApplication.shared.openURL(clickThroughURL)
     }
@@ -283,27 +292,27 @@ extension VideoViewController {
         switch currentQuartile {
         case .Init:
             if (progressPercent > 0) {
-                omidVideoEvents?.start(withDuration: CGFloat(duration), videoPlayerVolume: playerVolume())
+                omidMediaEvents?.start(withDuration: CGFloat(duration), mediaPlayerVolume: playerVolume())
                 currentQuartile = .start
             }
         case .start:
             if (progressPercent > Double(1)/Double(4)) {
-                omidVideoEvents?.firstQuartile()
+                omidMediaEvents?.firstQuartile()
                 currentQuartile = .firstQuartile
             }
         case .firstQuartile:
             if (progressPercent > Double(1)/Double(2)) {
-                omidVideoEvents?.midpoint()
+                omidMediaEvents?.midpoint()
                 currentQuartile = .midpoint
             }
         case .midpoint:
             if (progressPercent > Double(3)/Double(4)) {
-                omidVideoEvents?.thirdQuartile()
+                omidMediaEvents?.thirdQuartile()
                 currentQuartile = .thirdQuartile
             }
         case .thirdQuartile:
             if (progressPercent >= 1.0) {
-                omidVideoEvents?.complete()
+                omidMediaEvents?.complete()
                 currentQuartile = .complete
             }
         default:
