@@ -38,6 +38,9 @@ class BaseAdUnitViewController: UIViewController {
         adContainerView.isHidden = true
         adContainerView.alpha = 0.0
         statusLabel.isHidden = true
+        
+        // Add this hidden volume slider to enable the OMSDK to listen for system volume
+        loadMPVolumeViewHidden()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -353,6 +356,12 @@ extension BaseAdUnitViewController {
             
             self.present(alert, animated: true, completion: nil)
         }
+    }
+    
+    func loadMPVolumeViewHidden() {
+        let volumeView = MPVolumeView(frame: view.bounds)
+        volumeView.isHidden = true
+        view.addSubview(volumeView)
     }
 }
 
