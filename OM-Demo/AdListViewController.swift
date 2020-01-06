@@ -26,6 +26,12 @@ enum AdUnit: Int {
      A video asset rendered by AVKit
      */
     case nativeVideo
+    
+    /**
+     An audio ad played with AVPlayer
+     */
+    case nativeAudio
+ 
 
     var title: String {
         switch self {
@@ -35,6 +41,8 @@ enum AdUnit: Int {
             return "Native VAST Video"
         case .nativeDisplay:
             return "Native Image"
+        case .nativeAudio:
+            return "Native Audio"
         }
     }
 
@@ -46,6 +54,9 @@ enum AdUnit: Int {
             return "showVideo"
         case .nativeDisplay:
             return "showNativeBanner"
+        case .nativeAudio:
+            return "showAudio"
+            
         }
     }
 }
@@ -56,7 +67,7 @@ enum AdUnit: Int {
  */
 
 class AdListViewController: UITableViewController {
-    var adUnits: [AdUnit] = [.HTMLDisplay, .nativeVideo, .nativeDisplay]
+    var adUnits: [AdUnit] = [.HTMLDisplay, .nativeVideo, .nativeDisplay, .nativeAudio]
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1

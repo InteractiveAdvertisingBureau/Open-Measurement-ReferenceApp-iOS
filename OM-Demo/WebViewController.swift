@@ -8,7 +8,7 @@
 import UIKit
 import WebKit
 import MediaPlayer
-import OMSDK_Demobuild
+import OMSDK_Demoapp
 
 class WebViewController: BaseAdUnitViewController {
     var webView: WKWebView?
@@ -54,27 +54,35 @@ class WebViewController: BaseAdUnitViewController {
         }
     }
 
-    override func createAdSessionConfiguration() -> OMIDDemobuildAdSessionConfiguration {
+    override func createAdSessionConfiguration() -> OMIDDemoappAdSessionConfiguration {
         do {
-            return try OMIDDemobuildAdSessionConfiguration(impressionOwner: .nativeOwner,
-                                                         videoEventsOwner: .noneOwner,
-                                                         isolateVerificationScripts: false)
+            return try OMIDDemoappAdSessionConfiguration(creativeType: .htmlDisplay,
+                                                  impressionType: .beginToRender,
+                                                  impressionOwner: .nativeOwner,
+                                                  mediaEventsOwner: .noneOwner,
+                                                  isolateVerificationScripts: true)
         } catch {
             fatalError("Unable to create ad session configuration: \(error)")
         }
     }
 
-    override func createAdSessionContext(withPartner partner: OMIDDemobuildPartner) -> OMIDDemobuildAdSessionContext {
+    override func createAdSessionContext(withPartner partner: OMIDDemoappPartner) -> OMIDDemoappAdSessionContext {
         guard let webView = webView else {
             fatalError("Unable to create ad session context: webView is not initialized")
         }
 
         do {
-            return try OMIDDemobuildAdSessionContext(partner: partner,
-                                                   webView: webView,
-                                                   customReferenceIdentifier: nil)
+            return try OMIDDemoappAdSessionContext(partner: partner, webView: webView, contentUrl: nil, customReferenceIdentifier: nil)
         } catch {
             fatalError("Unable to create ad session context: \(error)")
+        }
+    }
+    
+    override func adLoaded() {
+        do {
+            try adEvents?.loaded()
+        } catch {
+            fatalError("Unable to trigger loaded event: \(error)")
         }
     }
 }
@@ -99,7 +107,7 @@ extension WebViewController: WKNavigationDelegate {
 extension WebViewController {
     func injectOMID(intoHTML HTML: String) -> String {
         do {
-            let creativeWithOMID = try OMIDDemobuildScriptInjector.injectScriptContent(omidJSService,
+            let creativeWithOMID = try OMIDDemoappScriptInjector.injectScriptContent(omidJSService,
                                                                                      intoHTML:HTML)
             return creativeWithOMID
         } catch {
