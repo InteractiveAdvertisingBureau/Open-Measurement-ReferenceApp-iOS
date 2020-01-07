@@ -94,10 +94,9 @@ class VideoViewController: BaseAdUnitViewController {
         //Verification Parameters. This is just an arbitary string, however with validation verification script, the value that is passed here will be used as a remote URL for tracking events
         let parameters = Constants.verificationParameters
 
-        print(urlToMeasurementScript.absoluteString)
         //Create verification resource for <AdVerification> from above
         guard let verificationResource = createVerificationScriptResource(vendorKey: vendorKey,
-                                                                          verificationScriptURL: urlToMeasurementScript.absoluteString,
+                                                                          verificationScriptURL: urlToMeasurementScript,
                                                                           parameters: parameters)
             else {
                 fatalError("Unable to instantiate session context: verification resource cannot be nil")

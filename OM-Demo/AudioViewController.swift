@@ -28,7 +28,7 @@ class AudioViewController: VideoViewController {
     
     override var creativeURL: URL {
         //URL to a video asset. In a real world scenario, this would come from a VAST document or a similar format.
-        return URL(string: Constants.audioAdURL.absoluteString)!
+        return URL(string: Constants.audioAdURL)!
     }
     
     override func createMediaPlayer(withAssetURL assetURL: URL) {

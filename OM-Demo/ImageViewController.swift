@@ -46,7 +46,7 @@ class ImageViewController: BaseAdUnitViewController {
 
         //Create verification resource using the values provided in the ad response
         guard let verificationResource = createVerificationScriptResource(vendorKey: vendorKey,
-                                                                          verificationScriptURL: urlToMeasurementScript.absoluteString,
+                                                                          verificationScriptURL: urlToMeasurementScript,
                                                                           parameters: parameters)
             else {
                 fatalError("Unable to instantiate session context: verification resource cannot be nil")
