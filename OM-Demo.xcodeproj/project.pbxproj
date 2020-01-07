@@ -29,7 +29,7 @@
 		2B1A68C22388AD7500DDEFFA /* OMSDK_Demoapp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OMSDK_Demoapp.framework; path = OMSDK/OMSDK_Demoapp.framework; sourceTree = "<group>"; };
 		2B50FC63230CA493004CF05B /* AudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewController.swift; sourceTree = "<group>"; };
 		2B8F87D42355122600824AC8 /* sampleAudioAd.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sampleAudioAd.mp3; sourceTree = "<group>"; };
-		2BD50B7D2307288D00E6111D /* omid-validation-verification-script-v1.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "omid-validation-verification-script-v1.js"; path = "../Verification/omid-validation-verification-script-v1.js"; sourceTree = "<group>"; };
+		2BD50B7D2307288D00E6111D /* omid-validation-verification-script-v1.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "omid-validation-verification-script-v1.js"; sourceTree = "<group>"; };
 		2BE68E631FB124A3008ABC64 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		384EB85B225BA07E0067A283 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		384EB86A225BA07E0067A283 /* OMLICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OMLICENSE; sourceTree = "<group>"; };
@@ -45,7 +45,7 @@
 		654DDD772086C53000BDAFF8 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		65A041B22081224C0033463C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		65F0CE5E208AB09D00E6FDF4 /* BaseAdUnitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAdUnitViewController.swift; sourceTree = "<group>"; };
-		86828450238C96CB00C900AE /* omsdk-v1.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = "omsdk-v1.js"; path = "/Users/ohjames/Desktop/Open-Measurement-ReferenceApp-iOS/OMSDK/Service/omsdk-v1.js"; sourceTree = "<absolute>"; };
+		86828450238C96CB00C900AE /* omsdk-v1.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "omsdk-v1.js"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +81,7 @@
 			children = (
 				384EB85B225BA07E0067A283 /* CHANGELOG.md */,
 				384EB86A225BA07E0067A283 /* OMLICENSE */,
-				86828454238C989E00C900AE /* Service */,
+				A1082A3323C402E500EEA9E8 /* Service */,
 				2B52378E231424AE00734E57 /* Verification */,
 			);
 			path = OMSDK;
@@ -126,12 +126,12 @@
 			path = "OM-Demo";
 			sourceTree = "<group>";
 		};
-		86828454238C989E00C900AE /* Service */ = {
+		A1082A3323C402E500EEA9E8 /* Service */ = {
 			isa = PBXGroup;
 			children = (
 				86828450238C96CB00C900AE /* omsdk-v1.js */,
 			);
-			name = Service;
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
