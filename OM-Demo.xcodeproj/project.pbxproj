@@ -340,7 +340,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/OMSDK",
-					"$(PROJECT_DIR)/OMSDK/IABDemolab-Library",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.omid.reference;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -377,7 +376,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/OMSDK",
-					"$(PROJECT_DIR)/OMSDK/IABDemolab-Library",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.omid.reference;
 				PRODUCT_NAME = "$(TARGET_NAME)";
