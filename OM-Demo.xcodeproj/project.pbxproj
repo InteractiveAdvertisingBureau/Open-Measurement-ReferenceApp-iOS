@@ -19,6 +19,7 @@
 		654DDD782086C53000BDAFF8 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654DDD772086C53000BDAFF8 /* ImageViewController.swift */; };
 		65A041B32081224C0033463C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A041B22081224C0033463C /* Constants.swift */; };
 		65F0CE5F208AB09D00E6FDF4 /* BaseAdUnitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F0CE5E208AB09D00E6FDF4 /* BaseAdUnitViewController.swift */; };
+		A1A9E91623C922F900C87B03 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A9E91523C922F900C87B03 /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		654DDD772086C53000BDAFF8 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		65A041B22081224C0033463C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		65F0CE5E208AB09D00E6FDF4 /* BaseAdUnitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAdUnitViewController.swift; sourceTree = "<group>"; };
+		A1A9E91523C922F900C87B03 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 				654DDD772086C53000BDAFF8 /* ImageViewController.swift */,
 				2B50FC63230CA493004CF05B /* AudioViewController.swift */,
 				38B305CA1F859D2B00557063 /* AppDelegate.swift */,
+				A1A9E91523C922F900C87B03 /* SceneDelegate.swift */,
 				38B305E61F859DDE00557063 /* LaunchScreen.storyboard */,
 				38B305E81F859DDE00557063 /* Main.storyboard */,
 				38B305D11F859D2B00557063 /* Assets.xcassets */,
@@ -169,6 +172,7 @@
 			files = (
 				65A041B32081224C0033463C /* Constants.swift in Sources */,
 				2B50FC64230CA493004CF05B /* AudioViewController.swift in Sources */,
+				A1A9E91623C922F900C87B03 /* SceneDelegate.swift in Sources */,
 				38B305E31F859DA500557063 /* WebViewController.swift in Sources */,
 				654DDD782086C53000BDAFF8 /* ImageViewController.swift in Sources */,
 				38B305E11F859DA500557063 /* AdListViewController.swift in Sources */,
