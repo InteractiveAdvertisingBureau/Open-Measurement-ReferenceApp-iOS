@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B16287123F1F0C500C89AFB /* OMSDK_Demoapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B16287023F1F0C500C89AFB /* OMSDK_Demoapp.framework */; };
-		2B16287323F2193700C89AFB /* omsdk-v1.js in Resources */ = {isa = PBXBuildFile; fileRef = 2B16287223F2193700C89AFB /* omsdk-v1.js */; };
 		2B1A8CB823F73C0C007AA1D3 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1A8CB723F73C0C007AA1D3 /* Settings.swift */; };
 		2B50FC64230CA493004CF05B /* AudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B50FC63230CA493004CF05B /* AudioViewController.swift */; };
 		2BE68E641FB124A3008ABC64 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE68E631FB124A3008ABC64 /* VideoViewController.swift */; };
@@ -26,8 +24,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2B16287023F1F0C500C89AFB /* OMSDK_Demoapp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OMSDK_Demoapp.framework; sourceTree = "<group>"; };
-		2B16287223F2193700C89AFB /* omsdk-v1.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "omsdk-v1.js"; sourceTree = "<group>"; };
 		2B1A8CB723F73C0C007AA1D3 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		2B50FC63230CA493004CF05B /* AudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewController.swift; sourceTree = "<group>"; };
 		2BE68E631FB124A3008ABC64 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
@@ -51,7 +47,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B16287123F1F0C500C89AFB /* OMSDK_Demoapp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,7 +56,6 @@
 		2B819E662318644700487326 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2B16287023F1F0C500C89AFB /* OMSDK_Demoapp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -101,7 +95,6 @@
 				38B305E81F859DDE00557063 /* Main.storyboard */,
 				38B305D11F859D2B00557063 /* Assets.xcassets */,
 				38B305D61F859D2B00557063 /* Info.plist */,
-				2B16287223F2193700C89AFB /* omsdk-v1.js */,
 			);
 			path = "OM-Demo";
 			sourceTree = "<group>";
@@ -170,7 +163,6 @@
 				38B305D21F859D2B00557063 /* Assets.xcassets in Resources */,
 				38FE29961F8BA9B20049ABFC /* Main.storyboard in Resources */,
 				38FE29971F8BA9B40049ABFC /* LaunchScreen.storyboard in Resources */,
-				2B16287323F2193700C89AFB /* omsdk-v1.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
