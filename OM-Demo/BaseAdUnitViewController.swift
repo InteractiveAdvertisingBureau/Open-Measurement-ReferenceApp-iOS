@@ -85,45 +85,6 @@ class BaseAdUnitViewController: UIViewController {
             self.didDismissAd()
         }
     }
-    
-    /**
-     Asynchronously loads creative from a remote URL or local file URL
-     
-     - Parameters:
-     - creativeURL: URL to creative (either remote or local)
-     - completionHandler: completion handler that is called when creative loads successfully
-     - content: contents of the creative
-     */
-    func fetchCreative(_ creativeURL: URL!, _ completionHandler: @escaping (_ content: String) -> ()) {
-        DispatchQueue.main.async {
-            self.statusLabel.text = "Fetching..."
-        }
-        NSLog("Fetching creative.")
-        DispatchQueue.global().async {
-            if creativeURL.isFileURL {
-                let content = try! String(contentsOf: creativeURL)
-                DispatchQueue.main.async {
-                    NSLog("Did finish fetching creative.")
-                    completionHandler(content)
-                }
-            } else {
-                NSLog("Loading creative from remote URL.")
-                self.creativeDownloadTask = URLSession.shared.downloadTask(with: creativeURL) {
-                    [weak self] (fileURL, response, error) in
-                    guard let fileURL = fileURL else {
-                        self?.showErrorMessage(message: "Unable to fetch creative from remote URL: \(creativeURL!)")
-                        return
-                    }
-                    
-                    print(response ?? "no response")
-                    print(error ?? "no error")
-                    NSLog("Finished loading creative from remote URL.")
-                    self?.fetchCreative(fileURL, completionHandler)
-                }
-                self.creativeDownloadTask?.resume()
-            }
-        }
-    }
 
     /**
      Is called when creative has finished downloading.
