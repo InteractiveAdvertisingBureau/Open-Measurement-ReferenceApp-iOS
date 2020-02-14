@@ -179,7 +179,7 @@ extension WebViewController {
         displayInProgress = true
         statusLabel.isHidden = false
         
-        self.loadAd(withHTML: HTML)
+        loadAd(withHTML: HTML)
     }
     
     /**
