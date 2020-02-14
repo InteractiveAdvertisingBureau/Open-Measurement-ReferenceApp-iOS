@@ -70,22 +70,59 @@ class AdListViewController: UITableViewController {
     var adUnits: [AdUnit] = [.HTMLDisplay, .nativeVideo, .nativeDisplay, .nativeAudio]
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return adUnits.count
+        return section == 0 ? 1 : adUnits.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath)
-        let adUnit = adUnits[indexPath.row]
-        cell.textLabel?.text = adUnit.title
+        var cell = tableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath)
+        if indexPath.section == 0 {
+            cell = tableView.dequeueReusableCell(withIdentifier: "prerenderCell", for: indexPath)
+            cell.textLabel?.text = "Prerender"
+            
+            let toggle = UISwitch()
+            toggle.translatesAutoresizingMaskIntoConstraints = false
+            toggle.addTarget(self, action: #selector(togglePrerendering(sender:)), for: .touchUpInside)
+            
+            cell.addSubview(toggle)
+            
+            let verticalConstraint = NSLayoutConstraint(item: toggle,
+                                                        attribute: .centerY,
+                                                        relatedBy: .equal,
+                                                        toItem: cell,
+                                                        attribute: .centerY,
+                                                        multiplier: 1.0,
+                                                        constant: 0)
+            let trailingMargin = NSLayoutConstraint(item: toggle,
+                                                    attribute: .rightMargin,
+                                                    relatedBy: .equal,
+                                                    toItem: cell,
+                                                    attribute: .rightMargin,
+                                                    multiplier: 1.0,
+                                                    constant: -20.0)
+            cell.addConstraints([verticalConstraint, trailingMargin])
+        } else {
+            let adUnit = adUnits[indexPath.row]
+            cell.textLabel?.text = adUnit.title
+        }
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let adUnit = adUnits[indexPath.row]
         performSegue(withIdentifier: adUnit.segue, sender: self)
+    }
+    
+    @objc func togglePrerendering(sender: UISwitch) {
+        if Settings.shared.isPrerendering {
+            Settings.shared.noPrerender()
+            sender.isEnabled = false
+        } else {
+          Settings.shared.prerender()
+            sender.isEnabled = true
+        }
     }
 }
