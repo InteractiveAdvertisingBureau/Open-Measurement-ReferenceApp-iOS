@@ -1,5 +1,8 @@
 # Open Measurement Reference App for iOS
 
+## IMPORTANT NOTE - 4/2/2020
+With the release of Open Measurement iOS SDK 1.3.2, the reference app source code is included with downloadable SDK binaries located at (https://tools.iab.techlab.com/omsdk). This repository is no longer updated.
+
 ## Overview
 
 A sample iOS application in Swift built to showcase OM SDK integration. 
