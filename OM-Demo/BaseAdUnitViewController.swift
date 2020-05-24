@@ -13,6 +13,7 @@ import OMSDK_Demoapp
 class BaseAdUnitViewController: UIViewController {
     fileprivate var isDisplayingErrorMessage = false
     fileprivate var creativeDownloadTask: URLSessionDownloadTask?
+    var displayInProgress = false
 
     @IBOutlet var adContainerView: UIView!
     @IBOutlet var adView: UIView!
@@ -32,6 +33,10 @@ class BaseAdUnitViewController: UIViewController {
         //Load OMID JS service contents
         let omidServiceUrl = Bundle.main.url(forResource: "omsdk-v1", withExtension: "js")!
         return try! String(contentsOf: omidServiceUrl)
+    }
+    
+    var isPrerendering: Bool {
+        return Settings.shared.isPrerendering
     }
     
     override func viewDidLoad() {

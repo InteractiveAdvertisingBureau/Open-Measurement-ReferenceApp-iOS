@@ -28,9 +28,15 @@ class WebViewController: BaseAdUnitViewController {
             webView = WKWebView(frame: adView.bounds)
             webView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             webView?.navigationDelegate = self
+            
+            let loadingStatusScript = WKUserScript(source: Constants.webViewLoadingStatusHandler,
+                                                   injectionTime: .atDocumentStart,
+                                                   forMainFrameOnly: true)
+            webView?.configuration.userContentController.addUserScript(loadingStatusScript)
+            webView?.configuration.userContentController.add(self, name: Constants.webViewHandlerName)
 
             //Begin loading HTML in the webview
-            loadAd(withHTML: HTML)
+            Settings.shared.isPrerendering ? displayAfterRendering(withHTML: HTML) : displayImmediately(withHTML: HTML)
         } catch {
             self.showErrorMessage(message: "Unable to load creative: \(error)")
         }
@@ -97,6 +103,25 @@ extension WebViewController: WKNavigationDelegate {
             //OMID JS service is not guaranteed to handle any events prior to this point and you should avoid executing native impression event (registered in presentAd()) until DOM is loaded completely. If you're pre-rendering webviews, then waiting for window.onload event is also an option)
 
             //OMID JS service is now fully operational and it's safe to display the webview and register native impression
+            
+            if (!isPrerendering) {
+                presentAd()
+            }
+        }
+    }
+}
+
+extension WebViewController: WKScriptMessageHandler {
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        guard message.name == Constants.webViewHandlerName,
+            let body = message.body as? String,
+            body == Constants.webViewDidFinishRenderingMessage
+            else {
+                return
+        }
+        
+        NSLog("WebView has finished rendering")
+        if (isPrerendering) {
             presentAd()
         }
     }
@@ -137,6 +162,39 @@ extension WebViewController {
         // This implementation uses loadHTMLString() method to load HTML from string,
         // however using load() method here with a remote URL is also an option
         webViewInitialNavigation = webView.loadHTMLString(creative, baseURL: creativeURL.baseURL)
+    }
+}
+
+// MARK: Prerendering
+extension WebViewController {
+    /**
+     Displays ad container with the webview after rendering completes.
+     */
+    
+    func displayAfterRendering(withHTML HTML: String) {
+        guard !displayInProgress else {
+            return
+        }
+        
+        displayInProgress = true
+        statusLabel.isHidden = false
+        
+        loadAd(withHTML: HTML)
+    }
+    
+    /**
+     Displays ad container with the webview before rendering starts.
+     */
+    
+    func displayImmediately(withHTML HTML: String) {
+        guard !displayInProgress else {
+            return
+        }
+        
+        displayInProgress = true
+        statusLabel.isHidden = false
+        presentAd()
+        loadAd(withHTML: HTML)
     }
 }
 
